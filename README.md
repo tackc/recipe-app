@@ -22,6 +22,21 @@ If we want to see how the app will behave when deployed, we need to:
 So, when you are hacking out code and nothing seems to be updating in the browser - be sure to verify that you are browsing on `localhost:3000`.
 
 
+## Recipe Categories
+* Main Dishes
+* Appetizers
+* Side Dishes
+* Desserts
+* Drinks
+
+## Default Keyword Options
+* Breakfast
+* Lunch
+* Dinner
+* Dessert
+* Drink
+
+
 ## Available Scripts
 
 In the project directory, you can run:
