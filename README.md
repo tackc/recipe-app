@@ -36,6 +36,8 @@ So, when you are hacking out code and nothing seems to be updating in the browse
 * Dessert
 * Drink
 
+## Entity Relationship Diagram for database
+[Referenced from this website](https://editor.ponyorm.com/user/katyatitkova/recipe/designer)
 
 ## Available Scripts
 
