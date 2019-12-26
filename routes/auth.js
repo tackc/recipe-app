@@ -21,7 +21,7 @@ router.post('/signup', (req, res) => {
                 lastName: req.body.lastName,
                 email: req.body.email,
                 password: req.body.password
-            }, (err, user) {
+            }, (err, user) => {
                 // check for any DB errors
                 if(err) {
                     // Some error occurred creating the user
