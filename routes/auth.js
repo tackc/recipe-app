@@ -49,55 +49,39 @@ router.post('/signup', (req, res) => {
     })
 });
 
-// Route for signing up (creating a new account)
-router.post('/signup', (req, res) => {
-    // See if the email is already in the DB
-    User.findOne({email: req.body.email}, (err, user) => {
+// Route for logging in to existing account
+router.post('/login', (req, res) => {
+    // Look up user in the DB
+    User.findOne({email: req.body.email}, function(err, user) {
         if (user) {
-            // If there is a user, check their entered password against the DB hash
-            if (user.authenticated(req.body.password)) {
-                // if it matches: log them in (sign a token)
-                var token = jwt.sign(user.toObject(), process.env.JWT_SECRET, {
-                    expiresIn: 60 * 60 * 24
-                });
-                res.json({
-                    type: 'success',
-                    status: 200,
-                    user,
-                    token
-                });
-            } else {
-                // Email is available, create the user in the DB
-                User.create({
-                    firstName: req.body.firstName,
-                    lastName: req.body.lastName,
-                    email: req.body.email,
-                    password: req.body.password
-                }, (err, user) => {
-                    // check for any DB errors
-                    if (err) {
-                        // Some error occurred creating the user
-                        res.json({
-                            type: 'db_error',
-                            status: 500,
-                            message: "Database error occurred while creating the account",
-                            error: err
-                        });
-                    } else {
-                        // Log the user in (sign a new token)
-                        var token = jwt.sign(user.toObject(), process.env.JWT_SECRET, {
-                            expiresIn: 60 * 60 * 24
-                        });
-                        // Return user and token to React app
-                        res.json({
-                            type: 'success',
-                            status: 200,
-                            user,
-                            token
-                        });
-                    }
-                })
-            }
+        // If there is a user, check their entered password against the DB hash
+        if (user.authenticated(req.body.password)) {
+            // if it matches: log them in (sign a token)
+            var token = jwt.sign(user.toObject(), process.env.JWT_SECRET, {
+            expiresIn: 60 * 60 * 24
+            });
+            res.json({
+            type: 'success',
+            status: 200,
+            user,
+            token
+            });
+        } else {
+            // Authentication failed: send an error
+            res.json({
+            type: 'auth_error',
+            status: 401,
+            message: 'Email or password is incorrect'
+            });
+        }
+        } else {
+        // if the user isn't in the DB...
+        res.json({
+            type: 'auth_error',
+            status: 401,
+            message: 'Account not found'
+        });
         }
     })
-})
+});
+
