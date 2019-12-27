@@ -85,3 +85,47 @@ router.post('/login', (req, res) => {
     })
 });
 
+router.post('/me/from/token', (req, res) => {
+    let token = req.body.token;
+    // Check for the presence of a token
+    if (!token) {
+      // They didn't send me a token
+        res.json({
+            type: 'auth_error',
+            status: 401,
+            message: "Unauthorized. You must pass a valid token."
+        })
+        } else {
+        // We do have a token. Verify it.
+        jwt.verify(token, process.env.JWT_SECRET, function(err, user) {
+            if (err) {
+            // If the token is invalid, send an error
+            res.json({
+                type: 'auth_error',
+                status: 401,
+                message: "Invalid token. Please log in again."
+            });
+            } else {
+            // If token is valid, look up the user in the DB
+            User.findById(user._id, function(err, user) {
+                if (err) {
+                res.json({
+                    type: 'db_error',
+                    status: 500,
+                    message: 'Database error occurred while validating your account.',
+                    error: err
+                });
+                } else {
+                // send the user and the token back to the React app
+                res.json({
+                    type: 'success',
+                    status: 200,
+                    user,
+                    token
+                });
+                }
+            })
+            }
+        })
+    }
+});
