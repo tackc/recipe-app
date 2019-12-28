@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Schema = recipe.Schema;
+var Schema = mongoose.Schema;
 
 var recipeSchema = new Schema({
     recipeID: Number,
