@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Signin.css';
 
-class Signup extends Component {
+class Signin extends Component {
     constructor(props) {
         super(props)
         this.state = {
