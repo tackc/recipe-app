@@ -2,7 +2,9 @@ var express = require( 'express' );
 var path = require( 'path' );
 var favicon = require( 'serve-favicon' );
 var logger = require( 'morgan' );
+
 const apiRoutes = require('./routes/api');
+const auth = require('./routes/auth');
 
 var app = express();
 
@@ -13,9 +15,10 @@ app.use(express.json());
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
-// Put API routes here, before the "catch all" route
 require('./config/database');
-require('/api', apiRoutes)
+// Put API routes here, before the "catch all" route
+app.use('/api', apiRoutes);
+app.use('/auth', auth);
 
 // The following "catch all" route (note the *)is necessary for a SPA's client-side routing to properly work
 app.get('/*', (req, res) => {
@@ -26,6 +29,8 @@ app.get('/*', (req, res) => {
 
 var port = process.env.PORT || 3001;
 
-app.listen(port, () => {
+var server = app.listen(port, () => {
     console.log(`Express app running on port ${port}`)
 });
+
+module.exports = server;
