@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
+import { connect, connection } from 'mongoose';
 
-mongoose.connect(process.env.MONGODB_URI);
+connect(process.env.MONGODB_URI);
 
-var db = mongoose.connection;
+var db = connection;
 
 db.once('open', () => {
     console.log(`Connected to MongoDB ${db.name} at ${db.host}: $${db.port}`);
