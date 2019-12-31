@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var recipeSchema = new Schema({
     recipeID: Number,
     recipeName: String,
+    ingredientQuantity: String,
     ingredient: [{type: Schema.Types.ObjectId, ref: 'Ingredient'}],
     directions: String,
     preparation_time: Number,
