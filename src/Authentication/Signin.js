@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import './Signin.css';
+import SignInBackgroundImage from '../components/images/_DSC2626.jpg';
 
 class Signin extends Component {
     constructor(props) {
@@ -15,8 +16,9 @@ class Signin extends Component {
     
     render() {
         return (
-            <div className="Signup">
-                <div id="appleid-signin" class="signin-button" data-color="black" data-border="true" data-type="sign in"></div>
+            <div className="Account">
+                <img className="SignInBackgroundImage" src={SignInBackgroundImage} alt="Two glasses of Thai Iced Tea"></img>
+                <div id="appleid-signin" className="signin-button" data-color="black" data-border="true" data-type="sign in"></div>
             </div>
         )
     }
