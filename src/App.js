@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Signin from './Authentication/Signin';
+// import Signin from './Authentication/Signin';
+import Categories from './pages/Categories';
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class App extends Component {
     return (
       <div className="App">
         {/* <header className="App-header"></header> */}
-        <Signin />
+        {/* <Signin /> */}
+        <Categories />
       </div>
     );
   }
