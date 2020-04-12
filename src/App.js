@@ -15,12 +15,18 @@ class App extends Component {
     }
   }
 
-  render() {
+  render(props) {
     return (
       <div className="App">
         {/* <header className="App-header"></header> */}
         {/* <Signin /> */}
-        <Categories />
+        <h1>The categories are:</h1>
+        {this.state.categories.map((category) => 
+          <div>
+            <h4>{category}</h4>
+          </div>
+        )}
+        <Categories categories={this.state.categories} />
       </div>
     );
   }
