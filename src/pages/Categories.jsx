@@ -12,6 +12,9 @@ const Wrapper = styled.div.attrs({
     className: 'category-wrapper'
 })`
     margin: 0 auto;
+    background-color: #222;
+    width: 30vw;
+    height: 25vh;
 `
 const Button = styled.button.attrs({
     className: 'overlay-button'
@@ -25,7 +28,7 @@ class Categories extends Component {
     render() {
         return (
             <Wrapper>
-                <Button />>
+                <Button />
                 <Title />
             </Wrapper>
         )
