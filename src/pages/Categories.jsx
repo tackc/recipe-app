@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Title = styled.h1.attrs({
-    className: 'h1',
+    className: 'h1 title',
 })`
     margin: 0 auto;
 `
@@ -25,11 +25,18 @@ const Button = styled.button.attrs({
 `
 
 class Categories extends Component {
-    render() {
+    render(props) {
         return (
             <Wrapper>
-                <Button />
-                <Title />
+                <ul>
+                    {this.props.categories.map(({category, id}) => (
+                        <li key={id}>
+                            <div>
+                                <span>{category}</span>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
             </Wrapper>
         )
     }
