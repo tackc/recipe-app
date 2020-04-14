@@ -11,7 +11,13 @@ class App extends Component {
       user: null,
       error: null,
       lockedResult: '',
-      categories: ["Main Dishes", "Appetizers", "Side Dishes", "Desserts", "Drinks"]
+      categories: [
+        {title: "Main Dishes", image: "#"}, 
+        {title: "Appetizers", image: "#"}, 
+        {title: "Side Dishes", image: "#"}, 
+        {title: "Desserts", image: "#"}, 
+        {title: "Drinks", image: "#"}
+      ]
     }
   }
 
@@ -21,9 +27,10 @@ class App extends Component {
         {/* <header className="App-header"></header> */}
         {/* <Signin /> */}
         <h1>The categories are:</h1>
-        {this.state.categories.map((category) => 
+        {this.state.categories.map(({title, image}) => 
           <div>
-            <h4>{category}</h4>
+            <h4>{title}</h4>
+            <img src='{image}' alt='{image}'></img>
           </div>
         )}
         <Categories categories={this.state.categories} />
