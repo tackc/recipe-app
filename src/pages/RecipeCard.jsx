@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
+import Button from '@bit/smei.ui-lib.button';
 
 const Wrapper = styled.div`
     width: 100vw;
@@ -28,7 +29,7 @@ const RecipeCard = (props) => {
     console.log(props)
     return(
         <Wrapper>
-            <Header></Header>
+            <Header><Button /></Header>
             <Images></Images>
             <Title>{props.recipe.title}</Title>
         </Wrapper>
