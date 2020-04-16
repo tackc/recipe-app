@@ -32,22 +32,4 @@ const Categories = (props) => {
     )
 }
 
-// class Categories extends Component {
-//     render(props) {
-//         return (
-//             <Wrapper>
-//                 <ul>
-//                     {this.props.categories.map(({category, id}) => (
-//                         <li key={id}>
-//                             <div>
-//                                 <span>{category}</span>
-//                             </div>
-//                         </li>
-//                     ))}
-//                 </ul>
-//             </Wrapper>
-//         )
-//     }
-// }
-
 export default Categories;
