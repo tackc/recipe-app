@@ -32,6 +32,7 @@ const RecipeCard = (props) => {
             <Header><Button /></Header>
             <Images></Images>
             <Title>{props.recipe.title}</Title>
+            <Button color="secondary" outline>Edit Recipe</Button>
         </Wrapper>
     )
 }
