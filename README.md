@@ -53,7 +53,7 @@ So, when you are hacking out code and nothing seems to be updating in the browse
 * Nutrition Information
 
 ## Entity Relationship Diagram for database
-[Referenced from this website](https://editor.ponyorm.com/user/katyatitkova/recipe/designer)
+[Check out the editable ER diagram here!](https://editor.ponyorm.com/user/tackc/RecipeApp/designer)
 
 ## Available Scripts
 
