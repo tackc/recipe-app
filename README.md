@@ -36,6 +36,22 @@ So, when you are hacking out code and nothing seems to be updating in the browse
 * Dessert
 * Drink
 
+## Recipe Card Categories
+* Title
+* Description
+* Prep Time
+* Cook Time
+* Total Time
+* Servings
+* Recpie Author / Link
+* Ingredients
+    * Measurement
+    * Ingredient
+* Image(s)
+* Instructions
+* Recipe Notes
+* Nutrition Information
+
 ## Entity Relationship Diagram for database
 [Referenced from this website](https://editor.ponyorm.com/user/katyatitkova/recipe/designer)
 
