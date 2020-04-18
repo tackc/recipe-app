@@ -4,13 +4,19 @@ var Schema = mongoose.Schema;
 var recipeSchema = new Schema({
     recipeID: Number,
     recipeName: String,
+    description: String,
     ingredientQuantity: String,
     ingredient: [{type: Schema.Types.ObjectId, ref: 'Ingredient'}],
-    directions: String,
+    instructions: String,
     preparation_time: Number,
     cooking_time: Number,
+    total_time: Number,
     serves: Number,
-    ratings: [{type: Schema.Types.ObjectId, ref: 'Rating'}]
+    notes: String,
+    author: String,
+    url: String,
+    ratings: [{type: Schema.Types.ObjectId, ref: 'Rating'}],
+    images: String,
 })
 
 const Recipe = mongoose.model('Recipe', recipeSchema);
