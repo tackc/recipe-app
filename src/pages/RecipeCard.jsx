@@ -25,6 +25,12 @@ const Title = styled.h1.attrs({
     color: #222;
 `
 
+const Ingredients = styled.ul`
+    color: #FFF;
+`
+
+const Ingredient = styled.li
+
 const RecipeCard = (props) => {
     console.log(props)
     return(
@@ -33,6 +39,9 @@ const RecipeCard = (props) => {
             <Images></Images>
             <Title>{props.recipe.title}</Title>
             <Button color="secondary" outline>Edit Recipe</Button>
+            <Ingredients>
+                <Ingredient>{props.recipe.ingredient}</Ingredient>
+            </Ingredients>
         </Wrapper>
     )
 }
