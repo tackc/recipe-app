@@ -98,8 +98,24 @@ async function deleteRecipe(req, res) {
     .catch(err => console.log(err))
 }
 
+async function getRecipeById(req, res) {
+    await Recipe.findOne({ _id: req.params.id }, (err, recipe) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+
+        if (!recipe) {
+            return res.status(404).json({ success: false, error: 'Recipe not found' })
+        }
+
+        return res.status(200).json({ status: true, data: recipe })
+    })
+    .catch(err => console.log(err))
+}
+
 module.exports = {
     createRecipe,
     updateRecipe,
     deleteRecipe,
+    getRecipeById,
 };
