@@ -20,7 +20,14 @@ const userSchema = new Schema({
         required: [true, 'You must enter an email'],
         minlength: [5, 'Email must be between 5 and 50 characters'],
     maxlength: [50, 'Email must be between 5 and 50 characters']
-    }
+    },
+    password: {
+        type: String,
+        required: [true, 'You must enter a password'],
+        minlength: [10, 'Password must be between 10 and 50 characters'],
+        maxlength: [50, 'Password must be between 10 and 50 characters']
+    },
+    recipes: [{type: Schema.Types.ObjectId, ref: 'Recipe'}]
 });
 
 // This returns a user object without a password
