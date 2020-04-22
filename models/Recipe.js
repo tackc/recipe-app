@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var recipeSchema = new Schema({
     recipeID: Number,
-    recipeName: String,
+    name: String,
     description: String,
     ingredientQuantity: String,
     ingredient: [{type: Schema.Types.ObjectId, ref: 'Ingredient'}],
