@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 var request = require('request');
 const User = require('../models/User');
+const Recipe = require('../models/Recipe');
 
-// Get recipes associated with current user
+// Get all recipes associated with current user
 router.get('/recipes', (req, res) => {
     User.findOne({_id: req.body.currentUser}, (err, user) => {
         if(err) {
@@ -25,6 +26,18 @@ router.post('/recipes', (req, res) => {
         console.log(user)
         user.save()
         res.json(user)
+    })
+})
+
+// Route to get a specific recipe by id
+router.get('/recipes/:id', (req, res) => {
+    Recipe.findOne({_id: req.body.currentUser}, (err, user) => {
+        if(err) {
+            res.send(`You're getting the following error: ${err}`)
+        }
+        let recipes = user.recipes;
+        console.log(recipes);
+        res.json(recipes);
     })
 })
 
