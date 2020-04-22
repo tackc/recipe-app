@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
     firstName: {
@@ -34,6 +35,19 @@ userSchema.set('toObject', {
         }
         return returnJSON
     }
+});
+
+// This checks the entered password against the hashed password
+userSchema.methods.authenticated = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+userSchema.pre('save', function(next) {
+    if(this.isNew) {
+        let hash = bcrypt.hashSync(this.password, 12);
+        this.password = hash;
+    }
+    next();
 })
 
 const User = mongoose.model('User', userSchema);
