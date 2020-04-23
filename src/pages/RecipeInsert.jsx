@@ -107,6 +107,30 @@ class RecipeInsert extends Component {
         this.setState({ images })
     }
 
+    handleAddRecipe = async () => {
+        const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
+        const payload = { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images }
+
+        await api.createRecipe(payload).then(res => {
+            window.alert(`Recipe successfully added!`)
+            this.setState({
+                name: '',
+                description: '',
+                ingredient_quantity: '',
+                ingredients: [],
+                instructions: '',
+                preparation_time: '',
+                cooking_time: '',
+                total_time: '',
+                serves: '',
+                notes: '',
+                author: '',
+                url: '',
+                rating: '',
+                images: '',
+            })
+        })
+    }
 
     render() {
         const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
@@ -217,6 +241,8 @@ class RecipeInsert extends Component {
                     onChange={this.handleChangeImages}
                 />
 
+                <Button onClick={this.handleAddRecipe}>Add Recipe</Button>
+                <CancelButton href={'/recipes/list'}>Cancel</CancelButton>
             </Wrapper>
         )
     }
