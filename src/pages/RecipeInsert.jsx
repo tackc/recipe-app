@@ -221,3 +221,5 @@ class RecipeInsert extends Component {
         )
     }
 }
+
+export default RecipeInsert;
