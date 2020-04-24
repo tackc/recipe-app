@@ -95,6 +95,17 @@ class RecipesList extends Component {
                     )
                 },
             },
+            {
+                Header: '',
+                accessor: '',
+                Cell: function(props) {
+                    return (
+                        <span>
+                            <DeleteRecipe id={props.original._id} />
+                        </span>
+                    )
+                }
+            },
         ]
         let showTable = recipes.length;
         
