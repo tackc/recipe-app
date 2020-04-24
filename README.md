@@ -1,6 +1,6 @@
 This is a MERN-stack app. That being said, two terminal sessions are necessary:
-* One for running the Express backend
-* One for running React's dev server
+* One for running the Express backend (port 3000)
+* One for running React's dev server (port 8000)
 
 Start the Express backend first by typing
 ```nodemon server.js ``` or ```nodemon server```
