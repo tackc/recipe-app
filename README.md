@@ -13,13 +13,13 @@ React's development server can now be started by typing
 If we want to see how the app will behave when deployed, we need to:
 
 - Ensure that the React app has been built locally using `$ npm run build`.
-- Browse to `localhost:3001` because that's where our Express server is running - which again, we coded to serve from the **build** folder.
+- Browse to `localhost:3000` because that's where our Express server is running - which again, we coded to serve from the **build** folder.
 
 
 
-> Important: During development, you don't want to browse to `localhost:3001`! Instead, you want the browser to be loading the React app from React's dev server on `localhost:3000`. We are only browsing to `localhost:3001` to check out how the deployed app will run.
+> Important: During development, you don't want to browse to `localhost:3000`! Instead, you want the browser to be loading the React app from React's dev server on `localhost:8000`. We are only browsing to `localhost:3000` to check out how the deployed app will run.
 
-So, when you are hacking out code and nothing seems to be updating in the browser - be sure to verify that you are browsing on `localhost:3000`.
+So, when you are hacking out code and nothing seems to be updating in the browser - be sure to verify that you are browsing on `localhost:8000`.
 
 
 ## Recipe Categories
