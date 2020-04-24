@@ -25,7 +25,7 @@ app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-// Configure to use port 3000 instead of 3000 during development to avoid collision with React's dev server (which is set to 8000)
+// Configure to use port 3000 during development to avoid collision with React's dev server (which is set to 8000)
 
 var port = process.env.BACK_END_PORT || 3001;
 
