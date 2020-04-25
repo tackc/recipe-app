@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 // import Signin from './Authentication/Signin';
-import Categories from './pages/Categories';
+// import Categories from './pages/Categories';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { RecipesList } from './pages';
 
 class App extends Component {
   constructor(props) {
@@ -21,22 +23,37 @@ class App extends Component {
     }
   }
 
-  render(props) {
+  render() {
     return (
-      <div className="App">
-        {/* <header className="App-header"></header> */}
-        {/* <Signin /> */}
-        <h1>The categories are:</h1>
-        {this.state.categories.map(({title, image}) => 
-          <div>
-            <h4>{title}</h4>
-            <img src={image} alt='{image}'></img>
-          </div>
-        )}
-        <Categories categories={this.state.categories} />
+      <div className='App'>
+        <Router>
+          <Switch>
+            <Route path='/login' render={ () => <p>This is the route for creating an account!</p>} />
+            <Route path='/signup' render={ () => <p>This is the signup route!</p>} />
+            <Route path='/recipes' render={ () => <RecipesList /> } />
+            <Route exact path='/' render={ (props) => `<p>Welcome ${this.state.user}</p>` } />
+          </Switch>
+        </Router>
       </div>
-    );
+    )
   }
+
+  // render(props) {
+  //   return (
+  //     <div className="App">
+  //       {/* <header className="App-header"></header> */}
+  //       {/* <Signin /> */}
+  //       <h1>The categories are:</h1>
+  //       {this.state.categories.map(({title, image}) => 
+  //         <div>
+  //           <h4>{title}</h4>
+  //           <img src={image} alt='{image}'></img>
+  //         </div>
+  //       )}
+  //       <Categories categories={this.state.categories} />
+  //     </div>
+  //   );
+  // }
 }
 
 export default App;
