@@ -3,7 +3,7 @@ var path = require( 'path' );
 var favicon = require( 'serve-favicon' );
 var logger = require( 'morgan' );
 
-const apiRoutes = require('./routes/api');
+const apiRoutes = require('./routes/recipe-router');
 const auth = require('./routes/auth');
 
 var app = express();
