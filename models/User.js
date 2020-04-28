@@ -2,33 +2,36 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
-const userSchema = new Schema({
-    firstName: {
-        type: String,
-        required: [true, 'You must enter your first name'],
-        minlength: [1, 'Your first name must be between 1 and 25 characters'],
-        maxlength: [25, 'Your first name must be between 1 and 25 characters']
+const userSchema = new Schema(
+    {
+        first_name: {
+            type: String,
+            required: [true, 'You must enter your first name'],
+            minlength: [1, 'Your first name must be between 1 and 25 characters'],
+            maxlength: [25, 'Your first name must be between 1 and 25 characters']
+        },
+        last_name: {
+            type: String,
+            required: [true, 'You must enter your last name'],
+            minlength: [1, 'Your last name must be between 1 and 25 characters'],
+            maxlength: [25, 'Your last name must be between 1 and 25 characters']
+        },
+        email: {
+            type: String,
+            required: [true, 'You must enter an email'],
+            minlength: [5, 'Email must be between 5 and 50 characters'],
+            maxlength: [50, 'Email must be between 5 and 50 characters']
+        },
+        password: {
+            type: String,
+            required: [true, 'You must enter a password'],
+            minlength: [10, 'Password must be between 10 and 50 characters'],
+            maxlength: [50, 'Password must be between 10 and 50 characters']
+        },
+        recipes: [{type: Schema.Types.ObjectId, ref: 'Recipe'}]
     },
-    lastName: {
-        type: String,
-        required: [true, 'You must enter your last name'],
-        minlength: [1, 'Your last name must be between 1 and 25 characters'],
-        maxlength: [25, 'Your last name must be between 1 and 25 characters']
-    },
-    email: {
-        type: String,
-        required: [true, 'You must enter an email'],
-        minlength: [5, 'Email must be between 5 and 50 characters'],
-    maxlength: [50, 'Email must be between 5 and 50 characters']
-    },
-    password: {
-        type: String,
-        required: [true, 'You must enter a password'],
-        minlength: [10, 'Password must be between 10 and 50 characters'],
-        maxlength: [50, 'Password must be between 10 and 50 characters']
-    },
-    recipes: [{type: Schema.Types.ObjectId, ref: 'Recipe'}]
-});
+    { timestamps: true },
+);
 
 // This returns a user object without a password
 userSchema.set('toObject', {
