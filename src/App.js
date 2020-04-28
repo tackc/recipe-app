@@ -4,6 +4,7 @@ import './App.css';
 // import Categories from './pages/Categories';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { RecipesList } from './pages';
+import { NavBar } from './components';
 
 class App extends Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Router>
+          <NavBar />
           <Switch>
             <Route path='/login' render={ () => <p>This is the route for creating an account!</p>} />
             <Route path='/signup' render={ () => <p>This is the signup route!</p>} />
