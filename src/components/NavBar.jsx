@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import Logo from './Logo';
 import Links from './Links';
 
-const Container = styled.div
+const Container = styled.div.attrs({
+    className: 'nav-container'
+})``
 
 const Nav = styled.nav.attrs({
     className: 'navbar navbar-expand-lg navbar-dark bg-dark min-vw-100',
