@@ -29,7 +29,7 @@ class Links extends Component {
                             </Link>
                         </Item>
                         <Item>
-                            <Link to='/create' className='nav-link'>
+                            <Link to='/recipes/create' className='nav-link'>
                                 Add Recipe
                             </Link>
                         </Item>
