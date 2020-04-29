@@ -20,6 +20,7 @@ class RecipesUpdate extends Component {
         super(props)
 
         this.state = {
+            id: this.props.match.params.id,
             name: '',
             description: '',
             ingredient_quantity: '',
@@ -33,7 +34,7 @@ class RecipesUpdate extends Component {
             author: '',
             url: '',
             rating: '',
-            images: '',
+            images: [],
         }
     }
 
@@ -107,12 +108,12 @@ class RecipesUpdate extends Component {
         this.setState({ images })
     }
 
-    handleAddRecipe = async () => {
-        const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
+    handleUpdateRecipe = async () => {
+        const { id, name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
         const payload = { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images }
 
-        await api.createRecipe(payload).then(res => {
-            window.alert(`Recipe successfully added!`)
+        await api.updateRecipeById(id, payload).then(res => {
+            window.alert(`Recipe successfully updated!`)
             this.setState({
                 name: '',
                 description: '',
@@ -127,8 +128,30 @@ class RecipesUpdate extends Component {
                 author: '',
                 url: '',
                 rating: '',
-                images: '',
+                images: [],
             })
+        })
+    }
+
+    componentDidUpdate = async () => {
+        const { id } = this.state
+        const recipe = await api.getRecipeById(id)
+
+        this.setState({
+            name: recipe.data.data.name,
+            description: recipe.data.data.description,
+            ingredient_quantity: recipe.data.data.ingredient_quantity,
+            ingredients: [],
+            instructions: recipe.data.data.instructions,
+            preparation_time: recipe.data.data.preparation_time,
+            cooking_time: recipe.data.data.cooking_time,
+            total_time: recipe.data.data.total_time,
+            serves: recipe.data.data.serves,
+            notes: recipe.data.data.notes,
+            author: recipe.data.data.author,
+            url: recipe.data.data.url,
+            rating: recipe.data.data.rating,
+            images: recipe.data.data.images,
         })
     }
 
@@ -136,7 +159,7 @@ class RecipesUpdate extends Component {
         const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
         return (
             <Wrapper>
-                <Title>Create Recipe</Title>
+                <Title>Update Recipe</Title>
 
                 <Label>Name: </Label>
                 <InputText 
@@ -241,7 +264,7 @@ class RecipesUpdate extends Component {
                     onChange={this.handleChangeImages}
                 />
 
-                <Button onClick={this.handleAddRecipe}>Add Recipe</Button>
+                <Button onClick={this.handleUpdateRecipe}>Update Recipe</Button>
                 <CancelButton href={'/recipes/list'}>Cancel</CancelButton>
             </Wrapper>
         )
