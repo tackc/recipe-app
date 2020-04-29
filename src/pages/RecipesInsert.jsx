@@ -11,11 +11,11 @@ const Row = styled.div.attrs({
     className: 'row'
 })``
 
-const Title = styled.h1`margin: 0 auto;`
+const Title = styled.h1`margin: 0 auto 1em;`
 
 const Label = styled.label.attrs({
-    className: 'col'
-})`margin: .5em`
+    className: 'col-2'
+})`margin: .5em; text-align: left`
 
 const InputText = styled.input.attrs({
     className: 'col'
