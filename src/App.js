@@ -3,7 +3,7 @@ import './App.css';
 // import Signin from './Authentication/Signin';
 // import Categories from './pages/Categories';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { RecipesList } from './pages';
+import { RecipesList, RecipesInsert, RecipeCard } from './pages';
 import { NavBar } from './components';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -34,7 +34,8 @@ class App extends Component {
           <Switch>
             <Route path='/login' render={ () => <p>This is the route for creating an account!</p>} />
             <Route path='/signup' render={ () => <p>This is the signup route!</p>} />
-            <Route path='/recipes' render={ () => <RecipesList /> } />
+            <Route path='/recipes/list' render={ () => <RecipesList /> } />
+            <Route path='/recipes/create' exact component={RecipesInsert} />
             <Route exact path='/' render={ (props) => `<p>Welcome ${this.state.user}</p>` } />
           </Switch>
         </Router>
