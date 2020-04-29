@@ -15,7 +15,7 @@ const Button = styled.button``
 
 const CancelButton = styled.a`margin: 1em 1em 1em .4em`
 
-class RecipesInsert extends Component {
+class RecipesUpdate extends Component {
     constructor(props) {
         super(props)
 
@@ -248,4 +248,4 @@ class RecipesInsert extends Component {
     }
 }
 
-export default RecipesInsert;
+export default RecipesUpdate;
