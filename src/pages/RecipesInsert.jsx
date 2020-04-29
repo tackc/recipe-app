@@ -7,7 +7,7 @@ const Wrapper = styled.div`margin: 0 2em`
 
 const Title = styled.h1`margin: 0 auto;`
 
-const Label = styled.label`margin .5em`
+const Label = styled.label`margin: .5em`
 
 const InputText = styled.input`margin: .5em`
 
