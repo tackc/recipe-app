@@ -8,7 +8,7 @@ const Wrapper = styled.div.attrs({
 })``
 
 const Row = styled.div.attrs({
-    className: 'row'
+    className: 'row justify-content-md-center'
 })``
 
 const Title = styled.h1`margin: 0 auto 1em;`
@@ -18,12 +18,16 @@ const Label = styled.label.attrs({
 })`margin: .5em; text-align: left`
 
 const InputText = styled.input.attrs({
-    className: 'col'
+    className: 'col-6'
 })`margin: .5em`
 
-const Button = styled.button``
+const Button = styled.button.attrs({
+    className: 'col-3'
+})``
 
-const CancelButton = styled.a`margin: 1em 1em 1em .4em`
+const CancelButton = styled.a.attrs({
+    className: 'col-3'
+})`margin: 1em 1em 1em .4em`
 
 class RecipesInsert extends Component {
     constructor(props) {
