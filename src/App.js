@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
+import { ThemeProvider } from 'styled-components';
+// import { GlobalStyles } from './global';
+import { theme } from './theme';
+// import './App.css';
 // import Signin from './Authentication/Signin';
 // import Categories from './pages/Categories';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -29,37 +32,24 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Router>
-          <NavBar />
-          <Switch>
-            <Route path='/login' render={ () => <p>This is the route for creating an account!</p>} />
-            <Route path='/signup' render={ () => <p>This is the signup route!</p>} />
-            <Route path='/recipes/list' exact component={RecipesList} />
-            <Route path='/recipes/create' exact component={RecipesInsert} />
-            <Route path='/recipes/update/:id' exact component={RecipesUpdate} />
-            <Route exact path='/' render={ (props) => `<p>Welcome ${this.state.user}</p>` } />
-          </Switch>
-        </Router>
+        <ThemeProvider theme={theme}>
+          {/* <GlobalStyles /> */}
+          <Router>
+            <NavBar />
+            <Switch>
+              <Route path='/login' render={ () => <p>This is the route for creating an account!</p>} />
+              <Route path='/signup' render={ () => <p>This is the signup route!</p>} />
+              <Route path='/recipes/list' exact component={RecipesList} />
+              <Route path='recipes/:id' exact component={RecipeCard} />
+              <Route path='/recipes/create' exact component={RecipesInsert} />
+              <Route path='/recipes/update/:id' exact component={RecipesUpdate} />
+              <Route exact path='/' render={ (props) => `<p>Welcome ${this.state.user}</p>` } />
+            </Switch>
+          </Router>
+        </ThemeProvider>
       </div>
     )
   }
-
-  // render(props) {
-  //   return (
-  //     <div className="App">
-  //       {/* <header className="App-header"></header> */}
-  //       {/* <Signin /> */}
-  //       <h1>The categories are:</h1>
-  //       {this.state.categories.map(({title, image}) => 
-  //         <div>
-  //           <h4>{title}</h4>
-  //           <img src={image} alt='{image}'></img>
-  //         </div>
-  //       )}
-  //       <Categories categories={this.state.categories} />
-  //     </div>
-  //   );
-  // }
 }
 
 export default App;

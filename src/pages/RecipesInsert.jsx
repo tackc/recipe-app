@@ -3,17 +3,33 @@ import api from '../api';
 
 import styled from 'styled-components';
 
-const Wrapper = styled.div`margin: 0 2em`
+const Wrapper = styled.div.attrs({
+    className: 'container'
+})`padding-top: 1em;`
 
-const Title = styled.h1`margin: 0 auto;`
+const Row = styled.div.attrs({
+    className: 'row justify-content-md-center'
+})``
 
-const Label = styled.label`margin: .5em`
+const Title = styled.h1.attrs({
+    className: 'text-center'
+})`margin: 0 auto 1em;`
 
-const InputText = styled.input`margin: .5em`
+const Label = styled.label.attrs({
+    className: 'col-2'
+})`margin: .5em; text-align: left`
 
-const Button = styled.button``
+const InputText = styled.input.attrs({
+    className: 'col-6'
+})`margin: .5em`
 
-const CancelButton = styled.a`margin: 1em 1em 1em .4em`
+const Button = styled.button.attrs({
+    className: 'col-3'
+})``
+
+const CancelButton = styled.a.attrs({
+    className: 'col-3'
+})`margin: 1em 1em 1em .4em`
 
 class RecipesInsert extends Component {
     constructor(props) {
@@ -136,113 +152,143 @@ class RecipesInsert extends Component {
         const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
         return (
             <Wrapper>
-                <Title>Create Recipe</Title>
+                <Title>Add New Recipe</Title>
 
-                <Label>Name: </Label>
-                <InputText 
-                    type="text"
-                    value={ name }
-                    onChange={this.handleChangeName}
-                />
+                <Row>
+                    <Label>Name: </Label>
+                    <InputText 
+                        type="text"
+                        value={ name }
+                        onChange={this.handleChangeName}
+                    />
+                </Row>
 
-                <Label>Description: </Label>
-                <InputText 
-                    type="text"
-                    value={ description }
-                    onChange={this.handleChangeDescription}
-                />
+                <Row>
+                    <Label>Description: </Label>
+                    <InputText 
+                        type="text"
+                        value={ description }
+                        onChange={this.handleChangeDescription}
+                    />
+                </Row>
 
-                <Label>Ingredient Quantity: </Label>
-                <InputText 
-                    type="text"
-                    value={ ingredient_quantity }
-                    onChange={this.handleChangeIngredientQuantity}
-                />
+                <Row>
+                    <Label>Ingredient Quantity: </Label>
+                    <InputText 
+                        type="text"
+                        value={ ingredient_quantity }
+                        onChange={this.handleChangeIngredientQuantity}
+                    />
+                </Row>
 
-                <Label>Ingredients: </Label>
-                <InputText 
-                    type="text"
-                    value={ ingredients }
-                    onChange={this.handleChangeIngredients}
-                />
+                <Row>
+                    <Label>Ingredients: </Label>
+                    <InputText 
+                        type="text"
+                        value={ ingredients }
+                        onChange={this.handleChangeIngredients}
+                    />
+                </Row>
 
-                <Label>Instructions: </Label>
-                <InputText 
-                    type="text"
-                    value={ instructions }
-                    onChange={this.handleChangeInstructions}
-                />
+                <Row>
+                    <Label>Instructions: </Label>
+                    <InputText 
+                        type="text"
+                        value={ instructions }
+                        onChange={this.handleChangeInstructions}
+                    />
+                </Row>
 
-                <Label>Preparation Time: </Label>
-                <InputText 
-                    type="text"
-                    value={ preparation_time }
-                    onChange={this.handleChangePreparationTime}
-                />
+                <Row>
+                    <Label>Preparation Time: </Label>
+                    <InputText 
+                        type="text"
+                        value={ preparation_time }
+                        onChange={this.handleChangePreparationTime}
+                    />
+                </Row>
+                
+                <Row>
+                    <Label>Cooking Time: </Label>
+                    <InputText 
+                        type="text"
+                        value={ cooking_time }
+                        onChange={this.handleChangeCookingTime}
+                    />
+                </Row>
 
-                <Label>Cooking Time: </Label>
-                <InputText 
-                    type="text"
-                    value={ cooking_time }
-                    onChange={this.handleChangeCookingTime}
-                />
+                <Row>
+                    <Label>Total Time: </Label>
+                    <InputText 
+                        type="text"
+                        value={ total_time }
+                        onChange={this.handleChangeTotalTime}
+                    />
+                </Row>
 
-                <Label>Total Time: </Label>
-                <InputText 
-                    type="text"
-                    value={ total_time }
-                    onChange={this.handleChangeTotalTime}
-                />
+                <Row>
+                    <Label>Serves: </Label>
+                    <InputText 
+                        type="text"
+                        value={ serves }
+                        onChange={this.handleChangeServes}
+                    />
+                </Row>
 
-                <Label>Serves: </Label>
-                <InputText 
-                    type="text"
-                    value={ serves }
-                    onChange={this.handleChangeServes}
-                />
+                <Row>
+                    <Label>Notes: </Label>
+                    <InputText 
+                        type="text"
+                        value={ notes }
+                        onChange={this.handleChangeNotes}
+                    />
+                </Row>
 
-                <Label>Notes: </Label>
-                <InputText 
-                    type="text"
-                    value={ notes }
-                    onChange={this.handleChangeNotes}
-                />
+                <Row>
+                    <Label>Author: </Label>
+                    <InputText 
+                        type="text"
+                        value={ author }
+                        onChange={this.handleChangeAuthor}
+                    />
+                </Row>
 
-                <Label>Author: </Label>
-                <InputText 
-                    type="text"
-                    value={ author }
-                    onChange={this.handleChangeAuthor}
-                />
+                <Row>
+                    <Label>URL: </Label>
+                    <InputText 
+                        type="text"
+                        value={ url }
+                        onChange={this.handleChangeURL}
+                    />
+                </Row>
 
-                <Label>URL: </Label>
-                <InputText 
-                    type="text"
-                    value={ url }
-                    onChange={this.handleChangeURL}
-                />
+                <Row>
+                    <Label>Rating: </Label>
+                    <InputText 
+                        type="number"
+                        step="1"
+                        lang="en-US"
+                        min="0"
+                        max="5"
+                        pattern="[0-5]+([,\.][0-5]+)?"
+                        value={ rating }
+                        onChange={this.handleChangeRating}
+                    />
+                </Row>
 
-                <Label>Rating: </Label>
-                <InputText 
-                    type="number"
-                    step="1"
-                    lang="en-US"
-                    min="0"
-                    max="5"
-                    pattern="[0-5]+([,\.][0-5]+)?"
-                    value={ rating }
-                    onChange={this.handleChangeRating}
-                />
+                <Row>
+                    <Label>Images: </Label>
+                    <InputText 
+                        type="text"
+                        value={ images }
+                        onChange={this.handleChangeImages}
+                    />
+                </Row>
 
-                <Label>Images: </Label>
-                <InputText 
-                    type="text"
-                    value={ images }
-                    onChange={this.handleChangeImages}
-                />
-
-                <Button onClick={this.handleAddRecipe}>Add Recipe</Button>
-                <CancelButton href={'/recipes/list'}>Cancel</CancelButton>
+                <Row>
+                    <Button onClick={this.handleAddRecipe}>Add Recipe</Button>
+                    <CancelButton href={'/recipes/list'}>Cancel</CancelButton>
+                </Row>
             </Wrapper>
         )
     }
