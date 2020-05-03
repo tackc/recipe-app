@@ -5,13 +5,15 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div.attrs({
     className: 'container'
-})``
+})`padding-top: 1em;`
 
 const Row = styled.div.attrs({
     className: 'row justify-content-md-center'
 })``
 
-const Title = styled.h1`margin: 0 auto 1em;`
+const Title = styled.h1.attrs({
+    className: 'text-center'
+})`margin: 0 auto 1em;`
 
 const Label = styled.label.attrs({
     className: 'col-2'
@@ -150,7 +152,7 @@ class RecipesInsert extends Component {
         const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
         return (
             <Wrapper>
-                <Title>Create Recipe</Title>
+                <Title>Add New Recipe</Title>
 
                 <Row>
                     <Label>Name: </Label>
