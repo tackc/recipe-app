@@ -50,23 +50,6 @@ class App extends Component {
       </div>
     )
   }
-
-  // render(props) {
-  //   return (
-  //     <div className="App">
-  //       {/* <header className="App-header"></header> */}
-  //       {/* <Signin /> */}
-  //       <h1>The categories are:</h1>
-  //       {this.state.categories.map(({title, image}) => 
-  //         <div>
-  //           <h4>{title}</h4>
-  //           <img src={image} alt='{image}'></img>
-  //         </div>
-  //       )}
-  //       <Categories categories={this.state.categories} />
-  //     </div>
-  //   );
-  // }
 }
 
 export default App;
