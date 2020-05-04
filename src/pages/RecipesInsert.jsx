@@ -28,7 +28,7 @@ const Button = styled.button.attrs({
 })``
 
 const CancelButton = styled.a.attrs({
-    className: 'col-3 my-5'
+    className: 'col-2 my-5 text-center'
 })`margin: 1em 1em 1em .4em`
 
 class RecipesInsert extends Component {
