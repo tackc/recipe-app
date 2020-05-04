@@ -24,7 +24,7 @@ const InputText = styled.input.attrs({
 })`margin: .5em`
 
 const Button = styled.button.attrs({
-    className: 'col-3'
+    className: 'col-2'
 })``
 
 const CancelButton = styled.a.attrs({
