@@ -24,11 +24,11 @@ const InputText = styled.input.attrs({
 })`margin: .5em`
 
 const Button = styled.button.attrs({
-    className: 'col-3'
+    className: 'col-2 my-5'
 })``
 
 const CancelButton = styled.a.attrs({
-    className: 'col-3'
+    className: 'col-2 my-5 text-center'
 })`margin: 1em 1em 1em .4em`
 
 class RecipesInsert extends Component {
