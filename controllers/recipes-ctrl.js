@@ -1,6 +1,6 @@
 var Recipe = require('../models/Recipe');
 
-function createRecipe(req, res) {
+function insertRecipe(req, res) {
     const body = req.body
 
     if (!body) {
@@ -129,7 +129,7 @@ async function getRecipes(req, res) {
 }
 
 module.exports = {
-    createRecipe,
+    insertRecipe,
     updateRecipe,
     deleteRecipe,
     getRecipeById,

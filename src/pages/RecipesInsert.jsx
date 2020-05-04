@@ -127,7 +127,7 @@ class RecipesInsert extends Component {
         const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
         const payload = { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images }
 
-        await api.createRecipe(payload).then(res => {
+        await api.insertRecipe(payload).then(res => {
             window.alert(`Recipe successfully added!`)
             this.setState({
                 name: '',
