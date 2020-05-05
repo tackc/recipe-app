@@ -20,7 +20,7 @@ const Label = styled.label.attrs({
 })`margin: .5em; text-align: left`
 
 const InputText = styled.input.attrs({
-    className: 'col-6'
+    className: 'col'
 })`margin: .5em`
 
 const Button = styled.button.attrs({
@@ -179,9 +179,7 @@ class RecipesInsert extends Component {
                         value={ ingredient_quantity }
                         onChange={this.handleChangeIngredientQuantity}
                     />
-                </Row>
 
-                <Row>
                     <Label>Ingredients: </Label>
                     <InputText 
                         type="text"
@@ -206,18 +204,14 @@ class RecipesInsert extends Component {
                         value={ preparation_time }
                         onChange={this.handleChangePreparationTime}
                     />
-                </Row>
-                
-                <Row>
+
                     <Label>Cooking Time: </Label>
                     <InputText 
                         type="text"
                         value={ cooking_time }
                         onChange={this.handleChangeCookingTime}
                     />
-                </Row>
 
-                <Row>
                     <Label>Total Time: </Label>
                     <InputText 
                         type="text"
@@ -233,36 +227,7 @@ class RecipesInsert extends Component {
                         value={ serves }
                         onChange={this.handleChangeServes}
                     />
-                </Row>
 
-                <Row>
-                    <Label>Notes: </Label>
-                    <InputText 
-                        type="text"
-                        value={ notes }
-                        onChange={this.handleChangeNotes}
-                    />
-                </Row>
-
-                <Row>
-                    <Label>Author: </Label>
-                    <InputText 
-                        type="text"
-                        value={ author }
-                        onChange={this.handleChangeAuthor}
-                    />
-                </Row>
-
-                <Row>
-                    <Label>URL: </Label>
-                    <InputText 
-                        type="text"
-                        value={ url }
-                        onChange={this.handleChangeURL}
-                    />
-                </Row>
-
-                <Row>
                     <Label>Rating: </Label>
                     <InputText 
                         type="number"
@@ -277,6 +242,15 @@ class RecipesInsert extends Component {
                 </Row>
 
                 <Row>
+                    <Label>Notes: </Label>
+                    <InputText 
+                        type="text"
+                        value={ notes }
+                        onChange={this.handleChangeNotes}
+                    />
+                </Row>
+                
+                <Row>
                     <Label>Images: </Label>
                     <InputText 
                         type="text"
@@ -284,6 +258,23 @@ class RecipesInsert extends Component {
                         onChange={this.handleChangeImages}
                     />
                 </Row>
+
+                <Row>
+                    <Label>Author: </Label>
+                    <InputText 
+                        type="text"
+                        value={ author }
+                        onChange={this.handleChangeAuthor}
+                    />
+
+                    <Label>URL: </Label>
+                    <InputText 
+                        type="text"
+                        value={ url }
+                        onChange={this.handleChangeURL}
+                    />
+                </Row>
+
 
                 <Row>
                     <Button onClick={this.handleAddRecipe}>Add Recipe</Button>
