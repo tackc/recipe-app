@@ -5,7 +5,7 @@ import Logo from './Logo';
 import Links from './Links';
 
 const Container = styled.nav.attrs({
-    className: 'navbar navbar-expand-lg navbar-dark bg-dark'
+    className: 'navbar navbar-expand-sm navbar-dark bg-dark'
 })``
 
 const Hamburger = styled.button.attrs({
