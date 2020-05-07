@@ -6,8 +6,10 @@ var recipeSchema = new Schema(
         recipe_id: Number,
         name: String,
         description: String,
-        ingredient: [{type: Schema.Types.ObjectId, ref: 'Ingredient'}],
-        instructions: String,
+        ingredient: [
+            {type: Schema.Types.ObjectId, ref: 'Ingredient'}
+        ],
+        instructions: [String],
         preparation_time: Number,
         cooking_time: Number,
         total_time: Number,
