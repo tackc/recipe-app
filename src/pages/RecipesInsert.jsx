@@ -20,7 +20,7 @@ const DropdownWrapper = styled.div.attrs({
 })`margin: auto`
 
 const DropdownSelect = styled.select.attrs({
-    className: 'btn-secondary'
+    className: 'btn'
 })``
 
 const DropdownItem = styled.option``
