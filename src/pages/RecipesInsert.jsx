@@ -19,7 +19,9 @@ const DropdownWrapper = styled.div.attrs({
     className: 'col'
 })`margin: auto`
 
-const DropdownSelect = styled.select``
+const DropdownSelect = styled.select.attrs({
+    className: 'btn-secondary'
+})``
 
 const DropdownItem = styled.option``
 
