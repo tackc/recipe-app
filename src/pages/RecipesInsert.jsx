@@ -65,6 +65,11 @@ class RecipesInsert extends Component {
         this.setState({ name })
     }
 
+    handleChangeCategory = async event => {
+        const category = event.target.value
+        this.setState({ category })
+    }
+
     handleChangeDescription = async event => {
         const description = event.target.value
         this.setState({ description })
@@ -131,13 +136,14 @@ class RecipesInsert extends Component {
     }
 
     handleAddRecipe = async () => {
-        const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
-        const payload = { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images }
+        const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
+        const payload = { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images }
 
         await api.insertRecipe(payload).then(res => {
             window.alert(`Recipe successfully added!`)
             this.setState({
                 name: '',
+                category: '',
                 description: '',
                 ingredient_quantity: '',
                 ingredients: [],
@@ -156,7 +162,7 @@ class RecipesInsert extends Component {
     }
 
     render() {
-        const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
+        const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
         return (
             <Wrapper>
                 <Title>Add New Recipe</Title>
@@ -173,7 +179,7 @@ class RecipesInsert extends Component {
                 <Row>
                     <Label>Category: </Label>
                     <DropdownWrapper>
-                        <DropdownSelect>
+                        <DropdownSelect value={this.state.category} onChange={this.handleChangeCategory} name={ category }>
                             <DropdownItem value='' defaultValue='selected'>Select a Category</DropdownItem>
                             <DropdownItem value='Appetizer'>Appetizer</DropdownItem>
                             <DropdownItem value='Soup'>Soup</DropdownItem>
