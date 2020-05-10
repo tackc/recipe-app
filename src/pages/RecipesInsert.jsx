@@ -37,6 +37,7 @@ class RecipesInsert extends Component {
 
         this.state = {
             name: '',
+            category: '',
             description: '',
             ingredient_quantity: '',
             ingredients: [],
