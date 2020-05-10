@@ -15,6 +15,12 @@ const Title = styled.h1.attrs({
     className: 'text-center'
 })`margin: 0 auto 1em;`
 
+const DropdownWrapper = styled.div``
+
+const DropdownSelect = styled.select``
+
+const DropdownItem = styled.option``
+
 const Label = styled.label.attrs({
     className: 'col-2'
 })`margin: .5em; text-align: left`
@@ -162,6 +168,21 @@ class RecipesInsert extends Component {
                         value={ name }
                         onChange={this.handleChangeName}
                     />
+                </Row>
+
+                <Row>
+                    <Label>Category: </Label>
+                    <DropdownWrapper>
+                        <DropdownSelect>
+                            <DropdownItem value='' defaultValue='selected'>Select a Category</DropdownItem>
+                            <DropdownItem value='Appetizer'>Appetizer</DropdownItem>
+                            <DropdownItem value='Soup'>Soup</DropdownItem>
+                            <DropdownItem value='Salad'>Salad</DropdownItem>
+                            <DropdownItem value='Side'>Side Dish</DropdownItem>
+                            <DropdownItem value='Main'>Main Dish</DropdownItem>
+                            <DropdownItem value='Dessert'>Dessert</DropdownItem>
+                        </DropdownSelect>
+                    </DropdownWrapper>
                 </Row>
 
                 <Row>
