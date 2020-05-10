@@ -15,6 +15,16 @@ const Title = styled.h1.attrs({
     className: 'text-center'
 })`margin: 0 auto 1em;`
 
+const DropdownWrapper = styled.div.attrs({
+    className: 'col'
+})`margin: auto`
+
+const DropdownSelect = styled.select.attrs({
+    className: 'btn-secondary'
+})``
+
+const DropdownItem = styled.option``
+
 const Label = styled.label.attrs({
     className: 'col-2'
 })`margin: .5em; text-align: left`
@@ -37,6 +47,7 @@ class RecipesInsert extends Component {
 
         this.state = {
             name: '',
+            category: '',
             description: '',
             ingredient_quantity: '',
             ingredients: [],
@@ -56,6 +67,11 @@ class RecipesInsert extends Component {
     handleChangeName = async event => {
         const name = event.target.value
         this.setState({ name })
+    }
+
+    handleChangeCategory = async event => {
+        const category = event.target.value
+        this.setState({ category })
     }
 
     handleChangeDescription = async event => {
@@ -124,13 +140,14 @@ class RecipesInsert extends Component {
     }
 
     handleAddRecipe = async () => {
-        const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
-        const payload = { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images }
+        const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
+        const payload = { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images }
 
         await api.insertRecipe(payload).then(res => {
             window.alert(`Recipe successfully added!`)
             this.setState({
                 name: '',
+                category: '',
                 description: '',
                 ingredient_quantity: '',
                 ingredients: [],
@@ -149,7 +166,7 @@ class RecipesInsert extends Component {
     }
 
     render() {
-        const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
+        const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
         return (
             <Wrapper>
                 <Title>Add New Recipe</Title>
@@ -161,6 +178,21 @@ class RecipesInsert extends Component {
                         value={ name }
                         onChange={this.handleChangeName}
                     />
+                </Row>
+
+                <Row>
+                    <Label>Category: </Label>
+                    <DropdownWrapper>
+                        <DropdownSelect value={this.state.category} onChange={this.handleChangeCategory} name={ category }>
+                            <DropdownItem value='' defaultValue='selected'>Select a Category</DropdownItem>
+                            <DropdownItem value='Appetizer'>Appetizer</DropdownItem>
+                            <DropdownItem value='Soup'>Soup</DropdownItem>
+                            <DropdownItem value='Salad'>Salad</DropdownItem>
+                            <DropdownItem value='Side'>Side Dish</DropdownItem>
+                            <DropdownItem value='Main'>Main Dish</DropdownItem>
+                            <DropdownItem value='Dessert'>Dessert</DropdownItem>
+                        </DropdownSelect>
+                    </DropdownWrapper>
                 </Row>
 
                 <Row>
