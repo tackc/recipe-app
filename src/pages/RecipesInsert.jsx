@@ -15,7 +15,9 @@ const Title = styled.h1.attrs({
     className: 'text-center'
 })`margin: 0 auto 1em;`
 
-const DropdownWrapper = styled.div``
+const DropdownWrapper = styled.div.attrs({
+    className: 'col'
+})`margin: auto`
 
 const DropdownSelect = styled.select``
 
