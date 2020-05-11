@@ -39,6 +39,7 @@ class App extends Component {
             <Switch>
               <Route path='/login' render={ () => <p>This is the route for creating an account!</p>} />
               <Route path='/signup' render={ () => <p>This is the signup route!</p>} />
+              <Route path='/ingredients' render={ () => <p>This is the ingredients route!</p>} />
               <Route path='/recipes/list' exact component={RecipesList} />
               <Route path='recipes/:id' exact component={RecipeCard} />
               <Route path='/recipes/create' exact component={RecipesInsert} />

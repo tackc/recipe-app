@@ -10,7 +10,7 @@ class Links extends Component {
     render() {
         return (
             <List>
-                <Link className='nav-item nav-link active' to='/'>Home <span class="sr-only">(current)</span></Link>
+                <Link className='nav-item nav-link active' to='/'>Home <span className="sr-only">(current)</span></Link>
                 <Link className='nav-item nav-link' to='/recipes/list'>Recipes</Link>
                 <Link className='nav-item nav-link' to='/recipes/create'>Add Recipe</Link>
             </List>
