@@ -206,7 +206,8 @@ class RecipesInsert extends Component {
 
                 <Row>
                     <Label>Ingredient Quantity: </Label>
-                    <InputText 
+                    <InputText
+                        className='col-1'
                         type="text"
                         value={ ingredient_quantity }
                         onChange={this.handleChangeIngredientQuantity}
