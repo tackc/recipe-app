@@ -5,6 +5,7 @@ var logger = require( 'morgan' );
 
 const apiRoutes = require('./routes/recipe-router');
 const auth = require('./routes/auth');
+const ingredientsRoutes = require('./routes/ingredient-router');
 
 var app = express();
 
@@ -19,6 +20,7 @@ require('./config/database.js');
 // Put API routes here, before the "catch all" route
 app.use('/api', apiRoutes);
 app.use('/auth', auth);
+app.use('/ingredients', ingredientsRoutes)
 
 // The following "catch all" route (note the *)is necessary for a SPA's client-side routing to properly work
 app.get('/*', (req, res) => {
