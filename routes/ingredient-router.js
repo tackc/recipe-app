@@ -13,4 +13,15 @@ router.get('/ingredients', (req, res) => {
     })
 })
 
+router.post('/ingredients', (req, res) => {
+    let ingredient = new Ingredient(req.body);
+    ingredient.save()
+        .then(todo => {
+            res.status(200).json({'ingredient': 'ingredient added successfully'})
+        })
+        .catch(err => {
+            res.status(400).send('Adding the new ingredient failed')
+        })
+})
+
 module.exports = router;
