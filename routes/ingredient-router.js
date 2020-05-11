@@ -16,7 +16,7 @@ router.get('/ingredients', (req, res) => {
 router.post('/ingredients', (req, res) => {
     let ingredient = new Ingredient(req.body);
     ingredient.save()
-        .then(todo => {
+        .then(ingredient => {
             res.status(200).json({'ingredient': 'ingredient added successfully'})
         })
         .catch(err => {
