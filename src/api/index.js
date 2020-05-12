@@ -10,11 +10,17 @@ export const updateRecipeById = (id, payload) => api.put(`/recipe/${id}`, payloa
 export const deleteRecipeById = id => api.delete(`/recipe/${id}`);
 export const getRecipeById = id => api.get(`/recipe/${id}`);
 
+export const insertIngredient = payload => api.post(`/ingredient`, payload);
+export const getAllIngredients = () => api.get(`/ingredients`);
+export const getIngredientById = id => api.get(`/ingredient/${id}`);
+
 const apis = {
     insertRecipe,
     getAllRecipes,
     updateRecipeById,
     deleteRecipeById,
+    insertIngredient,
+    getAllIngredients,
     getRecipeById,
 }
 
