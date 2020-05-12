@@ -108,7 +108,7 @@ async function getRecipeById(req, res) {
             return res.status(404).json({ success: false, error: 'Recipe not found' })
         }
 
-        return res.status(200).json({ status: true, data: recipe })
+        return res.status(200).json({ success: true, data: recipe })
     })
     .catch(err => console.log(err))
 }
