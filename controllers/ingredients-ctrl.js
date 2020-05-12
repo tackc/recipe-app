@@ -50,7 +50,7 @@ async function getIngredientById(req, res) {
     .catch(err => console.log(err))
 }
 
-async function getIngredients(req, res) {
+async function getAllIngredients(req, res) {
     await Ingredient.find({}, (err, ingredients) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
@@ -68,5 +68,5 @@ async function getIngredients(req, res) {
 module.exports = {
     insertIngredient,
     getIngredientById,
-    getIngredients,
+    getAllIngredients,
 }
