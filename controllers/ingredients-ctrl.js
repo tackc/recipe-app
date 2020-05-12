@@ -50,7 +50,23 @@ async function getIngredientById(req, res) {
     .catch(err => console.log(err))
 }
 
+async function getIngredients(req, res) {
+    await Ingredient.find({}, (err, ingredients) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+
+        if (!ingredients.length) {
+            return res.status(404).json({ success: false, error: 'There are no ingredients in the database :o' })
+        }
+
+        return res.status(200).json({ success: true, data: ingredients })
+    })
+    .catch(err => console.log(err))
+}
+
 module.exports = {
     insertIngredient,
     getIngredientById,
+    getIngredients,
 }
