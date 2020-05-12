@@ -17,7 +17,7 @@ router.post('/ingredients', (req, res) => {
     let ingredient = new Ingredient(req.body);
     ingredient.save()
         .then(ingredient => {
-            res.status(200).json({'ingredient': 'ingredient added successfully'})
+            res.status(200).json({ingredient: 'ingredient added successfully'})
         })
         .catch(err => {
             res.status(400).send('Adding the new ingredient failed')
