@@ -58,6 +58,9 @@ So, when you are hacking out code and nothing seems to be updating in the browse
 ## Navbar Notes
 Apparently using bootstrap and React can cause some issues. I was running into trouble getting the 'hamburger menu' to work and referenced [this article](https://stackoverflow.com/questions/52248179/how-to-use-data-toggle-collapse-in-reactjs-with-bootstrap) on Stack Overflow to make it work.
 
+## TODOs
+* Add form validatior and sanitization using ```express-validator```. [Tutorial example here.](https://flaviocopes.com/express-sanitize-input/)
+
 ## Available Scripts
 
 In the project directory, you can run:
