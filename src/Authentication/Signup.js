@@ -1,19 +1,44 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ErrorPanel from './ErrorPanel';
-import { render } from '@testing-library/react';
+// import { render } from '@testing-library/react';
 import styled from 'styled-components';
 
-const SignupDiv = styled.div.attrs({
-    className: 'signup'
-})` max-width: 100vw;
+const SignupDiv = styled.div` 
+    max-width: 100vw;
     height: 100vh;
     max-height: 100vh;
     background-color: rgba(255, 255, 255, 0.3);
     align-content: center;
     margin: 0 auto;
     padding: 1em;
-    text-align: center;`
+    text-align: center;
+`
+
+const Header = styled.h3
+
+const Form = styled.form`
+    width: 100%;
+    margin: auto;
+`
+
+// const Container = styled.div
+
+const Row = styled.div.attrs({
+    className: 'row justify-content-md-center'
+})``
+
+const Label = styled.label
+
+const Input = styled.input.attrs({
+    className: 'col-7'
+})``
+
+const Submit = styled.input.attrs({
+    className: 'col-2',
+    type: 'submit',
+    value: 'Sign Up!'
+})``
 
 class Signup extends Component {
     constructor(props) {
@@ -85,16 +110,43 @@ class Signup extends Component {
             })
         }
     }
-}
+    render() {
+        const errorPanel = (this.state.error) ? <ErrorPanel error={this.state.error} /> : ''
+    
+        return (
+            <SignupDiv>
+                <Header>⬅︎</Header>
+                <Header>Create a new account:</Header>
+                {errorPanel}
+    
+                <Form onSubmit={this.handleSubmit}>
+                    <Row>
+                        <Label htmlFor='s-firstname' >First Name:</Label>
+                        <Input name='s-firstname' ></Input>
+                    </Row>
+    
+                    <Row>
+                        <Label htmlFor='s-lastname' >Last Name:</Label>
+                        <Input name='s-lastname' ></Input>
+                    </Row>
+    
+                    <Row>
+                        <Label htmlFor='s-email' >Email:</Label>
+                        <Input name='s-email' ></Input>
+                    </Row>
+    
+                    <Row>
+                        <Label htmlFor='s-password' >Password:</Label>
+                        <Input name='s-password' ></Input>
+                    </Row>
 
-render() {
-    let errorPanel = (this.state.error) ? <ErrorPanel error={this.state.error} /> : ''
-
-    return (
-        <SignupDiv>
-            
-        </SignupDiv>
-    )
+                    <Row>
+                        <Submit />
+                    </Row>
+                </Form>
+            </SignupDiv>
+        )
+    }
 }
 
 export default Signup;
