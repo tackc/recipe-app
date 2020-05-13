@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ErrorPanel from './ErrorPanel';
 import { render } from '@testing-library/react';
+import styled from 'styled-components';
+
+const SignupDiv = styled.div.attrs({
+    className: 'signup'
+})` max-width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    background-color: rgba(255, 255, 255, 0.3);
+    align-content: center;
+    margin: 0 auto;
+    padding: 1em;
+    text-align: center;`
 
 class Signup extends Component {
     constructor(props) {
@@ -79,7 +91,9 @@ render() {
     let errorPanel = (this.state.error) ? <ErrorPanel error={this.state.error} /> : ''
 
     return (
-        
+        <SignupDiv>
+            
+        </SignupDiv>
     )
 }
 
