@@ -3,11 +3,12 @@ import { ThemeProvider } from 'styled-components';
 // import { GlobalStyles } from './global';
 import { theme } from './theme';
 // import './App.css';
-// import Signin from './Authentication/Signin';
 // import Categories from './pages/Categories';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { RecipesList, RecipesInsert, RecipesUpdate, RecipeCard } from './pages';
 import { NavBar } from './components';
+import Signup from './Authentication/Signup';
+import Signin from './Authentication/Signin';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -37,8 +38,8 @@ class App extends Component {
           <Router>
             <NavBar />
             <Switch>
-              <Route path='/login' render={ () => <p>This is the route for creating an account!</p>} />
-              <Route path='/signup' render={ () => <p>This is the signup route!</p>} />
+              <Route path='/login' exact component={Signin} />
+              <Route path='/signup' exact component={Signup} />
               <Route path='/ingredients' render={ () => <p>This is the ingredients route!</p>} />
               <Route path='/recipes/list' exact component={RecipesList} />
               <Route path='recipes/:id' exact component={RecipeCard} />
