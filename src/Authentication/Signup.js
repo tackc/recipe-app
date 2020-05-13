@@ -15,7 +15,9 @@ const SignupDiv = styled.div`
     text-align: center;
 `
 
-const Header = styled.h3
+const Header = styled.h3.attrs({
+    className: 'mb-5'
+})``
 
 const Form = styled.form`
     width: 100%;
@@ -28,14 +30,16 @@ const Row = styled.div.attrs({
     className: 'row justify-content-md-center'
 })``
 
-const Label = styled.label
+const Label = styled.label.attrs({
+    className: 'col-2'
+})``
 
 const Input = styled.input.attrs({
-    className: 'col-7'
+    className: 'col-5'
 })``
 
 const Submit = styled.input.attrs({
-    className: 'col-2',
+    className: 'col-2 my-5',
     type: 'submit',
     value: 'Sign Up!'
 })``
@@ -115,7 +119,6 @@ class Signup extends Component {
     
         return (
             <SignupDiv>
-                <Header>⬅︎</Header>
                 <Header>Create a new account:</Header>
                 {errorPanel}
     
