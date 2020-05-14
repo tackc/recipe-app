@@ -19,13 +19,15 @@ const Header = styled.h3.attrs({
     className: 'mb-5'
 })``
 
-const Form = styled.form`
+const Form = styled.form.attrs({
+    autocomplete: 'on',
+})`
     width: 100%;
     margin: auto;
 `
 
 const Row = styled.div.attrs({
-    className: 'row justify-content-md-center'
+    className: 'form-group'
 })``
 
 const Label = styled.label.attrs({
@@ -139,17 +141,17 @@ class Signup extends Component {
     
                     <Row>
                         <Label htmlFor='s-lastname' >Last Name:</Label>
-                        <Input name='s-lastname' ></Input>
+                        <Input name='s-lastname' autofill='last' ></Input>
                     </Row>
     
                     <Row>
                         <Label htmlFor='s-email' >Email:</Label>
-                        <Input name='s-email' ></Input>
+                        <Input type='email' name='s-email' autofill='email' placeholder="name@example.com" ></Input>
                     </Row>
     
                     <Row>
                         <Label htmlFor='s-password' >Password:</Label>
-                        <Input name='s-password' ></Input>
+                        <Input type='password' name='s-password' autocomplete='new-password' ></Input>
                     </Row>
 
                     <Row>
