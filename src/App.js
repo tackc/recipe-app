@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { RecipesList, RecipesInsert, RecipesUpdate, RecipeCard } from './pages';
 import { NavBar } from './components';
 import Signup from './Authentication/Signup';
-import Signin from './Authentication/Signin';
+import Login from './Authentication/Login';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -38,7 +38,7 @@ class App extends Component {
           <Router>
             <NavBar />
             <Switch>
-              <Route path='/login' exact component={Signin} />
+              <Route path='/login' render={() => <Login />} />
               <Route path='/signup' exact component={Signup} />
               <Route path='/ingredients' render={ () => <p>This is the ingredients route!</p>} />
               <Route path='/recipes/list' exact component={RecipesList} />
