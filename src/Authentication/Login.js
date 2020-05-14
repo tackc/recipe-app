@@ -7,13 +7,44 @@ import styled from 'styled-components';
 const LoginWrapper = styled.div.attrs({
     className: 'login-wrapper'
 })`
-    width: 25vw;
-    height: 80vh;
+    max-width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    background-color: rgba(255, 255, 255, 0.3);
+    align-content: center;
+    margin: auto;
+    padding: 1em;
+    text-align: center;
 `
+
 const Header = styled.h3.attrs({
     className: 'mb-5',
 })``
 
+const Form = styled.form.attrs({
+    autocomplete: 'on',
+})`
+    width: 100%;
+    margin: auto;
+`
+
+const Row = styled.div.attrs({
+    className: 'form-group'
+})``
+
+const Label = styled.label.attrs({
+    className: 'col-2'
+})``
+
+const Input = styled.input.attrs({
+    className: 'col-5'
+})``
+
+const Submit = styled.input.attrs({
+    className: 'col-2 my-5',
+    type: 'submit',
+    value: 'Log In'
+})``
 
 class Login extends Component {
     constructor(props) {
@@ -76,10 +107,24 @@ class Login extends Component {
             //     <div id="appleid-signin" className="signin-button" data-color="black" data-border="true" data-type="sign in"></div>
             // </div>
             <LoginWrapper>
-                <Header />
+                <Header>Log in</Header>
                 {errorPanel}
 
+                <Form>
+                    <Row>
+                        <Label htmlFor='s-email' >Email:</Label>
+                        <Input type='email' name='s-email' autofill='email' placeholder="name@example.com" ></Input>
+                    </Row>
 
+                    <Row>
+                        <Label htmlFor='s-password' >Password:</Label>
+                        <Input type='password' name='s-password' autocomplete='current-password' ></Input>
+                    </Row>
+
+                    <Row>
+                        <Submit />
+                    </Row>
+                </Form>
             </LoginWrapper>
         )
     }
