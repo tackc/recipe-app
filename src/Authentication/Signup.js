@@ -24,8 +24,6 @@ const Form = styled.form`
     margin: auto;
 `
 
-// const Container = styled.div
-
 const Row = styled.div.attrs({
     className: 'row justify-content-md-center'
 })``
