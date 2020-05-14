@@ -52,6 +52,11 @@ class Signup extends Component {
             password: '',
             error: null,
         }
+        this.handleFirstNameChange = this.handleFirstNameChange.bind(this)
+        this.handleLastNameChange = this.handleLastNameChange.bind(this)
+        this.handleEmailChange = this.handleEmailChange.bind(this)
+        this.handlePasswordChange = this.handlePasswordChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleFirstNameChange(e) {
@@ -69,6 +74,12 @@ class Signup extends Component {
     handleEmailChange(e) {
         this.setState({
             email: e.target.value
+        })
+    }
+
+    handlePasswordChange(e) {
+        this.setState({
+            password: e.target.value
         })
     }
 
