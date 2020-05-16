@@ -31,12 +31,17 @@ const Row = styled.div.attrs({
     className: 'form-group m-4'
 })``
 
-// const Label = styled.label.attrs({
-//     className: 'col col-md-1 col-sm-2'
-// })``
+const Label = styled.label.attrs({
+    className: 'font-weight-bold text-left mb-0'
+})`
+    display: block;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    font-size: .8em;
+`
 
 const Input = styled.input.attrs({
-    className: 'col '
+    className: 'col'
 })``
 
 const Submit = styled.input.attrs({
@@ -84,6 +89,7 @@ const H5 = styled.h5`
 
 const CreateAccountButton = styled.a.attrs({
     className: 'btn btn-warning col-2',
+    href: '/signup'
 })``
 
 class Login extends Component {
@@ -152,13 +158,13 @@ class Login extends Component {
 
                 <Form>
                     <Row>
-                        {/* <Label htmlFor='s-email' >Email:</Label> */}
-                        <Input type='email' name='s-email' autofill='email' placeholder='Email' ></Input>
+                        <Label htmlFor='s-email' >Email:</Label>
+                        <Input type='email' name='s-email' autofill='email' ></Input>
                     </Row>
 
                     <Row>
-                        {/* <Label htmlFor='s-password' >Password:</Label> */}
-                        <Input type='password' name='s-password' autocomplete='current-password' placeholder='password' ></Input>
+                        <Label htmlFor='s-password' >Password:</Label>
+                        <Input type='password' name='s-password' autocomplete='current-password' ></Input>
                     </Row>
 
                     <Row>
