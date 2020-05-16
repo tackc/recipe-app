@@ -92,14 +92,14 @@ class App extends Component {
           <Router>
             <NavBar />
             <Switch>
-              <Route path='/login' render={() => <Login />} />
-              <Route path='/signup' exact component={Signup} />
+              <Route path='/login' render={() => <Login liftTokenToState={this.liftTokenToState} />} />
+              <Route path='/signup' render={() => <Signup liftTokenToState={this.liftTokenToState} /> } />
               <Route path='/ingredients' render={ () => <p>This is the ingredients route!</p>} />
               <Route path='/recipes/list' exact component={RecipesList} />
               <Route path='recipes/:id' exact component={RecipeCard} />
               <Route path='/recipes/create' exact component={RecipesInsert} />
               <Route path='/recipes/update/:id' exact component={RecipesUpdate} />
-              <Route exact path='/' render={ (props) => `<p>Welcome ${this.state.user}</p>` } />
+              <Route exact path='/' render={ (props) => `Welcome ${this.state.user}` } />
             </Switch>
           </Router>
         </ThemeProvider>
