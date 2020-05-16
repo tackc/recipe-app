@@ -151,7 +151,7 @@ class Signup extends Component {
     
                     <Row>
                         <Label htmlFor='s-email' >Email:</Label>
-                        <Input type='email' name='s-email' autofill='email' placeholder="name@example.com" ></Input>
+                        <Input type='email' name='s-email' autofill='email' ></Input>
                     </Row>
     
                     <Row>
