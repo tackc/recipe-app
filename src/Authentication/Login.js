@@ -5,9 +5,8 @@ import styled from 'styled-components';
 
 
 const LoginWrapper = styled.div.attrs({
-    className: 'login-wrapper'
+    className: 'login-wrapper container-fluid'
 })`
-    max-width: 100vw;
     height: 100vh;
     max-height: 100vh;
     background-color: rgba(255, 255, 255, 0.3);
@@ -22,29 +21,68 @@ const Header = styled.h3.attrs({
 })``
 
 const Form = styled.form.attrs({
+    className: 'm-auto border',
     autocomplete: 'on',
 })`
-    width: 100%;
-    margin: auto;
+    max-width: 350px;
 `
 
 const Row = styled.div.attrs({
-    className: 'form-group'
+    className: 'form-group m-5'
 })``
 
-const Label = styled.label.attrs({
-    className: 'col-2'
-})``
+// const Label = styled.label.attrs({
+//     className: 'col col-md-1 col-sm-2'
+// })``
 
 const Input = styled.input.attrs({
-    className: 'col-5'
+    className: 'col-md-auto'
 })``
 
 const Submit = styled.input.attrs({
-    className: 'col-2 my-5',
+    className: 'm-3',
     type: 'submit',
     value: 'Log In'
 })``
+
+const Divider = styled.div.attrs({
+    className: 'mx-auto my-3'
+})`
+&{
+    width: 350px;
+    text-align: center;
+    position: relative;
+    top: 2px;
+    padding-top: 1px;
+    margin-bottom: 14px;
+    line-height: 0;
+}
+&:after{
+    content: "";
+    width: 100%;
+    background-color: transparent;
+    display: block;
+    height: 1px;
+    border-top: 1px solid #e7e7e7;
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    z-index: 1;
+}
+`
+const H5 = styled.h5`
+    line-height: 1;
+    font-size: 12px;
+    color: #767676;
+    font-weight: 400;
+    z-index: 2;
+    position: relative;
+    display: inline-block;
+    background-color: #fff;
+    padding: 0 8px 0 7px;
+`
+
+const CreateAccountButton = styled.button``
 
 class Login extends Component {
     constructor(props) {
@@ -112,19 +150,25 @@ class Login extends Component {
 
                 <Form>
                     <Row>
-                        <Label htmlFor='s-email' >Email:</Label>
-                        <Input type='email' name='s-email' autofill='email' placeholder="name@example.com" ></Input>
+                        {/* <Label htmlFor='s-email' >Email:</Label> */}
+                        <Input type='email' name='s-email' autofill='email' placeholder='Email' ></Input>
                     </Row>
 
                     <Row>
-                        <Label htmlFor='s-password' >Password:</Label>
-                        <Input type='password' name='s-password' autocomplete='current-password' ></Input>
+                        {/* <Label htmlFor='s-password' >Password:</Label> */}
+                        <Input type='password' name='s-password' autocomplete='current-password' placeholder='password' ></Input>
                     </Row>
 
                     <Row>
                         <Submit />
                     </Row>
                 </Form>
+
+                <Divider>
+                    <H5>Don't have an account yet?</H5>
+                </Divider>
+
+                <CreateAccountButton>Create Your Account</CreateAccountButton>
             </LoginWrapper>
         )
     }
