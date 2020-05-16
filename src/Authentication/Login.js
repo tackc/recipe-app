@@ -40,7 +40,7 @@ const Input = styled.input.attrs({
 })``
 
 const Submit = styled.input.attrs({
-    className: 'm-3',
+    className: 'btn btn-success m-3',
     type: 'submit',
     value: 'Log In'
 })``
@@ -82,7 +82,9 @@ const H5 = styled.h5`
     padding: 0 8px 0 7px;
 `
 
-const CreateAccountButton = styled.button``
+const CreateAccountButton = styled.a.attrs({
+    className: 'btn btn-warning',
+})``
 
 class Login extends Component {
     constructor(props) {
