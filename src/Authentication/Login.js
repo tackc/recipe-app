@@ -28,7 +28,7 @@ const Form = styled.form.attrs({
 `
 
 const Row = styled.div.attrs({
-    className: 'form-group m-5'
+    className: 'form-group m-4'
 })``
 
 // const Label = styled.label.attrs({
@@ -36,11 +36,11 @@ const Row = styled.div.attrs({
 // })``
 
 const Input = styled.input.attrs({
-    className: 'col-md-auto'
+    className: 'col '
 })``
 
 const Submit = styled.input.attrs({
-    className: 'btn btn-success m-3',
+    className: 'col btn btn-success',
     type: 'submit',
     value: 'Log In'
 })``
@@ -83,7 +83,7 @@ const H5 = styled.h5`
 `
 
 const CreateAccountButton = styled.a.attrs({
-    className: 'btn btn-warning',
+    className: 'btn btn-warning col-2',
 })``
 
 class Login extends Component {
