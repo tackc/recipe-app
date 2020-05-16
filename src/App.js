@@ -11,6 +11,7 @@ import Signup from './Authentication/Signup';
 import Login from './Authentication/Login';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Axios from 'axios';
 
 class App extends Component {
   constructor(props) {
@@ -28,6 +29,59 @@ class App extends Component {
         {title: "Drinks", image: "https://images.squarespace-cdn.com/content/v1/500c5c5084ae823f9b01b655/1365039092173-JT5QPKC5WA5DZSSP4039/ke17ZwdGBToddI8pDm48kO4AKunHiG7zc4-ZZTnS2rp7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmQyViSO8WVy1F2YAzXWvEVO7W4LUz-e_24HUO90voNhpDx6v8d_O_OY_ESqjKVUI2/_DSC2626.jpg?format=350w"}
       ]
     }
+    this.checkForLocalToken = this.checkForLocalToken.bind(this)
+    this.logout = this.logout.bind(this)
+    this.liftTokenToState = this.liftTokenToState.bind(this)
+  }
+
+  liftTokenToState(data) {
+    this.setState({
+      token: data.token,
+      user: data.user,
+    })
+  }
+
+  logout() {
+    localStorage.removeItem('mernToken')
+    this.setState({
+      token: '',
+      user: null,
+    })
+  }
+
+  checkForLocalToken() {
+    // Check local storage for a token
+    let token = localStorage.getItem('mernToken')
+    if (!token || token === 'undefined') {
+      // No token was found...do the following:
+      localStorage.removeItem('mernToken')
+      this.setState({
+        token: '',
+        user: null,
+      })
+    } else {
+      // A token was found! Send it to be validated
+      Axios.post('/auth/me/from/token', {
+        token
+      }).then( result => {
+        if (result.data.type !== 'success') {
+          this.setState({
+            error: result.data
+          })
+        } else {
+          // Save the token in localStorage
+          localStorage.setItem('mernToken', result.data.token)
+          this.setState({
+            token: result.data.token,
+            user: result.data.user,
+          })
+        }
+      })
+    }
+  }
+
+  componentDidMount() {
+    this.checkForLocalToken()
   }
 
   render() {
