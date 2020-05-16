@@ -19,25 +19,32 @@ const Header = styled.h3.attrs({
     className: 'mb-5'
 })``
 
-const Form = styled.form`
-    width: 100%;
-    margin: auto;
+const Form = styled.form.attrs({
+    className: 'm-auto border',
+    autocomplete: 'on',
+})`
+    max-width: 350px;
 `
 
 const Row = styled.div.attrs({
-    className: 'row justify-content-md-center'
+    className: 'form-group m-4'
 })``
 
 const Label = styled.label.attrs({
-    className: 'col-2'
-})``
+    className: 'font-weight-bold text-left mb-0'
+})`
+    display: block;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    font-size: .8em;
+`
 
 const Input = styled.input.attrs({
-    className: 'col-5'
+    className: 'col'
 })``
 
 const Submit = styled.input.attrs({
-    className: 'col-2 my-5',
+    className: 'col btn btn-success',
     type: 'submit',
     value: 'Sign Up!'
 })``
@@ -128,10 +135,10 @@ class Signup extends Component {
     
         return (
             <SignupDiv>
-                <Header>Create a new account:</Header>
                 {errorPanel}
     
                 <Form onSubmit={this.handleSubmit}>
+                    <Header>Create Account:</Header>
                     <Row>
                         <Label htmlFor='s-firstname' >First Name:</Label>
                         <Input name='s-firstname' ></Input>
@@ -139,17 +146,17 @@ class Signup extends Component {
     
                     <Row>
                         <Label htmlFor='s-lastname' >Last Name:</Label>
-                        <Input name='s-lastname' ></Input>
+                        <Input name='s-lastname' autofill='last' ></Input>
                     </Row>
     
                     <Row>
                         <Label htmlFor='s-email' >Email:</Label>
-                        <Input name='s-email' ></Input>
+                        <Input type='email' name='s-email' autofill='email' ></Input>
                     </Row>
     
                     <Row>
                         <Label htmlFor='s-password' >Password:</Label>
-                        <Input name='s-password' ></Input>
+                        <Input type='password' name='s-password' autocomplete='new-password' ></Input>
                     </Row>
 
                     <Row>
