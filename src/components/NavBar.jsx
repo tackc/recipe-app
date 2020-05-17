@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Logo from './Logo';
 import Links from './Links';
+import Search from './Search';
 
 const Container = styled.nav.attrs({
     className: 'navbar navbar-expand-sm navbar-dark bg-dark'
@@ -47,6 +48,7 @@ toggleMenu() {
                 
                 <NavContainer className={'collapse navbar-collapse ' + show }>
                     <Links />
+                    <Search />
                 </NavContainer>
 
             </Container>
