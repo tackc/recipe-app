@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const List = styled.div.attrs({
-    className: 'navbar-nav',
+    className: 'navbar-nav mr-auto',
 })``
 
 class Links extends Component {
