@@ -13,6 +13,7 @@ class Links extends Component {
                 <Link className='nav-item nav-link active' to='/'>Home <span className="sr-only">(current)</span></Link>
                 <Link className='nav-item nav-link' to='/recipes/list'>Recipes</Link>
                 <Link className='nav-item nav-link' to='/recipes/create'>Add Recipe</Link>
+                <Link className='nav-item nav-link' to='/login'>Log In</Link>
             </List>
         )
     }
