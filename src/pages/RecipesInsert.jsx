@@ -5,7 +5,13 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div.attrs({
     className: 'container'
-})`padding-top: 1em;`
+})`
+    padding-top: 1em;
+`
+
+const Form = styled.form.attrs({
+    className: 'form m-auto border p-4',
+})`max-width: 700px;`
 
 const Row = styled.div.attrs({
     className: 'row justify-content-md-center'
@@ -34,7 +40,7 @@ const InputText = styled.input.attrs({
 })`margin: .5em`
 
 const Button = styled.button.attrs({
-    className: 'col-2 my-5'
+    className: 'btn col-2 my-5'
 })``
 
 const CancelButton = styled.a.attrs({
@@ -104,8 +110,8 @@ class RecipesInsert extends Component {
         this.setState({ cooking_time })
     }
 
-    handleChangeTotalTime = async event => {
-        const total_time = event.target.value
+    handleCalculateTotalTime = async event => {
+        const total_time = this.state.preparation_time + this.state.cooking_time
         this.setState({ total_time })
     }
 
@@ -171,148 +177,152 @@ class RecipesInsert extends Component {
             <Wrapper>
                 <Title>Add New Recipe</Title>
 
-                <Row>
-                    <Label>Name: </Label>
-                    <InputText 
-                        type="text"
-                        value={ name }
-                        onChange={this.handleChangeName}
-                    />
-                </Row>
+                <Form>
+                    <Row>
+                        <Label>Name: </Label>
+                        <InputText
+                            type="text"
+                            value={ name }
+                            onChange={this.handleChangeName}
+                            required
+                        />
+                    </Row>
 
-                <Row>
-                    <Label>Category: </Label>
-                    <DropdownWrapper>
-                        <DropdownSelect value={this.state.category} onChange={this.handleChangeCategory} name={ category }>
-                            <DropdownItem value='' defaultValue='selected'>Select a Category</DropdownItem>
-                            <DropdownItem value='Appetizer'>Appetizer</DropdownItem>
-                            <DropdownItem value='Soup'>Soup</DropdownItem>
-                            <DropdownItem value='Salad'>Salad</DropdownItem>
-                            <DropdownItem value='Side'>Side Dish</DropdownItem>
-                            <DropdownItem value='Main'>Main Dish</DropdownItem>
-                            <DropdownItem value='Dessert'>Dessert</DropdownItem>
-                        </DropdownSelect>
-                    </DropdownWrapper>
-                </Row>
+                    <Row>
+                        <Label>Category: </Label>
+                        <DropdownWrapper>
+                            <DropdownSelect value={this.state.category} onChange={this.handleChangeCategory} name={ category }>
+                                <DropdownItem value='' defaultValue='selected'>Select a Category</DropdownItem>
+                                <DropdownItem value='Appetizer'>Appetizer</DropdownItem>
+                                <DropdownItem value='Soup'>Soup</DropdownItem>
+                                <DropdownItem value='Salad'>Salad</DropdownItem>
+                                <DropdownItem value='Side'>Side Dish</DropdownItem>
+                                <DropdownItem value='Main'>Main Dish</DropdownItem>
+                                <DropdownItem value='Dessert'>Dessert</DropdownItem>
+                            </DropdownSelect>
+                        </DropdownWrapper>
+                    </Row>
 
-                <Row>
-                    <Label>Description: </Label>
-                    <InputText 
-                        type="text"
-                        value={ description }
-                        onChange={this.handleChangeDescription}
-                    />
-                </Row>
+                    <Row>
+                        <Label>Description: </Label>
+                        <InputText
+                            type="text"
+                            value={ description }
+                            onChange={this.handleChangeDescription}
+                        />
+                    </Row>
 
-                <Row>
-                    <Label>Ingredient Quantity: </Label>
-                    <InputText
-                        className='col-1'
-                        type="text"
-                        value={ ingredient_quantity }
-                        onChange={this.handleChangeIngredientQuantity}
-                    />
+                    <Row>
+                        <Label>Ingredient Quantity: </Label>
+                        <InputText                            className='col-1'
+                            type="text"
+                            value={ ingredient_quantity }
+                            onChange={this.handleChangeIngredientQuantity}
+                        />
 
-                    <Label>Ingredients: </Label>
-                    <InputText 
-                        type="text"
-                        value={ ingredients }
-                        onChange={this.handleChangeIngredients}
-                    />
-                </Row>
+                        <Label>Ingredients: </Label>
+                        <InputText
+                            type="text"
+                            value={ ingredients }
+                            onChange={this.handleChangeIngredients}
+                        />
+                    </Row>
 
-                <Row>
-                    <Label>Instructions: </Label>
-                    <InputText 
-                        type="text"
-                        value={ instructions }
-                        onChange={this.handleChangeInstructions}
-                    />
-                </Row>
+                    <Row>
+                        <Label>Instructions: </Label>
+                        <InputText
+                            type="text"
+                            value={ instructions }
+                            onChange={this.handleChangeInstructions}
+                        />
+                    </Row>
 
-                <Row>
-                    <Label>Preparation Time: </Label>
-                    <InputText 
-                        type="text"
-                        value={ preparation_time }
-                        onChange={this.handleChangePreparationTime}
-                    />
+                    <Row>
+                        <Label>Preparation Time: </Label>
+                        <InputText
+                            type="text"
+                            value={ preparation_time }
+                            onChange={this.handleChangePreparationTime}
+                        />
 
-                    <Label>Cooking Time: </Label>
-                    <InputText 
-                        type="text"
-                        value={ cooking_time }
-                        onChange={this.handleChangeCookingTime}
-                    />
+                        <Label>Cooking Time: </Label>
+                        <InputText
+                            type="text"
+                            value={ cooking_time }
+                            onChange={this.handleChangeCookingTime}
+                        />
 
-                    <Label>Total Time: </Label>
-                    <InputText 
-                        type="text"
-                        value={ total_time }
-                        onChange={this.handleChangeTotalTime}
-                    />
-                </Row>
+                        <Label>Total Time: </Label>
+                        <InputText
+                            type="text"
+                            value={ total_time }
+                            onChange={this.handleCalculateTotalTime}
+                            placeholder={ this.state.total_time }
+                            disabled
+                        />
+                    </Row>
 
-                <Row>
-                    <Label>Serves: </Label>
-                    <InputText 
-                        type="text"
-                        value={ serves }
-                        onChange={this.handleChangeServes}
-                    />
+                    <Row>
+                        <Label>Serves: </Label>
+                        <InputText
+                            type="text"
+                            value={ serves }
+                            onChange={this.handleChangeServes}
+                        />
 
-                    <Label>Rating: </Label>
-                    <InputText 
-                        type="number"
-                        step="1"
-                        lang="en-US"
-                        min="0"
-                        max="5"
-                        pattern="[0-5]+([,\.][0-5]+)?"
-                        value={ rating }
-                        onChange={this.handleChangeRating}
-                    />
-                </Row>
+                        <Label>Rating: </Label>
+                        <InputText
+                            type="number"
+                            step="1"
+                            lang="en-US"
+                            min="0"
+                            max="5"
+                            pattern="[0-5]+([,\.][0-5]+)?"
+                            value={ rating }
+                            onChange={this.handleChangeRating}
+                        />
+                    </Row>
 
-                <Row>
-                    <Label>Notes: </Label>
-                    <InputText 
-                        type="text"
-                        value={ notes }
-                        onChange={this.handleChangeNotes}
-                    />
-                </Row>
-                
-                <Row>
-                    <Label>Images: </Label>
-                    <InputText 
-                        type="text"
-                        value={ images }
-                        onChange={this.handleChangeImages}
-                    />
-                </Row>
+                    <Row>
+                        <Label>Notes: </Label>
+                        <InputText
+                            type="text"
+                            value={ notes }
+                            onChange={this.handleChangeNotes}
+                        />
+                    </Row>
+                    
+                    <Row>
+                        <Label>Images: </Label>
+                        <InputText
+                            type="text"
+                            value={ images }
+                            onChange={this.handleChangeImages}
+                        />
+                    </Row>
 
-                <Row>
-                    <Label>Author: </Label>
-                    <InputText 
-                        type="text"
-                        value={ author }
-                        onChange={this.handleChangeAuthor}
-                    />
+                    <Row>
+                        <Label>Author: </Label>
+                        <InputText
+                            type="text"
+                            value={ author }
+                            onChange={this.handleChangeAuthor}
+                        />
 
-                    <Label>URL: </Label>
-                    <InputText 
-                        type="text"
-                        value={ url }
-                        onChange={this.handleChangeURL}
-                    />
-                </Row>
+                        <Label>URL: </Label>
+                        <InputText
+                            type="text"
+                            value={ url }
+                            onChange={this.handleChangeURL}
+                        />
+                    </Row>
 
 
-                <Row>
-                    <Button onClick={this.handleAddRecipe}>Add Recipe</Button>
-                    <CancelButton href={'/recipes/list'}>Cancel</CancelButton>
-                </Row>
+                    <Row>
+                        <Button onClick={this.handleAddRecipe}>Add Recipe</Button>
+                        <CancelButton href={'/recipes/list'}>Cancel</CancelButton>
+                    </Row>
+                </Form>
             </Wrapper>
         )
     }
