@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import api from '../api';
 
 import styled from 'styled-components';
@@ -39,6 +39,10 @@ const InputText = styled.input.attrs({
     className: 'col'
 })`margin: .5em`
 
+const TextArea = styled.textarea.attrs({
+    className: 'col'
+})`margin: .5em`
+
 const Button = styled.button.attrs({
     className: 'btn col-2 my-5'
 })``
@@ -47,11 +51,50 @@ const CancelButton = styled.a.attrs({
     className: 'col-2 my-5 text-center'
 })`margin: 1em 1em 1em .4em`
 
-class RecipesInsert extends Component {
-    constructor(props) {
-        super(props)
+export default function RecipesInsert() {
+    const [state, setState] = React.useState({
+        name: '',
+        category: '',
+        description: '',
+        ingredient_quantity: '',
+        ingredients: [],
+        instructions: '',
+        preparation_time: '',
+        cooking_time: '',
+        total_time: '',
+        serves: '',
+        notes: '',
+        author: '',
+        url: '',
+        rating: '',
+        images: '',
+    });
 
-        this.state = {
+    async function handleChange(event) {
+        const value = event.target.value;
+        setState({
+            ...state,
+            [event.target.name]: value
+        });
+    }
+    
+    // async function handleChangeCategory(event) {
+    //     const category = event.target.value
+    //     this.setState({ category })
+    // }
+
+    // handleCalculateTotalTime = async event => {
+    //     const total_time = this.state.preparation_time + this.state.cooking_time
+    //     this.setState({ total_time })
+    // }
+    
+async function handleAddRecipe() {
+    // const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = state
+    const payload = { ...state }
+
+    await api.insertRecipe(payload).then(res => {
+        window.alert(`Recipe successfully added!`)
+        this.setState({
             name: '',
             category: '',
             description: '',
@@ -67,265 +110,175 @@ class RecipesInsert extends Component {
             url: '',
             rating: '',
             images: '',
-        }
-    }
-
-    handleChangeName = async event => {
-        const name = event.target.value
-        this.setState({ name })
-    }
-
-    handleChangeCategory = async event => {
-        const category = event.target.value
-        this.setState({ category })
-    }
-
-    handleChangeDescription = async event => {
-        const description = event.target.value
-        this.setState({ description })
-    }
-
-    handleChangeIngredientQuantity = async event => {
-        const ingredient_quantity = event.target.value
-        this.setState({ ingredient_quantity })
-    }
-
-    handleChangeIngredients = async event => {
-        const Ingredients = event.target.value
-        this.setState({ Ingredients })
-    }
-
-    handleChangeInstructions = async event => {
-        const instructions = event.target.value
-        this.setState({ instructions })
-    }
-
-    handleChangePreparationTime = async event => {
-        const preparation_time = event.target.value
-        this.setState({ preparation_time })
-    }
-
-    handleChangeCookingTime = async event => {
-        const cooking_time = event.target.value
-        this.setState({ cooking_time })
-    }
-
-    handleCalculateTotalTime = async event => {
-        const total_time = this.state.preparation_time + this.state.cooking_time
-        this.setState({ total_time })
-    }
-
-    handleChangeServes = async event => {
-        const serves = event.target.value
-        this.setState({ serves })
-    }
-
-    handleChangeNotes = async event => {
-        const notes = event.target.value
-        this.setState({ notes })
-    }
-
-    handleChangeAuthor = async event => {
-        const author = event.target.value
-        this.setState({ author })
-    }
-
-    handleChangeURL = async event => {
-        const url = event.target.value
-        this.setState({ url })
-    }
-
-    handleChangeRating = async event => {
-        const rating = event.target.value
-        this.setState({ rating })
-    }
-
-    handleChangeImages = async event => {
-        const images = event.target.value
-        this.setState({ images })
-    }
-
-    handleAddRecipe = async () => {
-        const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
-        const payload = { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images }
-
-        await api.insertRecipe(payload).then(res => {
-            window.alert(`Recipe successfully added!`)
-            this.setState({
-                name: '',
-                category: '',
-                description: '',
-                ingredient_quantity: '',
-                ingredients: [],
-                instructions: '',
-                preparation_time: '',
-                cooking_time: '',
-                total_time: '',
-                serves: '',
-                notes: '',
-                author: '',
-                url: '',
-                rating: '',
-                images: '',
-            })
         })
-    }
-
-    render() {
-        const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
-        return (
-            <Wrapper>
-                <Title>Add New Recipe</Title>
-
-                <Form>
-                    <Row>
-                        <Label>Name: </Label>
-                        <InputText
-                            type="text"
-                            value={ name }
-                            onChange={this.handleChangeName}
-                            required
-                        />
-                    </Row>
-
-                    <Row>
-                        <Label>Category: </Label>
-                        <DropdownWrapper>
-                            <DropdownSelect value={this.state.category} onChange={this.handleChangeCategory} name={ category }>
-                                <DropdownItem value='' defaultValue='selected'>Select a Category</DropdownItem>
-                                <DropdownItem value='Appetizer'>Appetizer</DropdownItem>
-                                <DropdownItem value='Soup'>Soup</DropdownItem>
-                                <DropdownItem value='Salad'>Salad</DropdownItem>
-                                <DropdownItem value='Side'>Side Dish</DropdownItem>
-                                <DropdownItem value='Main'>Main Dish</DropdownItem>
-                                <DropdownItem value='Dessert'>Dessert</DropdownItem>
-                            </DropdownSelect>
-                        </DropdownWrapper>
-                    </Row>
-
-                    <Row>
-                        <Label>Description: </Label>
-                        <InputText
-                            type="text"
-                            value={ description }
-                            onChange={this.handleChangeDescription}
-                        />
-                    </Row>
-
-                    <Row>
-                        <Label>Ingredient Quantity: </Label>
-                        <InputText                            className='col-1'
-                            type="text"
-                            value={ ingredient_quantity }
-                            onChange={this.handleChangeIngredientQuantity}
-                        />
-
-                        <Label>Ingredients: </Label>
-                        <InputText
-                            type="text"
-                            value={ ingredients }
-                            onChange={this.handleChangeIngredients}
-                        />
-                    </Row>
-
-                    <Row>
-                        <Label>Instructions: </Label>
-                        <InputText
-                            type="text"
-                            value={ instructions }
-                            onChange={this.handleChangeInstructions}
-                        />
-                    </Row>
-
-                    <Row>
-                        <Label>Preparation Time: </Label>
-                        <InputText
-                            type="text"
-                            value={ preparation_time }
-                            onChange={this.handleChangePreparationTime}
-                        />
-
-                        <Label>Cooking Time: </Label>
-                        <InputText
-                            type="text"
-                            value={ cooking_time }
-                            onChange={this.handleChangeCookingTime}
-                        />
-
-                        <Label>Total Time: </Label>
-                        <InputText
-                            type="text"
-                            value={ total_time }
-                            onChange={this.handleCalculateTotalTime}
-                            placeholder={ this.state.total_time }
-                            disabled
-                        />
-                    </Row>
-
-                    <Row>
-                        <Label>Serves: </Label>
-                        <InputText
-                            type="text"
-                            value={ serves }
-                            onChange={this.handleChangeServes}
-                        />
-
-                        <Label>Rating: </Label>
-                        <InputText
-                            type="number"
-                            step="1"
-                            lang="en-US"
-                            min="0"
-                            max="5"
-                            pattern="[0-5]+([,\.][0-5]+)?"
-                            value={ rating }
-                            onChange={this.handleChangeRating}
-                        />
-                    </Row>
-
-                    <Row>
-                        <Label>Notes: </Label>
-                        <InputText
-                            type="text"
-                            value={ notes }
-                            onChange={this.handleChangeNotes}
-                        />
-                    </Row>
-                    
-                    <Row>
-                        <Label>Images: </Label>
-                        <InputText
-                            type="text"
-                            value={ images }
-                            onChange={this.handleChangeImages}
-                        />
-                    </Row>
-
-                    <Row>
-                        <Label>Author: </Label>
-                        <InputText
-                            type="text"
-                            value={ author }
-                            onChange={this.handleChangeAuthor}
-                        />
-
-                        <Label>URL: </Label>
-                        <InputText
-                            type="text"
-                            value={ url }
-                            onChange={this.handleChangeURL}
-                        />
-                    </Row>
-
-
-                    <Row>
-                        <Button onClick={this.handleAddRecipe}>Add Recipe</Button>
-                        <CancelButton href={'/recipes/list'}>Cancel</CancelButton>
-                    </Row>
-                </Form>
-            </Wrapper>
-        )
-    }
+    })
 }
 
-export default RecipesInsert;
+// const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
+return (
+    <Wrapper>
+        <Title>Add New Recipe</Title>
+
+        <Form>
+            <Row>
+                <Label>Name: </Label>
+                <InputText
+                    type="text"
+                    value={ state.name }
+                    name='name'
+                    onChange={handleChange}
+                    required
+                />
+            </Row>
+
+            <Row>
+                <Label>Category: </Label>
+                <DropdownWrapper>
+                    <DropdownSelect name='category' onChange={handleChange} value={state.category}>
+                        <DropdownItem value='' defaultValue='selected'>Select a Category</DropdownItem>
+                        <DropdownItem value='Appetizer'>Appetizer</DropdownItem>
+                        <DropdownItem value='Soup'>Soup</DropdownItem>
+                        <DropdownItem value='Salad'>Salad</DropdownItem>
+                        <DropdownItem value='Side'>Side Dish</DropdownItem>
+                        <DropdownItem value='Main'>Main Dish</DropdownItem>
+                        <DropdownItem value='Dessert'>Dessert</DropdownItem>
+                    </DropdownSelect>
+                </DropdownWrapper>
+            </Row>
+
+            <Row>
+                <Label>Description: </Label>
+                <TextArea
+                    type="text"
+                    value={ state.description }
+                    name='description'
+                    onChange={handleChange}
+                />
+            </Row>
+
+            <Row>
+                <Label>Ingredient Quantity: </Label>
+                <InputText                            className='col-1'
+                    type="text"
+                    value={ state.ingredient_quantity }
+                    name='ingredient_quantity'
+                    onChange={handleChange}
+                />
+
+                <Label>Ingredients: </Label>
+                <InputText
+                    type="text"
+                    value={ state.ingredients }
+                    name='ingredients'
+                    onChange={handleChange}
+                />
+            </Row>
+
+            <Row>
+                <Label>Instructions: </Label>
+                <InputText
+                    type="text"
+                    value={ state.instructions }
+                    name='instructions'
+                    onChange={handleChange}
+                />
+            </Row>
+
+            <Row>
+                <Label>Preparation Time: </Label>
+                <InputText
+                    type="text"
+                    value={ state.preparation_time }
+                    name='preparation_time'
+                    onChange={handleChange}
+                />
+
+                <Label>Cooking Time: </Label>
+                <InputText
+                    type="text"
+                    value={ state.cooking_time }
+                    name='cooking_time'
+                    onChange={handleChange}
+                />
+
+                <Label>Total Time: </Label>
+                <InputText
+                    type="text"
+                    value={ state.total_time }
+                    name='total_time'
+                    onChange={handleChange}
+                    placeholder={ state.total_time }
+                    disabled
+                />
+            </Row>
+
+            <Row>
+                <Label>Serves: </Label>
+                <InputText
+                    type="text"
+                    value={ state.serves }
+                    name='serves'
+                    onChange={handleChange}
+                />
+
+                <Label>Rating: </Label>
+                <InputText
+                    type="number"
+                    step="1"
+                    lang="en-US"
+                    min="0"
+                    max="5"
+                    pattern="[0-5]+([,\.][0-5]+)?"
+                    value={ state.rating }
+                    name='rating'
+                    onChange={handleChange}
+                />
+            </Row>
+
+            <Row>
+                <Label>Notes: </Label>
+                <TextArea
+                    type="text"
+                    value={ state.notes }
+                    name='notes'
+                    onChange={handleChange}
+                />
+            </Row>
+            
+            <Row>
+                <Label>Images: </Label>
+                <InputText
+                    type="text"
+                    value={ state.images }
+                    name='images'
+                    onChange={handleChange}
+                />
+            </Row>
+
+            <Row>
+                <Label>Author: </Label>
+                <InputText
+                    type="text"
+                    value={ state.author }
+                    name='author'
+                    onChange={handleChange}
+                />
+
+                <Label>URL: </Label>
+                <InputText
+                    type="text"
+                    value={ state.url }
+                    name='author'
+                    onChange={handleChange}
+                />
+            </Row>
+
+
+            <Row>
+                <Button onClick={handleAddRecipe}>Add Recipe</Button>
+                <CancelButton href={'/recipes/list'}>Cancel</CancelButton>
+            </Row>
+        </Form>
+    </Wrapper>
+)
+}
