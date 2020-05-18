@@ -10,7 +10,7 @@ const Wrapper = styled.div.attrs({
 `
 
 const Form = styled.form.attrs({
-    className: 'form m-auto border p-4',
+    className: 'form m-auto border p-4 needs-validation',
 })`max-width: 700px;`
 
 const Row = styled.div.attrs({
@@ -42,19 +42,27 @@ const Label = styled.label.attrs({
 
 const InputText = styled.input.attrs({
     className: 'col'
-})`margin: .5em`
+})``
 
 const TextArea = styled.textarea.attrs({
     className: 'col'
-})`margin: .5em`
+})``
+
+const ValidFeedback = styled.div.attrs({
+    className: 'valid-feedback'
+})``
+
+const InvalidFeedback = styled.div.attrs({
+    className: 'invalid-feedback'
+})``
 
 const Button = styled.button.attrs({
-    className: 'btn btn-warning col-2'
+    className: 'btn btn-warning col my-2'
 })``
 
 const CancelButton = styled.a.attrs({
-    className: 'col-2 my-5 text-center'
-})`margin: 1em 1em 1em .4em`
+    className: 'btn col my-2'
+})``
 
 export default function RecipesInsert() {
     const [state, setState] = React.useState({
@@ -72,7 +80,6 @@ export default function RecipesInsert() {
         author: '',
         url: '',
         rating: '',
-        images: '',
     });
 
     async function handleChange(event) {
@@ -115,7 +122,6 @@ async function handleAddRecipe() {
             author: '',
             url: '',
             rating: '',
-            images: '',
         })
     })
 }
@@ -133,8 +139,9 @@ return (
                     value={ state.name }
                     name='name'
                     onChange={handleChange}
-                    required
                 />
+                <ValidFeedback>Looks good!</ValidFeedback>
+                <InvalidFeedback>Recipe name is a required field!</InvalidFeedback>
             </Row>
 
             <Row>
@@ -197,7 +204,7 @@ return (
 
             <Row>
                 <Label>Instructions: </Label>
-                <InputText
+                <TextArea
                     type="text"
                     value={ state.instructions }
                     name='instructions'
@@ -262,16 +269,6 @@ return (
                     type="text"
                     value={ state.notes }
                     name='notes'
-                    onChange={handleChange}
-                />
-            </Row>
-            
-            <Row>
-                <Label>Images: </Label>
-                <InputText
-                    type="text"
-                    value={ state.images }
-                    name='images'
                     onChange={handleChange}
                 />
             </Row>
