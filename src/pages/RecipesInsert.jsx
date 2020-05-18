@@ -14,7 +14,7 @@ const Form = styled.form.attrs({
 })`max-width: 700px;`
 
 const Row = styled.div.attrs({
-    className: 'row justify-content-md-center'
+    className: 'form-group m-4'
 })``
 
 const Title = styled.h1.attrs({
@@ -32,8 +32,13 @@ const DropdownSelect = styled.select.attrs({
 const DropdownItem = styled.option``
 
 const Label = styled.label.attrs({
-    className: 'col-2'
-})`margin: .5em; text-align: left`
+    className: 'font-weight-bold text-left mb-0'
+})`
+    display: block;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    font-size: .8em;
+`
 
 const InputText = styled.input.attrs({
     className: 'col'
@@ -44,7 +49,7 @@ const TextArea = styled.textarea.attrs({
 })`margin: .5em`
 
 const Button = styled.button.attrs({
-    className: 'btn col-2 my-5'
+    className: 'btn btn-warning col-2'
 })``
 
 const CancelButton = styled.a.attrs({
@@ -99,6 +104,7 @@ async function handleAddRecipe() {
             category: '',
             description: '',
             ingredient_quantity: '',
+            unit: '',
             ingredients: [],
             instructions: '',
             preparation_time: '',
@@ -164,6 +170,21 @@ return (
                     name='ingredient_quantity'
                     onChange={handleChange}
                 />
+
+                <Label>Unit: </Label>
+                <DropdownWrapper>
+                    <DropdownSelect name='unit' onChange={handleChange} value={state.unit}>
+                        <DropdownItem value='' defaultValue='selected'>Select a Unit of Measurement</DropdownItem>
+                        <DropdownItem value='pinch'>Pinch</DropdownItem>
+                        <DropdownItem value='Teaspoon'>Teaspoon</DropdownItem>
+                        <DropdownItem value='Tablespoon'>Tablespoon</DropdownItem>
+                        <DropdownItem value='Fluid ounce'>Fluid ounce</DropdownItem>
+                        <DropdownItem value='Cup'>Cup</DropdownItem>
+                        <DropdownItem value='Pint'>Pint</DropdownItem>
+                        <DropdownItem value='Quart'>Quart</DropdownItem>
+                        <DropdownItem value='Gallon'>Gallon</DropdownItem>
+                    </DropdownSelect>
+                </DropdownWrapper>
 
                 <Label>Ingredients: </Label>
                 <InputText
