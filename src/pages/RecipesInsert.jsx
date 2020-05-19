@@ -1,5 +1,6 @@
 import React from 'react';
 import api from '../api';
+import IngredientInsert from './IngredientInsert';
 
 import styled from 'styled-components';
 
@@ -169,9 +170,11 @@ return (
                 />
             </Row>
 
+            <IngredientInsert />
+
             <Row>
                 <Label>Ingredient Quantity: </Label>
-                <InputText                            className='col-1'
+                <InputText
                     type="text"
                     value={ state.ingredient_quantity }
                     name='ingredient_quantity'
