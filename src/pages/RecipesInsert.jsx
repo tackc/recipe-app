@@ -172,7 +172,7 @@ return (
 
             <IngredientInsert />
 
-            <Row>
+            {/* <Row>
                 <Label>Ingredient Quantity: </Label>
                 <InputText
                     type="text"
@@ -203,7 +203,7 @@ return (
                     name='ingredients'
                     onChange={handleChange}
                 />
-            </Row>
+            </Row> */}
 
             <Row>
                 <Label>Instructions: </Label>
