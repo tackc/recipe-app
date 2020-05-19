@@ -9,6 +9,15 @@ const Title = styled.h5.attrs({
     className: 'text-center'
 })``
 
+// Form Components
+const Input = styled.input.attrs({
+    placeholder: 'Add ingredients here...',
+    autocomplete: "off",
+})``
+
+const RemoveIngredientBtn = styled.button.attrs({
+    className: 'btn btn-outline-danger btn-sm'
+})``
 
 class Form extends React.Component {
 	constructor(props) {
@@ -28,33 +37,33 @@ class Form extends React.Component {
 	
 	handleNewIngredientAddition() {
 		if(this.input.value !== '') {
-			this.props.addTodo(this.input.value);
+			this.props.addIngredient(this.input.value);
 			this.setState({
 				value: ''
 			});
-			this.input.placeholder = "Add todo here...";
+			this.input.placeholder = "Add ingredient here...";
 		}
 	}
 	
 	render() {
 		return (
-			// ref should be passed a callback
-			// with underlying dom element as its
+			// ref should be passed a callback with underlying dom element as its
 			// argument to get its reference 
-			<div id="form">
-				<input 
-					ref={node => {
-						this.input = node;
-					}}
+			<div className='text-center'>
+                <Input
+                    ref={node => { this.input = node }}
 					value={this.state.value}
-					placeholder="Add todos here..."
+					onChange={this.handleChange}
+                />
+				{/* <input 
+					ref={node => { this.input = node }}
+					value={this.state.value}
+					placeholder="Add ingredients here..."
 					autocomplete="off"
 					onChange={this.handleChange}
-				/>
+				/> */}
 
-				<button 
-					onClick={this.handleNewIngredientAddition}
-				>	
+				<button onClick={this.handleNewIngredientAddition}>	
 					+
 				</button>	
 			</div>
@@ -62,39 +71,38 @@ class Form extends React.Component {
 	}
 }
 
-const Todo = ({todo, remove}) => {
-	// single todo 
+const Ingredient = ({ingredient, remove}) => {
+	// single ingredient 
 	return (
-		<p className="todos">
-			{todo.value}
+		<p className="ingredients">
+			{ingredient.value}
 			<span 
-				className="removeBtn"
+				className="removeBtn mx-3"
 				onClick={()=> {
-					remove(todo.id)
+					remove(ingredient.id)
 				}}>
-				x
+				<RemoveIngredientBtn>x</RemoveIngredientBtn>
 			</span>
 		</p>
 	);
 };
 
-const List = ({todos, remove}) => {
-	let allTodos = [];
+const List = ({ingredients, remove}) => {
+	let allIngredients = [];
 	
-	if(todos.length > 0) {
-		allTodos = todos.map(todo => {
-			// passing todo and remove method reference
-			return (<Todo todo={todo} remove={remove} />);
-			//return (<p>{todo.value}</p>);
+	if(ingredients.length > 0) {
+		allIngredients = ingredients.map(ingredient => {
+			// passing ingredient and remove method reference
+			return (<Ingredient ingredient={ingredient} remove={remove} />);
+			//return (<p>{ingredient.value}</p>);
 		});
 	} else {
-		allTodos.push(<h3 id="acu">All caught up !</h3>);	
+		allIngredients.push(<p className='text-center my-5'>Add some ingredients!</p>);	
 	}
 	
 	return (
-		<div id="list">
-			<p id="info"> Your Todos: </p>
-			{allTodos}
+		<div className='text-center my-5'>
+			{allIngredients}
 		</div>
 	);
 };
@@ -105,37 +113,37 @@ class IngredientInsert extends React.Component {
 		// data for introduction to app
 		// for new users
 		const introData = [
-			{
-				id: -3, 
-				value: "Hi! This is a simple todo list app made by REACT <3"
-			},
-			{
-				id: -2,
-				value: "Hover over todos and click on `X` to delete them!"
-			},
-			{
-				id: -1,
-				value: "Add new todos and come back any time later, I will save them for you!"
-			}
+			// {
+			// 	id: -3, 
+			// 	value: "Hi! This is a simple ingredient list app made by REACT <3"
+			// },
+			// {
+			// 	id: -2,
+			// 	value: "Hover over ingredients and click on `X` to delete them!"
+			// },
+			// {
+			// 	id: -1,
+			// 	value: "Add new ingredients and come back any time later, I will save them for you!"
+			// }
 		];
 		
-		const localData = localStorage.todos && JSON.parse(localStorage.todos);
+		const localData = localStorage.ingredients && JSON.parse(localStorage.ingredients);
 
 		this.state = { 
 			data: localData || introData
 		};
 		
 		// binding methods
-		this.addTodo = this.addTodo.bind(this);
-		this.removeTodo = this.removeTodo.bind(this);
+		this.addIngredient = this.addIngredient.bind(this);
+		this.removeIngredient = this.removeIngredient.bind(this);
 	}
 	// Handler to update localStorage
 	updateLocalStorage() {
 		if (typeof(Storage) !== "undefined")
-			localStorage.todos = JSON.stringify(this.state.data);
+			localStorage.ingredients = JSON.stringify(this.state.data);
 	}
-	// Handler to add todo
-	addTodo(val) {
+	// Handler to add ingredient
+	addIngredient(val) {
 		let id;
 		// if localStorage is available then increase localStorage count
 		// else use global window object's id variable
@@ -146,12 +154,12 @@ class IngredientInsert extends React.Component {
 			id = window.id++;
 		}
 		
-		const todo = { 
+		const ingredient = { 
 			value: val, 
 			id: id 
 		};
 		
-		this.state.data.push(todo);
+		this.state.data.push(ingredient);
 		// update state
 		this.setState({
 			data: this.state.data
@@ -160,12 +168,12 @@ class IngredientInsert extends React.Component {
 			this.updateLocalStorage();
 		});
 	}
-	// Handler to remove todo
-	removeTodo(id) {
-		// filter out the todo that has to be removed
-		const list = this.state.data.filter(todo => {
-			if (todo.id !== id)
-				return todo;
+	// Handler to remove ingredient
+	removeIngredient(id) {
+		// filter out the ingredient that has to be removed
+		const list = this.state.data.filter(ingredient => {
+			if (ingredient.id !== id)
+				return ingredient;
 		});
 		// update state
 		this.setState({
@@ -179,16 +187,15 @@ class IngredientInsert extends React.Component {
 	componentDidMount() {
 		localStorage.clear();
 		if (typeof(Storage) !== "undefined") {
-			if(!localStorage.todos) {
-				localStorage.todos = JSON.stringify(this.state.data);
+			if(!localStorage.ingredients) {
+				localStorage.ingredients = JSON.stringify(this.state.data);
 			}
 			if(!localStorage.count) {
 				localStorage.count = 0;
 			}
 
 		} else {
-            console.log("%cApp will not remember todos created as LocalStorage Is Not Available",
-                            "color: hotpink; background: #333; font-size: x-large;font-family: Courier;");
+            console.log("%cApp will not remember ingredients created as LocalStorage Is Not Available", "color: hotpink; background: #333; font-size: x-large;font-family: Courier;");
 			window.id = 0;
 		}
 	}
@@ -197,8 +204,8 @@ class IngredientInsert extends React.Component {
 		return (
 			<Wrapper>
 				<Title>Ingredients</Title>
-				<Form addTodo={this.addTodo} />
-				<List todos={this.state.data} remove={this.removeTodo} />
+				<Form addIngredient={this.addIngredient} />
+				<List ingredients={this.state.data} remove={this.removeIngredient} />
             </Wrapper>
 		);
 	}
