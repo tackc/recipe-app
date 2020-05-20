@@ -99,7 +99,7 @@ class App extends Component {
               <Route path='recipes/:id' exact component={RecipeCard} />
               <Route path='/recipes/create' exact component={RecipesInsert} />
               <Route path='/recipes/update/:id' exact component={RecipesUpdate} />
-              <Route exact path='/' render={ (props) => `Welcome ${this.state.user}` } />
+              <Route exact path='/' render={ (props, user) => `Welcome ${user}` } />
             </Switch>
           </Router>
         </ThemeProvider>
