@@ -7,8 +7,8 @@ import { theme } from './theme';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { RecipesList, RecipesInsert, RecipesUpdate, RecipeCard } from './pages';
 import { NavBar } from './components';
-import Signup from './Authentication/Signup';
-import Login from './Authentication/Login';
+import Signup from './components/Authentication/Signup';
+import Login from './components/Authentication/Login';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from 'axios';
