@@ -42,6 +42,16 @@ class App extends Component {
     })
   }
 
+  handleClick(e) {
+    e.preventDefault()
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.state.token
+    axios.get('/locked/test').then( result => {
+      this.setState({
+        lockedResult: result.data
+      })
+    })
+  }
+
   logout() {
     localStorage.removeItem('mernToken')
     this.setState({
