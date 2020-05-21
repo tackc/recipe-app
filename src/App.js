@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
 // import { GlobalStyles } from './global';
 import { theme } from './theme';
-// import './App.css';
+
 // import Categories from './pages/Categories';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { RecipesList, RecipesInsert, RecipesUpdate, RecipeCard } from './pages';
 import { NavBar } from './components';
-import Signup from './components/Authentication/Signup';
-import Login from './components/Authentication/Login';
+import { Signup, Login, Welcome } from './components/Authentication'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from 'axios';
@@ -99,7 +98,7 @@ class App extends Component {
               <Route path='recipes/:id' exact component={RecipeCard} />
               <Route path='/recipes/create' exact component={RecipesInsert} />
               <Route path='/recipes/update/:id' exact component={RecipesUpdate} />
-              <Route exact path='/' render={ (props, user) => `Welcome ${user}` } />
+              <Route exact path='/' render={ (props) => <Welcome user={this.state.user}/> } />
             </Switch>
           </Router>
         </ThemeProvider>
