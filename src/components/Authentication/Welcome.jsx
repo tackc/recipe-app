@@ -37,7 +37,7 @@ const Welcome = (props) => {
     return (
         <Container>
             <Title>Welcome to the Recipe App</Title>
-            <Text>You are probably thinking 'there are hundreds of recipe apps / websites out there...why do I need another one. Well, I really enjoy cooking and baking & needed a place to store all my recipes in one place without dealing without all the ads or worrying about them being deleted.</Text>
+            <Text>You are probably thinking <i>"there are hundreds of recipe apps / websites out there...why do I need another one"</i>? Maybe you don't. I really enjoy cooking and baking & needed a place to store all my recipes in one place without dealing without being overwhelmed by ads.</Text>
             {content}
         </Container>
     )
