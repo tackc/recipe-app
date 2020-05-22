@@ -23,6 +23,7 @@ require('./config/database.js');
 app.use('/api', apiRoutes);
 app.use('/auth', auth);
 app.use('/ingredients', ingredientsRoutes)
+app.use('/locked', expressJWT({secret: process.env.JWT_SECRET}).unless({method: 'POST'}), locked);
 
 // The following "catch all" route (note the *)is necessary for a SPA's client-side routing to properly work
 app.get('/*', (req, res) => {
