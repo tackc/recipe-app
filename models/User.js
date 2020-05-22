@@ -4,13 +4,13 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
     {
-        first_name: {
+        firstName: {
             type: String,
             required: [true, 'You must enter your first name'],
             minlength: [1, 'Your first name must be between 1 and 25 characters'],
             maxlength: [25, 'Your first name must be between 1 and 25 characters']
         },
-        last_name: {
+        lastName: {
             type: String,
             required: [true, 'You must enter your last name'],
             minlength: [1, 'Your last name must be between 1 and 25 characters'],
@@ -25,8 +25,8 @@ const userSchema = new Schema(
         password: {
             type: String,
             required: [true, 'You must enter a password'],
-            minlength: [10, 'Password must be between 10 and 50 characters'],
-            maxlength: [50, 'Password must be between 10 and 50 characters']
+            minlength: [8, 'Password must be between 8 and 50 characters'],
+            maxlength: [50, 'Password must be between 8 and 50 characters']
         },
         recipes: [{type: Schema.Types.ObjectId, ref: 'Recipe'}]
     },

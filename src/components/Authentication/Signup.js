@@ -117,7 +117,7 @@ class Signup extends Component {
                     })
                 } else {
                     localStorage.setItem('mernToken', result.data.token)
-                    this.props.liftTokenToState(result.data)
+                    this.props.liftToken(result.data)
                 }
             } ).catch( err => {
                 this.setState({
@@ -141,22 +141,22 @@ class Signup extends Component {
                     <Header>Create Account:</Header>
                     <Row>
                         <Label htmlFor='s-firstname' >First Name:</Label>
-                        <Input name='s-firstname' ></Input>
+                        <Input name='s-firstname' value={this.state.firstName} onChange={this.handleFirstNameChange} ></Input>
                     </Row>
     
                     <Row>
                         <Label htmlFor='s-lastname' >Last Name:</Label>
-                        <Input name='s-lastname' autofill='last' ></Input>
+                        <Input name='s-lastname' autofill='last' value={this.state.lastName} onChange={this.handleLastNameChange} ></Input>
                     </Row>
     
                     <Row>
                         <Label htmlFor='s-email' >Email:</Label>
-                        <Input type='email' name='s-email' autofill='email' ></Input>
+                        <Input type='email' name='s-email' autofill='email' value={this.state.email} onChange={this.handleEmailChange} ></Input>
                     </Row>
     
                     <Row>
                         <Label htmlFor='s-password' >Password:</Label>
-                        <Input type='password' name='s-password' autocomplete='new-password' ></Input>
+                        <Input type='password' name='s-password' autocomplete='new-password' value={this.state.password} onChange={this.handlePasswordChange} ></Input>
                     </Row>
 
                     <Row>

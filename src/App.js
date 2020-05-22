@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { ThemeProvider } from 'styled-components';
 // import { GlobalStyles } from './global';
 import { theme } from './theme';
-// import './App.css';
+
 // import Categories from './pages/Categories';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { RecipesList, RecipesInsert, RecipesUpdate, RecipeCard } from './pages';
 import { NavBar } from './components';
-import Signup from './Authentication/Signup';
-import Login from './Authentication/Login';
+import { Signup, Login, Welcome } from './components/Authentication'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Axios from 'axios';
@@ -32,12 +32,23 @@ class App extends Component {
     this.checkForLocalToken = this.checkForLocalToken.bind(this)
     this.logout = this.logout.bind(this)
     this.liftTokenToState = this.liftTokenToState.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   liftTokenToState(data) {
     this.setState({
       token: data.token,
       user: data.user,
+    })
+  }
+
+  handleClick(e) {
+    e.preventDefault()
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.state.token
+    axios.get('/locked/test').then( result => {
+      this.setState({
+        lockedResult: result.data
+      })
     })
   }
 
@@ -90,7 +101,7 @@ class App extends Component {
         <ThemeProvider theme={theme}>
           {/* <GlobalStyles /> */}
           <Router>
-            <NavBar />
+            <NavBar user={this.state.user} />
             <Switch>
               <Route path='/login' render={() => <Login liftTokenToState={this.liftTokenToState} />} />
               <Route path='/signup' render={() => <Signup liftTokenToState={this.liftTokenToState} /> } />
@@ -99,7 +110,7 @@ class App extends Component {
               <Route path='recipes/:id' exact component={RecipeCard} />
               <Route path='/recipes/create' exact component={RecipesInsert} />
               <Route path='/recipes/update/:id' exact component={RecipesUpdate} />
-              <Route exact path='/' render={ (props) => `Welcome ${this.state.user}` } />
+              <Route exact path='/' render={ (props) => <Welcome user={this.state.user}/> } />
             </Switch>
           </Router>
         </ThemeProvider>
