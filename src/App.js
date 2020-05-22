@@ -101,7 +101,7 @@ class App extends Component {
         <ThemeProvider theme={theme}>
           {/* <GlobalStyles /> */}
           <Router>
-            <NavBar />
+            <NavBar user={this.state.user} />
             <Switch>
               <Route path='/login' render={() => <Login liftTokenToState={this.liftTokenToState} />} />
               <Route path='/signup' render={() => <Signup liftTokenToState={this.liftTokenToState} /> } />
