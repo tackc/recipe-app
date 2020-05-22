@@ -2,10 +2,12 @@ var express = require( 'express' );
 var path = require( 'path' );
 var favicon = require( 'serve-favicon' );
 var logger = require( 'morgan' );
+const expressJWT = require('express-jwt')
 
 const apiRoutes = require('./routes/recipe-router');
 const auth = require('./routes/auth');
 const ingredientsRoutes = require('./routes/ingredient-router');
+const locked = require('./routes/locked');
 
 var app = express();
 
