@@ -5,6 +5,7 @@ var path = require( 'path' );
 var favicon = require( 'serve-favicon' );
 var logger = require( 'morgan' );
 const expressJWT = require('express-jwt')
+const RateLimit = require('express-rate-limit');
 
 const apiRoutes = require('./routes/recipe-router');
 const auth = require('./routes/auth');
