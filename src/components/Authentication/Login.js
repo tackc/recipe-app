@@ -160,15 +160,15 @@ class Login extends Component {
                 <Header>Log in</Header>
                 {errorPanel}
 
-                <Form>
+                <Form onSubmit={this.handleSubmit} >
                     <Row>
                         <Label htmlFor='s-email' >Email:</Label>
-                        <Input type='email' name='s-email' autofill='email' ></Input>
+                        <Input type='email' name='s-email' autofill='email' value={this.state.email} onChange={this.handleEmailChange} ></Input>
                     </Row>
 
                     <Row>
                         <Label htmlFor='s-password' >Password:</Label>
-                        <Input type='password' name='s-password' autocomplete='current-password' ></Input>
+                        <Input type='password' name='s-password' autocomplete='current-password' value={this.state.password} onChange={this.handlePasswordChange} ></Input>
                     </Row>
 
                     <Row>
