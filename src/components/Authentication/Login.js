@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ErrorPanel from './ErrorPanel';
 import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 
 
 const LoginWrapper = styled.div.attrs({
@@ -129,9 +130,9 @@ class Login extends Component {
                 })
             } else {
                 localStorage.setItem('mernToken', result.data.token)
-                this.props.liftTokenToState(result.data)
+                this.props.liftToken(result.data)
                 this.setState({
-                    errors: null
+                    error: null
                 })
             }
         }).catch ( err => {
@@ -139,7 +140,7 @@ class Login extends Component {
                 error: {
                     type: 'rate_error',
                     status: 429,
-                    message: "maximum login attempts exceeded. Please try again later."
+                    message: "Maximum login attempts exceeded. Please try again later."
                 },
                 email: '',
                 password: ''
@@ -159,15 +160,15 @@ class Login extends Component {
                 <Header>Log in</Header>
                 {errorPanel}
 
-                <Form>
+                <Form onSubmit={this.handleSubmit} >
                     <Row>
                         <Label htmlFor='s-email' >Email:</Label>
-                        <Input type='email' name='s-email' autofill='email' ></Input>
+                        <Input type='email' name='s-email' autofill='email' value={this.state.email} onChange={this.handleEmailChange} ></Input>
                     </Row>
 
                     <Row>
                         <Label htmlFor='s-password' >Password:</Label>
-                        <Input type='password' name='s-password' autocomplete='current-password' ></Input>
+                        <Input type='password' name='s-password' autocomplete='current-password' value={this.state.password} onChange={this.handlePasswordChange} ></Input>
                     </Row>
 
                     <Row>

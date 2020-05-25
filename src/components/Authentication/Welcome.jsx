@@ -20,7 +20,11 @@ const Welcome = (props) => {
     let content;
     
     if (props.user) {
-    content = <Title>Welcome { props.user.firstName }</Title>
+    content = 
+    <Container>
+        <Title>Welcome { props.user.firstName }</Title>
+        <Button onClick={props.logout}>LOG OUT</Button>
+    </Container>
     } else {
         content = (
             <Container>

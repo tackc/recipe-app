@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const router = express.Router();
+// const mongoose = require('mongoose');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
@@ -55,32 +56,32 @@ router.post('/login', (req, res) => {
     User.findOne({email: req.body.email}, function(err, user) {
         if (user) {
         // If there is a user, check their entered password against the DB hash
-        if (user.authenticated(req.body.password)) {
-            // if it matches: log them in (sign a token)
-            var token = jwt.sign(user.toObject(), process.env.JWT_SECRET, {
-            expiresIn: 60 * 60 * 24
-            });
-            res.json({
-            type: 'success',
-            status: 200,
-            user,
-            token
-            });
+            if (user.authenticated(req.body.password)) {
+                // if it matches: log them in (sign a token)
+                var token = jwt.sign(user.toObject(), process.env.JWT_SECRET, {
+                expiresIn: 60 * 60 * 24
+                });
+                res.json({
+                    type: 'success',
+                    status: 200,
+                    user,
+                    token
+                });
+            } else {
+                // Authentication failed: send an error
+                res.json({
+                type: 'auth_error',
+                status: 401,
+                message: 'Email or password is incorrect'
+                });
+            }
         } else {
-            // Authentication failed: send an error
+            // if the user isn't in the DB...
             res.json({
-            type: 'auth_error',
-            status: 401,
-            message: 'Email or password is incorrect'
+                type: 'auth_error',
+                status: 401,
+                message: 'Account not found'
             });
-        }
-        } else {
-        // if the user isn't in the DB...
-        res.json({
-            type: 'auth_error',
-            status: 401,
-            message: 'Account not found'
-        });
         }
     })
 });
