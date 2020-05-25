@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ErrorPanel from './ErrorPanel';
 import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 
 
 const LoginWrapper = styled.div.attrs({
@@ -139,7 +140,7 @@ class Login extends Component {
                 error: {
                     type: 'rate_error',
                     status: 429,
-                    message: "maximum login attempts exceeded. Please try again later."
+                    message: "Maximum login attempts exceeded. Please try again later."
                 },
                 email: '',
                 password: ''
