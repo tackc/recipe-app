@@ -11,7 +11,6 @@ import { NavBar } from './components';
 import { Signup, Login, Welcome } from './components/Authentication'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Axios from 'axios';
 
 class App extends Component {
   constructor(props) {
@@ -72,7 +71,7 @@ class App extends Component {
       })
     } else {
       // A token was found! Send it to be validated
-      Axios.post('/auth/me/from/token', {
+      axios.post('/auth/me/from/token', {
         token
       }).then( result => {
         if (result.data.type !== 'success') {
