@@ -25,6 +25,23 @@ app.use(express.json());
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
+const loginLimiter = new RateLimit({
+    windowMs: 5*60*1000, // 5 minutes
+    max: 3,
+    delayMs: 0, // 0 means disabled
+    message: "Maximum login attempts exceeded. Please try again later.",
+});
+
+const signupLimiter = new RateLimit({
+    windowMs: 60*60*1000, // 60 minutes
+    max: 3,
+    delayMs: 0, // 0 means disabled
+    message: "Maximum accounts created. Please try again later.",
+})
+
+app.use('/auth/login', loginLimiter);
+app.use('/auth/signup', signupLimiter);
+
 require('./config/database.js');
 // Put API routes here, before the "catch all" route
 app.use('/api', apiRoutes);
