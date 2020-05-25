@@ -14,6 +14,10 @@ const locked = require('./routes/locked');
 
 var app = express();
 
+// This allows us to accept POST data from axios
+app.use(bp.json());
+app.use(bp.urlencoded({extended: false}));
+
 app.use(logger('dev'));
 app.use(express.json());
 
