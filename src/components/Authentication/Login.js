@@ -130,9 +130,9 @@ class Login extends Component {
                 })
             } else {
                 localStorage.setItem('mernToken', result.data.token)
-                this.props.liftTokenToState(result.data)
+                this.props.liftToken(result.data)
                 this.setState({
-                    errors: null
+                    error: null
                 })
             }
         }).catch ( err => {
