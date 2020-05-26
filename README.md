@@ -69,6 +69,9 @@ Apparently using bootstrap and React can cause some issues. I was running into t
 * [Gramma's Kitchen](https://grammas.kitchen) - working app
 * [Gramma's Kitchen](https://github.com/grammas/kitchen) - on Github
 
+## Reference Articles
+* [18 UX Design Tips for Registration and Login Forms](https://uxplanet.org/18-ux-design-tips-for-registration-and-login-forms-f897557358ba)
+
 ## Available Scripts
 
 In the project directory, you can run:
