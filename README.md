@@ -61,7 +61,7 @@ Apparently using bootstrap and React can cause some issues. I was running into t
 ## TODOs
 * Add form validatior and sanitization using ```express-validator```. [Tutorial example here.](https://flaviocopes.com/express-sanitize-input/)
 
-* Add TODO-like format for adding ingredientts to recipe. [Example](https://codepen.io/arshdkhn1/pen/apoWJe?editors=0110)
+* Add TODO-like format for adding ingredients to recipe. [Example](https://codepen.io/arshdkhn1/pen/apoWJe?editors=0110)
 
 * Use single onChange handler for form inputs. [Example](https://www.pluralsight.com/guides/handling-multiple-inputs-with-single-onchange-handler-react). [Full code](https://github.com/jaketrent/demo-single-change-handler/blob/master/src/App.js)
 
