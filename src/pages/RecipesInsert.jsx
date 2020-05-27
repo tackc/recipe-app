@@ -3,6 +3,7 @@ import api from '../api';
 import IngredientInsert from './IngredientInsert';
 
 import styled from 'styled-components';
+// import Ingredients from './ToDoListReference';
 
 const Wrapper = styled.div.attrs({
     className: 'container'
@@ -171,6 +172,7 @@ return (
             </Row>
 
             <IngredientInsert />
+            {/* <Ingredients /> */}
 
             {/* <Row>
                 <Label>Ingredient Quantity: </Label>
