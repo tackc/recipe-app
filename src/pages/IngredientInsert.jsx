@@ -110,22 +110,7 @@ const List = ({ingredients, remove}) => {
 class IngredientInsert extends React.Component {
 	constructor(props) {
 		super(props);
-		// data for introduction to app
-		// for new users
-		const introData = [
-			// {
-			// 	id: -3, 
-			// 	value: "Hi! This is a simple ingredient list app made by REACT <3"
-			// },
-			// {
-			// 	id: -2,
-			// 	value: "Hover over ingredients and click on `X` to delete them!"
-			// },
-			// {
-			// 	id: -1,
-			// 	value: "Add new ingredients and come back any time later, I will save them for you!"
-			// }
-		];
+		const introData = [];
 		
 		const localData = localStorage.ingredients && JSON.parse(localStorage.ingredients);
 
