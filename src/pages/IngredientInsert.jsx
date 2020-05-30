@@ -107,7 +107,7 @@ const List = ({ingredients, remove}) => {
 	);
 };
 
-class IngredientInsert extends React.Component {
+class IngredientInsert extends Component {
 	constructor(props) {
 		super(props);
 		const introData = [];
