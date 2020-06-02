@@ -24,16 +24,6 @@ const Title = styled.h1.attrs({
     className: 'text-center'
 })`margin: 0 auto 1em;`
 
-const DropdownWrapper = styled.div.attrs({
-    className: 'col'
-})`margin: auto`
-
-const DropdownSelect = styled.select.attrs({
-    className: 'btn'
-})``
-
-const DropdownItem = styled.option``
-
 const Label = styled.label.attrs({
     className: 'font-weight-bold text-left mb-0'
 })`
@@ -147,20 +137,7 @@ return (
                 <InvalidFeedback>Recipe name is a required field!</InvalidFeedback>
             </Row>
 
-            <Row>
-                <Label>Category: </Label>
-                <DropdownWrapper>
-                    <DropdownSelect name='category' onChange={handleChange} value={state.category}>
-                        <DropdownItem value='' defaultValue='selected'>Select a Category</DropdownItem>
-                        <DropdownItem value='Appetizer'>Appetizer</DropdownItem>
-                        <DropdownItem value='Soup'>Soup</DropdownItem>
-                        <DropdownItem value='Salad'>Salad</DropdownItem>
-                        <DropdownItem value='Side'>Side Dish</DropdownItem>
-                        <DropdownItem value='Main'>Main Dish</DropdownItem>
-                        <DropdownItem value='Dessert'>Dessert</DropdownItem>
-                    </DropdownSelect>
-                </DropdownWrapper>
-            </Row>
+            <RecipeCategory handleChange={state.handleChange} />
 
             <Row>
                 <Label>Description: </Label>
@@ -174,25 +151,7 @@ return (
 
             {/* <IngredientInsert /> */}
             {/* <Ingredients /> */}
-            <InputFieldForm />
-
-            {/* <Row>
-                <Label>Ingredient Quantity: </Label>
-                <InputText
-                    type="text"
-                    value={ state.ingredient_quantity }
-                    name='ingredient_quantity'
-                    onChange={handleChange}
-                />
-
-                <Label>Ingredients: </Label>
-                <InputText
-                    type="text"
-                    value={ state.ingredients }
-                    name='ingredients'
-                    onChange={handleChange}
-                />
-            </Row> */}
+            <InputFieldForm unit_of_measurement={state.unit_of_measurement} handleChange={state.handleChange} />
 
             <Row>
                 <Label>Instructions: </Label>
