@@ -1,6 +1,8 @@
 import React, { useState, Fragment } from 'react';
 import styled from 'styled-components';
 
+import Measurements from './Measurements';
+
 const Wrapper = styled.div.attrs({
     className: 'container border-top border-bottom p-4 my-5'
 })``
@@ -21,7 +23,7 @@ const Button = styled.button.attrs({
     className: 'btn'
 })``
 
-const InputFieldForm = () => {
+const InputFieldForm = (props) => {
     const [inputFields, setInputFields] = useState([
         { firstName: '', lastName: '' }
     ]);
@@ -59,6 +61,7 @@ const InputFieldForm = () => {
             <h1>Dynamic Form Fields in React</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-row">
+                    <Measurements unit_of_measurement={props.unit_of_measurement} handleChange={props.handleChange} />
                 {inputFields.map((inputField, index) => (
                     <Fragment key={`${inputField}~${index}`}>
                     <div className="form-group col-sm-6">
