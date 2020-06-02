@@ -185,21 +185,6 @@ return (
                     onChange={handleChange}
                 />
 
-                <Label>Unit: </Label>
-                <DropdownWrapper>
-                    <DropdownSelect name='unit' onChange={handleChange} value={state.unit}>
-                        <DropdownItem value='' defaultValue='selected'>Select a Unit of Measurement</DropdownItem>
-                        <DropdownItem value='pinch'>Pinch</DropdownItem>
-                        <DropdownItem value='Teaspoon'>Teaspoon</DropdownItem>
-                        <DropdownItem value='Tablespoon'>Tablespoon</DropdownItem>
-                        <DropdownItem value='Fluid ounce'>Fluid ounce</DropdownItem>
-                        <DropdownItem value='Cup'>Cup</DropdownItem>
-                        <DropdownItem value='Pint'>Pint</DropdownItem>
-                        <DropdownItem value='Quart'>Quart</DropdownItem>
-                        <DropdownItem value='Gallon'>Gallon</DropdownItem>
-                    </DropdownSelect>
-                </DropdownWrapper>
-
                 <Label>Ingredients: </Label>
                 <InputText
                     type="text"
