@@ -4,6 +4,7 @@ import IngredientInsert from './IngredientInsert';
 
 import styled from 'styled-components';
 // import Ingredients from './ToDoListReference';
+import InputFieldForm from './InputFieldForm';
 
 const Wrapper = styled.div.attrs({
     className: 'container'
@@ -97,10 +98,10 @@ export default function RecipesInsert() {
     //     this.setState({ category })
     // }
 
-    // handleCalculateTotalTime = async event => {
-    //     const total_time = this.state.preparation_time + this.state.cooking_time
-    //     this.setState({ total_time })
-    // }
+    async function handleCalculateTotalTime(event) {
+        const total_time = parseInt(this.state.preparation_time) + parseInt(this.state.cooking_time)
+        this.setState({ total_time })
+    }
     
 async function handleAddRecipe() {
     // const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = state
@@ -171,8 +172,9 @@ return (
                 />
             </Row>
 
-            <IngredientInsert />
+            {/* <IngredientInsert /> */}
             {/* <Ingredients /> */}
+            <InputFieldForm />
 
             {/* <Row>
                 <Label>Ingredient Quantity: </Label>
