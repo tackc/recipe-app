@@ -110,11 +110,12 @@ const List = ({ingredients, remove}) => {
 class IngredientInsert extends Component {
 	constructor(props) {
 		super(props);
+		const introData = [];
 		
 		const localData = localStorage.ingredients && JSON.parse(localStorage.ingredients);
 
 		this.state = { 
-			data: localData
+			data: localData || introData
 		};
 		
 		// binding methods
