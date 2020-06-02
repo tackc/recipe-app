@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Wrapper = styled.div.attrs()``
+
 const Row = styled.div.attrs({
     className: 'form-group m-4'
 })``
@@ -30,7 +32,7 @@ const DropdownItem = styled.option``
 
 export default function MeasurementsDropdown(props) {
     return(
-        <Row>
+        <Wrapper>
             <Label>Ingredient Quantity: </Label>
             <InputText
                 type="text"
@@ -53,14 +55,6 @@ export default function MeasurementsDropdown(props) {
                     <DropdownItem value='Gallon'>Gallon</DropdownItem>
                 </DropdownSelect>
             </DropdownWrapper>
-
-            <Label>Ingredients: </Label>
-            <InputText
-                type="text"
-                value={ props.ingredients }
-                name='ingredients'
-                onChange={props.handleChange}
-            />
-        </Row>
+        </Wrapper>
     )
 }
