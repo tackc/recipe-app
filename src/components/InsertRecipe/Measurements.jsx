@@ -28,7 +28,7 @@ const DropdownSelect = styled.select.attrs({
 
 const DropdownItem = styled.option``
 
-export default function MeasurementsDropdown() {
+export default function MeasurementsDropdown(props) {
     return(
         <Row>
             <Label>Ingredient Quantity: </Label>
@@ -36,12 +36,12 @@ export default function MeasurementsDropdown() {
                 type="text"
                 value={ props.ingredient_quantity }s
                 name='ingredient_quantity'
-                onChange={handleChange}
+                onChange={props.handleChange}
             />
 
             <Label>Unit: </Label>
             <DropdownWrapper>
-                <DropdownSelect name='unit' onChange={handleChange} value={props.unit}>
+                <DropdownSelect name='unit' onChange={props.handleChange} value={props.unit_of_measurement}>
                     <DropdownItem value='' defaultValue='selected'>Unit of Measurement</DropdownItem>
                     <DropdownItem value='pinch'>Pinch</DropdownItem>
                     <DropdownItem value='Teaspoon'>Teaspoon</DropdownItem>
@@ -59,7 +59,7 @@ export default function MeasurementsDropdown() {
                 type="text"
                 value={ props.ingredients }
                 name='ingredients'
-                onChange={handleChange}
+                onChange={props.handleChange}
             />
         </Row>
     )
