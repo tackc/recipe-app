@@ -4,7 +4,7 @@ import IngredientInsert from './IngredientInsert';
 
 import styled from 'styled-components';
 // import Ingredients from './ToDoListReference';
-import InputFieldForm from './InputFieldForm';
+import InputFieldForm from '../components/InsertRecipe/InputFieldForm.jsx';
 
 const Wrapper = styled.div.attrs({
     className: 'container'
