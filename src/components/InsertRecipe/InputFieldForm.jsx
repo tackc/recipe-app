@@ -84,24 +84,14 @@ const InputFieldForm = (props) => {
                                 onChange={event => handleInputChange(index, event)}
                             />
 
-                            {/* <Label htmlFor="lastName">Last Name</Label>
-                            <InputText
-                                id="lastName"
-                                name="lastName"
-                                value={inputField.lastName}
-                                onChange={event => handleInputChange(index, event)}
-                            /> */}
-
                             <Button
                                 className="btn btn-link"
-
                                 onClick={() => handleRemoveFields(index)}
                                 >
                                 -
                             </Button>
                             <Button
                                 className="btn btn-link"
-
                                 onClick={() => handleAddFields()}
                                 >
                                 +
@@ -125,7 +115,7 @@ const InputFieldForm = (props) => {
                 <pre>
                     {JSON.stringify(inputFields, null, 2)}
                 </pre>
-            </form>
+            {/* </form> */}
         </Wrapper>
     );
 };
