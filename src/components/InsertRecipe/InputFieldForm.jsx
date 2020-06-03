@@ -12,7 +12,7 @@ const Title = styled.h5.attrs({
 })``
 
 const Row = styled.div.attrs({
-    className: 'form-group m-4'
+    className: 'row form-group m-4'
 })``
 
 const Label = styled.label.attrs({
