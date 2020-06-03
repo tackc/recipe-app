@@ -62,18 +62,21 @@ const InputFieldForm = (props) => {
         setInputFields(values);
     };
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        console.log("inputFields", inputFields);
-    };
-
     return (
         <Wrapper>
             <Title>Ingredients</Title>
-            <form onSubmit={handleSubmit}>
+            {/* <form onSubmit={handleSubmit}> */}
                 {inputFields.map((inputField, index) => (
                     <Fragment key={`${inputField}~${index}`}>
                         <Row>
+                            <Label>Quantity: </Label>
+                            <InputText
+                                type="text"
+                                value={ props.ingredient_quantity }s
+                                name='ingredient_quantity'
+                                onChange={props.handleChange}
+                            />
+
                             <Measurements unit_of_measurement={props.unit_of_measurement} handleChange={props.handleChange} />
                             
                             <Label htmlFor="ingredient">Ingredient</Label>
