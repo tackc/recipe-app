@@ -15,6 +15,9 @@ const Label = styled.label.attrs({
     padding-bottom: 2px;
     font-size: .8em;
 `
+const FormGroup = styled.div.attrs({
+    className: 'col'
+})``
 
 const InputText = styled.input.attrs({
     className: 'col'
@@ -30,31 +33,41 @@ const DropdownSelect = styled.select.attrs({
 
 const DropdownItem = styled.option``
 
-export default function MeasurementsDropdown(props) {
-    return(
-        <Wrapper>
-            <Label>Ingredient Quantity: </Label>
-            <InputText
-                type="text"
-                value={ props.ingredient_quantity }s
-                name='ingredient_quantity'
-                onChange={props.handleChange}
-            />
+class MeasurementsDropdown extends Component {
+    constructor({ unit_of_measurement }) {
+        super();
+        this.state = {
+            unit_of_measurement: unit_of_measurement
+        }
+    }
 
-            <Label>Unit: </Label>
-            <DropdownWrapper>
-                <DropdownSelect name='unit' onChange={props.handleChange} value={props.unit_of_measurement}>
-                    <DropdownItem value='' defaultValue='selected'>Unit of Measurement</DropdownItem>
-                    <DropdownItem value='pinch'>Pinch</DropdownItem>
-                    <DropdownItem value='Teaspoon'>Teaspoon</DropdownItem>
-                    <DropdownItem value='Tablespoon'>Tablespoon</DropdownItem>
-                    <DropdownItem value='Fluid ounce'>Fluid ounce</DropdownItem>
-                    <DropdownItem value='Cup'>Cup</DropdownItem>
-                    <DropdownItem value='Pint'>Pint</DropdownItem>
-                    <DropdownItem value='Quart'>Quart</DropdownItem>
-                    <DropdownItem value='Gallon'>Gallon</DropdownItem>
-                </DropdownSelect>
-            </DropdownWrapper>
-        </Wrapper>
-    )
+    // This current implementation isn't ideal as I have two "sources of truth" for unit_of_measurement
+    handleChange = () => {
+        this.setState({
+            unit_of_measurement: this.unit_of_measurement
+        })
+    }
+
+    render(){
+        return(
+            <Wrapper>
+                <Label>Unit: </Label>
+                <DropdownWrapper>
+                    <DropdownSelect name='unit_of_measurement' onChange={this.handleChange} value={this.unit_of_measurement}>
+                        <DropdownItem value='' defaultValue='selected'>Unit</DropdownItem>
+                        <DropdownItem value='pinch'>Pinch</DropdownItem>
+                        <DropdownItem value='Teaspoon'>Teaspoon</DropdownItem>
+                        <DropdownItem value='Tablespoon'>Tablespoon</DropdownItem>
+                        <DropdownItem value='Fluid ounce'>Fluid ounce</DropdownItem>
+                        <DropdownItem value='Cup'>Cup</DropdownItem>
+                        <DropdownItem value='Pint'>Pint</DropdownItem>
+                        <DropdownItem value='Quart'>Quart</DropdownItem>
+                        <DropdownItem value='Gallon'>Gallon</DropdownItem>
+                    </DropdownSelect>
+                </DropdownWrapper>
+            </Wrapper>
+        )
+    }
 }
+
+export default MeasurementsDropdown;
