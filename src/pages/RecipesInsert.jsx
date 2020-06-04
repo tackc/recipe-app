@@ -57,7 +57,7 @@ const CancelButton = styled.a.attrs({
     className: 'btn col my-2'
 })``
 
-export default function RecipesInsert() {
+const RecipesInsert = () => {
     const [state, setState] = React.useState({
         name: '',
         category: '',
@@ -251,3 +251,5 @@ return (
     </Wrapper>
 )
 }
+
+export default RecipesInsert;
