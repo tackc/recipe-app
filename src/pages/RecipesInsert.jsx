@@ -107,6 +107,7 @@ async function handleAddRecipe() {
             ingredient_quantity: '',
             unit: '',
             ingredients: [],
+            unit_of_measurement: '',
             instructions: '',
             preparation_time: '',
             cooking_time: '',
