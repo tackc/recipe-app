@@ -74,6 +74,8 @@ Apparently using bootstrap and React can cause some issues. I was running into t
 ## Reference Articles
 * [18 UX Design Tips for Registration and Login Forms](https://uxplanet.org/18-ux-design-tips-for-registration-and-login-forms-f897557358ba)
 
+* [Possible solution for 'Measurements' dropdown](https://medium.com/@lolahef/react-event-emitter-9a3bb0c719) - event emitter
+
 ## Available Scripts
 
 In the project directory, you can run:
