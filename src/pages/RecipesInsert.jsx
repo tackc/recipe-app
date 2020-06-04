@@ -1,8 +1,10 @@
 import React from 'react';
 import api from '../api';
-import IngredientInsert from './IngredientInsert';
+// import IngredientInsert from './IngredientInsert';
 
 import styled from 'styled-components';
+// import Ingredients from './ToDoListReference';
+import { InputFieldForm, RecipeCategory } from '../components/InsertRecipe';
 
 const Wrapper = styled.div.attrs({
     className: 'container'
@@ -21,16 +23,6 @@ const Row = styled.div.attrs({
 const Title = styled.h1.attrs({
     className: 'text-center'
 })`margin: 0 auto 1em;`
-
-const DropdownWrapper = styled.div.attrs({
-    className: 'col'
-})`margin: auto`
-
-const DropdownSelect = styled.select.attrs({
-    className: 'btn'
-})``
-
-const DropdownItem = styled.option``
 
 const Label = styled.label.attrs({
     className: 'font-weight-bold text-left mb-0'
@@ -65,13 +57,14 @@ const CancelButton = styled.a.attrs({
     className: 'btn col my-2'
 })``
 
-export default function RecipesInsert() {
+const RecipesInsert = () => {
     const [state, setState] = React.useState({
         name: '',
         category: '',
         description: '',
         ingredient_quantity: '',
         ingredients: [],
+        unit_of_measurement: '',
         instructions: '',
         preparation_time: '',
         cooking_time: '',
@@ -96,10 +89,10 @@ export default function RecipesInsert() {
     //     this.setState({ category })
     // }
 
-    // handleCalculateTotalTime = async event => {
-    //     const total_time = this.state.preparation_time + this.state.cooking_time
-    //     this.setState({ total_time })
-    // }
+    async function handleCalculateTotalTime(event) {
+        const total_time = parseInt(this.state.preparation_time) + parseInt(this.state.cooking_time)
+        this.setState({ total_time })
+    }
     
 async function handleAddRecipe() {
     // const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = state
@@ -114,6 +107,7 @@ async function handleAddRecipe() {
             ingredient_quantity: '',
             unit: '',
             ingredients: [],
+            unit_of_measurement: '',
             instructions: '',
             preparation_time: '',
             cooking_time: '',
@@ -145,20 +139,7 @@ return (
                 <InvalidFeedback>Recipe name is a required field!</InvalidFeedback>
             </Row>
 
-            <Row>
-                <Label>Category: </Label>
-                <DropdownWrapper>
-                    <DropdownSelect name='category' onChange={handleChange} value={state.category}>
-                        <DropdownItem value='' defaultValue='selected'>Select a Category</DropdownItem>
-                        <DropdownItem value='Appetizer'>Appetizer</DropdownItem>
-                        <DropdownItem value='Soup'>Soup</DropdownItem>
-                        <DropdownItem value='Salad'>Salad</DropdownItem>
-                        <DropdownItem value='Side'>Side Dish</DropdownItem>
-                        <DropdownItem value='Main'>Main Dish</DropdownItem>
-                        <DropdownItem value='Dessert'>Dessert</DropdownItem>
-                    </DropdownSelect>
-                </DropdownWrapper>
-            </Row>
+            <RecipeCategory handleChange={state.handleChange} />
 
             <Row>
                 <Label>Description: </Label>
@@ -170,40 +151,9 @@ return (
                 />
             </Row>
 
-            <IngredientInsert />
-
-            {/* <Row>
-                <Label>Ingredient Quantity: </Label>
-                <InputText
-                    type="text"
-                    value={ state.ingredient_quantity }
-                    name='ingredient_quantity'
-                    onChange={handleChange}
-                />
-
-                <Label>Unit: </Label>
-                <DropdownWrapper>
-                    <DropdownSelect name='unit' onChange={handleChange} value={state.unit}>
-                        <DropdownItem value='' defaultValue='selected'>Select a Unit of Measurement</DropdownItem>
-                        <DropdownItem value='pinch'>Pinch</DropdownItem>
-                        <DropdownItem value='Teaspoon'>Teaspoon</DropdownItem>
-                        <DropdownItem value='Tablespoon'>Tablespoon</DropdownItem>
-                        <DropdownItem value='Fluid ounce'>Fluid ounce</DropdownItem>
-                        <DropdownItem value='Cup'>Cup</DropdownItem>
-                        <DropdownItem value='Pint'>Pint</DropdownItem>
-                        <DropdownItem value='Quart'>Quart</DropdownItem>
-                        <DropdownItem value='Gallon'>Gallon</DropdownItem>
-                    </DropdownSelect>
-                </DropdownWrapper>
-
-                <Label>Ingredients: </Label>
-                <InputText
-                    type="text"
-                    value={ state.ingredients }
-                    name='ingredients'
-                    onChange={handleChange}
-                />
-            </Row> */}
+            {/* <IngredientInsert /> */}
+            {/* <Ingredients /> */}
+            <InputFieldForm unit_of_measurement={state.unit_of_measurement} handleChange={state.handleChange} />
 
             <Row>
                 <Label>Instructions: </Label>
@@ -294,7 +244,6 @@ return (
                 />
             </Row>
 
-
             <Row>
                 <Button onClick={handleAddRecipe}>Add Recipe</Button>
                 <CancelButton href={'/recipes/list'}>Cancel</CancelButton>
@@ -303,3 +252,5 @@ return (
     </Wrapper>
 )
 }
+
+export default RecipesInsert;

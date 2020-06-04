@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div.attrs({
@@ -9,7 +9,7 @@ const Title = styled.h5.attrs({
     className: 'text-center'
 })``
 
-// Form Components
+// ––––––––––––––––––––––––––––––– Form Components ––––––––––––––––––––––––––––––– //
 const Input = styled.input.attrs({
     placeholder: 'Add ingredients here...',
     autocomplete: "off",
@@ -19,7 +19,7 @@ const RemoveIngredientBtn = styled.button.attrs({
     className: 'btn btn-outline-danger btn-sm'
 })``
 
-class Form extends React.Component {
+class Form extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -107,25 +107,10 @@ const List = ({ingredients, remove}) => {
 	);
 };
 
-class IngredientInsert extends React.Component {
+class IngredientInsert extends Component {
 	constructor(props) {
 		super(props);
-		// data for introduction to app
-		// for new users
-		const introData = [
-			// {
-			// 	id: -3, 
-			// 	value: "Hi! This is a simple ingredient list app made by REACT <3"
-			// },
-			// {
-			// 	id: -2,
-			// 	value: "Hover over ingredients and click on `X` to delete them!"
-			// },
-			// {
-			// 	id: -1,
-			// 	value: "Add new ingredients and come back any time later, I will save them for you!"
-			// }
-		];
+		const introData = [];
 		
 		const localData = localStorage.ingredients && JSON.parse(localStorage.ingredients);
 

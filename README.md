@@ -61,7 +61,9 @@ Apparently using bootstrap and React can cause some issues. I was running into t
 ## TODOs
 * Add form validatior and sanitization using ```express-validator```. [Tutorial example here.](https://flaviocopes.com/express-sanitize-input/)
 
-* Add TODO-like format for adding ingredientts to recipe. [Example](https://codepen.io/arshdkhn1/pen/apoWJe?editors=0110)
+* Add TODO-like format for adding ingredients to recipe. [Example](https://codepen.io/arshdkhn1/pen/apoWJe?editors=0110)
+
+* Simpler Implementation of Dynamic Form Fields [Example](https://codesandbox.io/s/react-dynamic-form-fields-3fjbd?from-embed=&file=/src/index.js:3007-3015) - [Step-by-step Example](https://dev.to/fuchodeveloper/dynamic-form-fields-in-react-1h6c)
 
 * Use single onChange handler for form inputs. [Example](https://www.pluralsight.com/guides/handling-multiple-inputs-with-single-onchange-handler-react). [Full code](https://github.com/jaketrent/demo-single-change-handler/blob/master/src/App.js)
 
@@ -71,6 +73,8 @@ Apparently using bootstrap and React can cause some issues. I was running into t
 
 ## Reference Articles
 * [18 UX Design Tips for Registration and Login Forms](https://uxplanet.org/18-ux-design-tips-for-registration-and-login-forms-f897557358ba)
+
+* [Possible solution for 'Measurements' dropdown](https://medium.com/@lolahef/react-event-emitter-9a3bb0c719) - event emitter
 
 ## Available Scripts
 
