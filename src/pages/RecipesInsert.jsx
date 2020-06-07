@@ -203,7 +203,7 @@ return (
                     onChange={handleChange}
                 />
 
-                <Label>Rating: </Label>
+                {/* <Label>Rating: </Label>
                 <InputText
                     type="number"
                     step="1"
@@ -214,6 +214,10 @@ return (
                     value={ state.rating }
                     name='rating'
                     onChange={handleChange}
+                /> */}
+                <Rating style={{ border: 'none' }}
+                    value={ state.rating }
+                    onChange={ handleChange }
                 />
             </Row>
 
