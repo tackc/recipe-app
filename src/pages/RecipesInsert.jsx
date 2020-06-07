@@ -77,7 +77,7 @@ const RecipesInsert = () => {
         rating: '',
     });
 
-    async function handleChange(event) {
+    const handleChange = async (event) => {
         const value = event.target.value;
         setState({
             ...state,
