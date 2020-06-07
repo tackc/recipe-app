@@ -1028,6 +1028,62 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@bit/nexxtway.react-rainbow.assistive-text@1.10.0":
+  version "1.10.0"
+  resolved "https://node.bit.dev/nexxtway.react-rainbow.assistive-text/-/nexxtway.react-rainbow.assistive-text-1.10.0.tgz#9319e76a1f41cc416450b4cf37a6da68374e30d5"
+  integrity sha1-kxnnah9BzEFkULTPN6baaDdOMNU=
+  dependencies:
+    "@bit/nexxtway.react-rainbow.structural" "1.10.0"
+    prop-types "^15.6.2"
+
+"@bit/nexxtway.react-rainbow.libs.colors@1.10.0":
+  version "1.10.0"
+  resolved "https://node.bit.dev/nexxtway.react-rainbow.libs.colors/-/nexxtway.react-rainbow.libs.colors-1.10.0.tgz#5eb4c78fbfd3bd26b525e7d51e280a6469d711ed"
+  integrity sha1-XrTHj7/TvSa1JefVHigKZGnXEe0=
+
+"@bit/nexxtway.react-rainbow.libs.font-sizes@1.10.0":
+  version "1.10.0"
+  resolved "https://node.bit.dev/nexxtway.react-rainbow.libs.font-sizes/-/nexxtway.react-rainbow.libs.font-sizes-1.10.0.tgz#50041a4be3aa95880a537bf1322b52d22cc7d497"
+  integrity sha1-UAQaS+OqlYgKU3vxMitS0izH1Jc=
+
+"@bit/nexxtway.react-rainbow.libs.unique-id@1.10.0":
+  version "1.10.0"
+  resolved "https://node.bit.dev/nexxtway.react-rainbow.libs.unique-id/-/nexxtway.react-rainbow.libs.unique-id-1.10.0.tgz#7142b061853d02ffc6bb83b4c2f40a3c86484fa8"
+  integrity sha1-cUKwYYU9Av/Gu4O0wvQKPIZIT6g=
+
+"@bit/nexxtway.react-rainbow.rating@^1.10.0":
+  version "1.10.0"
+  resolved "https://node.bit.dev/nexxtway.react-rainbow.rating/-/nexxtway.react-rainbow.rating-1.10.0.tgz#a6d65199001e709bb70ad08e6d3f3a9394e9fa7a"
+  integrity sha1-ptZRmQAecJu3CtCObT86k5Tp+no=
+  dependencies:
+    "@bit/nexxtway.react-rainbow.assistive-text" "1.10.0"
+    "@bit/nexxtway.react-rainbow.libs.colors" "1.10.0"
+    "@bit/nexxtway.react-rainbow.libs.font-sizes" "1.10.0"
+    "@bit/nexxtway.react-rainbow.libs.unique-id" "1.10.0"
+    "@bit/nexxtway.react-rainbow.render-if" "1.10.0"
+    "@bit/nexxtway.react-rainbow.types" "1.10.0"
+    prop-types "^15.6.2"
+    styled-components "^4.3.2"
+
+"@bit/nexxtway.react-rainbow.render-if@1.10.0":
+  version "1.10.0"
+  resolved "https://node.bit.dev/nexxtway.react-rainbow.render-if/-/nexxtway.react-rainbow.render-if-1.10.0.tgz#aa8089251e219b12772a5dc9b7c4a0fdd75f689b"
+  integrity sha1-qoCJJR4hmxJ3Kl3Jt8Sg/ddfaJs=
+  dependencies:
+    prop-types "^15.6.2"
+
+"@bit/nexxtway.react-rainbow.structural@1.10.0":
+  version "1.10.0"
+  resolved "https://node.bit.dev/nexxtway.react-rainbow.structural/-/nexxtway.react-rainbow.structural-1.10.0.tgz#8d380724362ff1262e3ed1c82720fecfaf51bc50"
+  integrity sha1-jTgHJDYv8SYuPtHIJyD+z69RvFA=
+  dependencies:
+    styled-components "^4.3.2"
+
+"@bit/nexxtway.react-rainbow.types@1.10.0":
+  version "1.10.0"
+  resolved "https://node.bit.dev/nexxtway.react-rainbow.types/-/nexxtway.react-rainbow.types-1.10.0.tgz#e08706a0dbc6c029ba7f2a37e50f52285155b1ad"
+  integrity sha1-4IcGoNvGwCm6fyo35Q9SKFFVsa0=
+
 "@bit/smei.ui-lib.button@^0.0.2":
   version "0.0.2"
   resolved "https://node.bit.dev/smei.ui-lib.button/-/smei.ui-lib.button-0.0.2.tgz#f6413b327113d9470e6ebc369cf33750ac2c0cb3"
@@ -10779,7 +10835,7 @@ style-loader@0.23.1:
     loader-utils "^1.1.0"
     schema-utils "^1.0.0"
 
-styled-components@^4.4.1:
+styled-components@^4.3.2, styled-components@^4.4.1:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-4.4.1.tgz#e0631e889f01db67df4de576fedaca463f05c2f2"
   integrity sha512-RNqj14kYzw++6Sr38n7197xG33ipEOktGElty4I70IKzQF1jzaD1U4xQ+Ny/i03UUhHlC5NWEO+d8olRCDji6g==
