@@ -74,7 +74,7 @@ const RecipesInsert = () => {
         notes: '',
         author: '',
         url: '',
-        rating: '',
+        rating: undefined,
     });
 
     const handleChange = async (event) => {
