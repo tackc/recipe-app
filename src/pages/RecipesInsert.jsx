@@ -1,5 +1,6 @@
 import React from 'react';
 import api from '../api';
+import Rating from '@bit/nexxtway.react-rainbow.rating';
 // import IngredientInsert from './IngredientInsert';
 
 import styled from 'styled-components';
