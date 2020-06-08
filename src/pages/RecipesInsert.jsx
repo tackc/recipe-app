@@ -84,15 +84,10 @@ const RecipesInsert = () => {
             [event.target.name]: value
         });
     }
-    
-    // async function handleChangeCategory(event) {
-    //     const category = event.target.value
-    //     this.setState({ category })
-    // }
 
-    async function handleCalculateTotalTime(event) {
-        const total_time = parseInt(this.state.preparation_time) + parseInt(this.state.cooking_time)
-        this.setState({ total_time })
+    const handleCalculateTotalTime = async (event) => {
+        const total_time = parseInt(state.preparation_time) + parseInt(state.cooking_time)
+        setState({ total_time })
     }
     
 async function handleAddRecipe() {
