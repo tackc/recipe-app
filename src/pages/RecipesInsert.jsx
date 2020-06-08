@@ -118,6 +118,7 @@ async function handleAddRecipe() {
 }
 
 // const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
+const {total_time} = state
 return (
     <Wrapper>
         <Title>Add New Recipe</Title>
@@ -179,12 +180,13 @@ return (
                 />
 
                 <Label>Total Time: </Label>
+                <CancelButton onClick={handleCalculateTotalTime}>Calculate Total</CancelButton>
                 <InputText
                     type="text"
-                    value={ state.total_time }
+                    value={ total_time }
                     name='total_time'
-                    onChange={handleChange}
-                    placeholder={ state.total_time }
+                    onChange={handleCalculateTotalTime}
+                    placeholder={ total_time }
                     disabled
                 />
             </Row>
