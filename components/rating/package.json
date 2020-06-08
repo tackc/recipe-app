@@ -1,0 +1,37 @@
+{
+  "name": "@bit/nexxtway.react-rainbow.rating",
+  "version": "1.10.0",
+  "homepage": "https://bit.dev/nexxtway/react-rainbow/rating",
+  "main": "dist/components/Rating/index.js",
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "styled-components": "^4.3.2",
+    "@bit/nexxtway.react-rainbow.types": "1.10.0",
+    "@bit/nexxtway.react-rainbow.render-if": "1.10.0",
+    "@bit/nexxtway.react-rainbow.libs.unique-id": "1.10.0",
+    "@bit/nexxtway.react-rainbow.assistive-text": "1.10.0",
+    "@bit/nexxtway.react-rainbow.libs.colors": "1.10.0",
+    "@bit/nexxtway.react-rainbow.libs.font-sizes": "1.10.0"
+  },
+  "devDependencies": {},
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "bit": {
+    "env": {
+      "compiler": "bit.envs/compilers/react@1.0.5"
+    },
+    "overrides": {
+      "dependencies": {
+        "react": "-",
+        "react-dom": "-"
+      },
+      "peerDependencies": {
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6"
+      }
+    }
+  }
+}
