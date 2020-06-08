@@ -3,10 +3,6 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div.attrs()``
 
-const Row = styled.div.attrs({
-    className: 'form-group m-4'
-})``
-
 const Label = styled.label.attrs({
     className: 'font-weight-bold text-left mb-0'
 })`
@@ -15,13 +11,6 @@ const Label = styled.label.attrs({
     padding-bottom: 2px;
     font-size: .8em;
 `
-const FormGroup = styled.div.attrs({
-    className: 'col'
-})``
-
-const InputText = styled.input.attrs({
-    className: 'col'
-})``
 
 const DropdownWrapper = styled.div.attrs({
     className: 'col'
