@@ -183,7 +183,7 @@ return (
                 <CancelButton onClick={handleCalculateTotalTime}>Calculate Total</CancelButton>
                 <InputText
                     type="text"
-                    value={ total_time }
+                    value={ total_time + ' minutes' }
                     name='total_time'
                     onChange={handleCalculateTotalTime}
                     placeholder={ total_time }
