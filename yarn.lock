@@ -1051,8 +1051,10 @@
   resolved "https://node.bit.dev/nexxtway.react-rainbow.libs.unique-id/-/nexxtway.react-rainbow.libs.unique-id-1.10.0.tgz#7142b061853d02ffc6bb83b4c2f40a3c86484fa8"
   integrity sha1-cUKwYYU9Av/Gu4O0wvQKPIZIT6g=
 
-"@bit/nexxtway.react-rainbow.rating@file:./components/rating":
+"@bit/nexxtway.react-rainbow.rating@^1.10.0":
   version "1.10.0"
+  resolved "https://node.bit.dev/nexxtway.react-rainbow.rating/-/nexxtway.react-rainbow.rating-1.10.0.tgz#a6d65199001e709bb70ad08e6d3f3a9394e9fa7a"
+  integrity sha1-ptZRmQAecJu3CtCObT86k5Tp+no=
   dependencies:
     "@bit/nexxtway.react-rainbow.assistive-text" "1.10.0"
     "@bit/nexxtway.react-rainbow.libs.colors" "1.10.0"
