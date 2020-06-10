@@ -69,30 +69,25 @@ const RecipesInsert = () => {
         instructions: '',
         preparation_time: '',
         cooking_time: '',
-        total_time: '',
+        total_time: 0,
         serves: '',
         notes: '',
         author: '',
         url: '',
-        rating: '',
+        rating: undefined,
     });
 
-    async function handleChange(event) {
+    const handleChange = async (event) => {
         const value = event.target.value;
         setState({
             ...state,
             [event.target.name]: value
         });
     }
-    
-    // async function handleChangeCategory(event) {
-    //     const category = event.target.value
-    //     this.setState({ category })
-    // }
 
-    async function handleCalculateTotalTime(event) {
-        const total_time = parseInt(this.state.preparation_time) + parseInt(this.state.cooking_time)
-        this.setState({ total_time })
+    const handleCalculateTotalTime = async (event) => {
+        const total_time = parseInt(state.preparation_time) + parseInt(state.cooking_time)
+        setState({ total_time })
     }
     
 async function handleAddRecipe() {
@@ -112,7 +107,7 @@ async function handleAddRecipe() {
             instructions: '',
             preparation_time: '',
             cooking_time: '',
-            total_time: '',
+            total_time: 0,
             serves: '',
             notes: '',
             author: '',
@@ -123,6 +118,7 @@ async function handleAddRecipe() {
 }
 
 // const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
+const {total_time} = state
 return (
     <Wrapper>
         <Title>Add New Recipe</Title>
@@ -184,12 +180,13 @@ return (
                 />
 
                 <Label>Total Time: </Label>
+                <CancelButton onClick={handleCalculateTotalTime}>Calculate Total</CancelButton>
                 <InputText
                     type="text"
-                    value={ state.total_time }
+                    value={ total_time + ' minutes' }
                     name='total_time'
-                    onChange={handleChange}
-                    placeholder={ state.total_time }
+                    onChange={handleCalculateTotalTime}
+                    placeholder={ total_time }
                     disabled
                 />
             </Row>
