@@ -19,11 +19,11 @@ export const getIngredientById = id => api.get(`/ingredients/${id}`);
 const apis = {
     insertRecipe,
     getAllRecipes,
+    getRecipeById,
     updateRecipeById,
     deleteRecipeById,
     insertIngredient,
     getAllIngredients,
-    getRecipeById,
 }
 
 export default apis;
