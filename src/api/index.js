@@ -12,9 +12,9 @@ export const deleteRecipeById = id => api.delete(`/recipes/${id}`);
 export const getRecipeById = id => api.get(`/recipes/${id}`);
 
 // Ingredient Routes
-export const insertIngredient = payload => api.post(`/ingredient`, payload);
+export const insertIngredient = payload => api.post(`/ingredients`, payload);
 export const getAllIngredients = () => api.get(`/ingredients`);
-export const getIngredientById = id => api.get(`/ingredient/${id}`);
+export const getIngredientById = id => api.get(`/ingredients/${id}`);
 
 const apis = {
     insertRecipe,
