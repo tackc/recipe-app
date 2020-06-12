@@ -56,7 +56,7 @@ const InputFieldForm = (props) => {
         if (event.target.name === "ingredient") {
             values[index].ingredient = event.target.value;
         } else {
-            values[index].lastName = event.target.value;
+            values[index].ingredientQuantity = event.target.value;
         }
 
         setInputFields(values);
@@ -69,15 +69,19 @@ const InputFieldForm = (props) => {
                 {inputFields.map((inputField, index) => (
                     <Fragment key={`${inputField}~${index}`}>
                         <Row>
-                            <Label>Quantity: </Label>
+                            <Label htmlFor="ingredientQuantity">Quantity: </Label>
                             <InputText
                                 type="text"
                                 value={ props.ingredient_quantity }s
                                 name='ingredient_quantity'
-                                onChange={props.handleChange}
+                                onChange={event => handleInputChange(index, event)}
                             />
 
-                            <Measurements unit_of_measurement={props.unit_of_measurement} handleChange={props.handleChange} />
+                            <Measurements
+                                id="unit_of_measurement"
+                                unit_of_measurement={props.unit_of_measurement} 
+                                handleChange={props.handleInputChange}
+                            />
                             
                             <Label htmlFor="ingredient">Ingredient</Label>
                             <InputText
