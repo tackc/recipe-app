@@ -2,7 +2,6 @@ var Recipe = require('../models/Recipe');
 
 function insertRecipe(req, res) {
     const body = req.body
-
     if (!body) {
         return res.status(400).json({
             success: false,
@@ -88,11 +87,9 @@ async function deleteRecipe(req, res) {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-
         if (!recipe) {
             return res.status(400).json({ success: false, error: 'Recipe not found' })
         }
-
         return res.status(200).json({ success: true, data: recipe })
     })
     .catch(err => console.log(err))
@@ -103,11 +100,9 @@ async function getRecipeById(req, res) {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-
         if (!recipe) {
             return res.status(404).json({ success: false, error: 'Recipe not found' })
         }
-
         return res.status(200).json({ success: true, data: recipe })
     })
     .catch(err => console.log(err))
@@ -118,11 +113,9 @@ async function getRecipes(req, res) {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-
         if(!recipes.length) {
             return res.status(404).json({ success: false, error: 'There are no recipes in the database!' })
         }
-
         return res.status(200).json({ success: true, data: recipes })
     })
     .catch(err => console.log(err))
