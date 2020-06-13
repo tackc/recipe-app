@@ -107,7 +107,10 @@ class RecipesList extends Component {
                 }
             },
         ]
-        let showTable = recipes.length;
+        let showTable = true;
+        if(!recipes.length) {
+            showTable = false
+        }
         
         return (
             <Wrapper>
