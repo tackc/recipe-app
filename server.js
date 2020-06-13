@@ -1,5 +1,6 @@
 require('dotenv').config();
 var express = require('express');
+const cors = require('cors');
 const bp = require('body-parser');
 var path = require( 'path' );
 var favicon = require( 'serve-favicon' );
