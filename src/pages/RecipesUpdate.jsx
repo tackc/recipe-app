@@ -55,27 +55,26 @@ const CancelButton = styled.a.attrs({
     className: 'btn col my-2'
 })``
 
-class RecipesUpdate extends Component {
-    constructor(props) {
-        super(props)
+const RecipesUpdate = () => {
+    const [state, setState] = React.useState({
+        id: this.props.match.params.id,
+        name: '',
+        category: '',
+        description: '',
+        ingredient_quantity: '',
+        ingredients: [],
+        unit_of_measurement: '',
+        instructions: '',
+        preparation_time: '',
+        cooking_time: '',
+        total_time: 0,
+        serves: '',
+        notes: '',
+        author: '',
+        url: '',
+        rating: undefined,
+        });
 
-        this.state = {
-            id: this.props.match.params.id,
-            name: '',
-            description: '',
-            ingredient_quantity: '',
-            ingredients: [],
-            instructions: '',
-            preparation_time: '',
-            cooking_time: '',
-            total_time: '',
-            serves: '',
-            notes: '',
-            author: '',
-            url: '',
-            rating: '',
-            images: [],
-        }
     }
 
     handleChangeName = async event => {
