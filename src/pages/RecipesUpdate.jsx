@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import api from '../api';
 
 import styled from 'styled-components';
-
 import { InputFieldForm, RecipeCategory } from '../components/InsertRecipe';
 
 const Wrapper = styled.div.attrs({
