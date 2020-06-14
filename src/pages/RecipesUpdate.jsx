@@ -4,15 +4,10 @@ import api from '../api';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`margin: 0 2em`
-
 const Title = styled.h1`margin: 0 auto;`
-
 const Label = styled.label`margin: .5em`
-
 const InputText = styled.input`margin: .5em`
-
 const Button = styled.button``
-
 const CancelButton = styled.a`margin: 1em 1em 1em .4em`
 
 class RecipesUpdate extends Component {
