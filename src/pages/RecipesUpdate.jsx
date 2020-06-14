@@ -3,12 +3,58 @@ import api from '../api';
 
 import styled from 'styled-components';
 
-const Wrapper = styled.div`margin: 0 2em`
-const Title = styled.h1`margin: 0 auto;`
-const Label = styled.label`margin: .5em`
-const InputText = styled.input`margin: .5em`
-const Button = styled.button``
-const CancelButton = styled.a`margin: 1em 1em 1em .4em`
+import { InputFieldForm, RecipeCategory } from '../components/InsertRecipe';
+
+const Wrapper = styled.div.attrs({
+    className: 'container'
+})`
+    padding-top: 1em;
+`
+
+const Form = styled.form.attrs({
+    className: 'form m-auto border p-4 needs-validation',
+})`max-width: 700px;`
+
+const Row = styled.div.attrs({
+    className: 'form-group m-4'
+})``
+
+const Title = styled.h1.attrs({
+    className: 'text-center'
+})`margin: 0 auto 1em;`
+
+const Label = styled.label.attrs({
+    className: 'font-weight-bold text-left mb-0'
+})`
+    display: block;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    font-size: .8em;
+`
+
+const InputText = styled.input.attrs({
+    className: 'col'
+})``
+
+const TextArea = styled.textarea.attrs({
+    className: 'col'
+})``
+
+const ValidFeedback = styled.div.attrs({
+    className: 'valid-feedback'
+})``
+
+const InvalidFeedback = styled.div.attrs({
+    className: 'invalid-feedback'
+})``
+
+const Button = styled.button.attrs({
+    className: 'btn btn-warning col my-2'
+})``
+
+const CancelButton = styled.a.attrs({
+    className: 'btn col my-2'
+})``
 
 class RecipesUpdate extends Component {
     constructor(props) {
