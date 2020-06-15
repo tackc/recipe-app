@@ -76,6 +76,8 @@ Apparently using bootstrap and React can cause some issues. I was running into t
 
 * [Possible solution for 'Measurements' dropdown](https://medium.com/@lolahef/react-event-emitter-9a3bb0c719) - event emitter
 
+* [MERN Example with React Hooks](https://www.techandstartup.com/tutorials/mern-app-with-react-hooks) - CRUD example SPA
+
 ## Available Scripts
 
 In the project directory, you can run:
