@@ -103,15 +103,16 @@ const RecipesUpdate = (props) => {
             }
         }
         updateRecipe();
+        window.alert(`Recipe successfully updated!`)
     }
 
     const handleChange = (event) => {
         setRecipe({...recipe, [event.target.name]: event.target.value})
     }
 
-    // const handleCancel = () => {
-    //     props.history.push(`/recipes/${recipe._id}`);
-    // }
+    const handleCancel = () => {
+        props.history.push(`/recipes/${recipe._id}`);
+    }
 
     // const handleCalculateTotalTime = async (event) => {
     //     const total_time = parseInt(state.preparation_time) + parseInt(state.cooking_time)
@@ -244,7 +245,7 @@ const RecipesUpdate = (props) => {
 
                 <Row>
                     <Button type="submit">Update Recipe</Button>
-                    <CancelButton href={'/recipes/list'}>Cancel</CancelButton>
+                    <CancelButton onClick={handleCancel}>Cancel</CancelButton>
                 </Row>
             </Form>
         </Wrapper>
