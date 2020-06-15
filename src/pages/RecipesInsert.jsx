@@ -200,18 +200,6 @@ const RecipesInsert = () => {
                         onChange={handleChange}
                     />
 
-                    {/* <Label>Rating: </Label>
-                    <InputText
-                        type="number"
-                        step="1"
-                        lang="en-US"
-                        min="0"
-                        max="5"
-                        pattern="[0-5]+([,\.][0-5]+)?"
-                        value={ state.rating }
-                        name='rating'
-                        onChange={handleChange}
-                    /> */}
                     <Rating style={{ border: 'none' }}
                         value={ state.rating }
                         onChange={ handleChange }
