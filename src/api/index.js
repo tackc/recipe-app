@@ -7,7 +7,7 @@ const api = axios.create({
 // Recipe Routes
 export const insertRecipe = payload => api.post(`/recipes`, payload);
 export const getRecipes = () => api.get(`/recipes`);
-export const updateRecipeById = (id, payload) => api.put(`/recipes/${id}`, payload);
+export const updateRecipeById = (id, payload) => api.patch(`/recipes/${id}`, payload);
 export const deleteRecipeById = id => api.delete(`/recipes/${id}`);
 export const getRecipeById = id => api.get(`/recipes/${id}`);
 
