@@ -90,9 +90,10 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    this.checkForLocalToken()
-  }
+  // This is causing all POST requests to go to /auth/me/from/token...including ones from the Add Recipe form 🤦🏻‍♂️
+  // componentDidMount() {
+  //   this.checkForLocalToken()
+  // }
 
   render() {
     return (
