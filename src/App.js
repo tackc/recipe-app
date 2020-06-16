@@ -109,7 +109,7 @@ class App extends Component {
               <Route path='/recipes/list' exact component={RecipesList} />
               <Route path='recipes/:id' exact component={RecipeCard} />
               <Route path='/recipes/create' exact component={RecipesInsert} />
-              <Route path='/recipes/update/:id' exact component={RecipesUpdate} />
+              <Route path='/recipes/:id/edit' exact component={RecipesUpdate} />
               <Route exact path='/' render={ (props) => <Welcome user={this.state.user} logout={this.logout} liftToken={this.liftTokenToState} /> } />
             </Switch>
           </Router>
