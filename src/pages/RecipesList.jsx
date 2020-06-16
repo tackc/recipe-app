@@ -23,7 +23,7 @@ const Delete = styled.div`
 class UpdateRecipe extends Component {
     updateRecipe = event => {
         event.preventDefault()
-        window.location.href = `/recipes/update/${this.props.id}`
+        window.location.href = `/recipes/${this.props.id}/edit`
     }
 
     render() {
