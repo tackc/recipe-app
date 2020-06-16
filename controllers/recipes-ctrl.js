@@ -49,6 +49,7 @@ async function updateRecipe(req, res) {
             })
         }
 
+        recipe.id = body.id
         recipe.name = body.name
         recipe.description = body.description
         recipe.ingredientQuantity = body.ingredientQuantity
