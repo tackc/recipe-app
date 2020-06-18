@@ -36,7 +36,6 @@ const Label = styled.label.attrs({
 const InputText = styled.input.attrs({
     className: 'col',
     type: 'text',
-    onChange: '{handleChange}'
 })``
 
 const TextArea = styled.textarea.attrs({
@@ -157,7 +156,8 @@ const RecipesUpdate = (props) => {
                 <Row>
                     <Label>Name: </Label>
                     <InputText
-                        value={ recipe.name }
+                        value={recipe.name}
+                        onChange={handleChange}
                         name='name'
                     />
                     <ValidFeedback>Looks good!</ValidFeedback>
@@ -170,6 +170,7 @@ const RecipesUpdate = (props) => {
                     <Label>Description: </Label>
                     <TextArea
                         value={ recipe.description }
+                        onChange={handleChange}
                         name='description'
                     />
                 </Row>
@@ -180,6 +181,7 @@ const RecipesUpdate = (props) => {
                     <Label>Instructions: </Label>
                     <TextArea
                         value={ recipe.instructions }
+                        onChange={handleChange}
                         name='instructions'
                     />
                 </Row>
@@ -188,12 +190,14 @@ const RecipesUpdate = (props) => {
                     <Label>Preparation Time: </Label>
                     <InputText
                         value={ recipe.preparation_time }
+                        onChange={handleChange}
                         name='preparation_time'
                     />
 
                     <Label>Cooking Time: </Label>
                     <InputText
                         value={ recipe.cooking_time }
+                        onChange={handleChange}
                         name='cooking_time'
                     />
 
@@ -201,6 +205,7 @@ const RecipesUpdate = (props) => {
                     <CancelButton onClick={handleCalculateTotalTime}>Calculate Total</CancelButton>
                     <InputText
                         value={ total_time + ' minutes' }
+                        onChange={handleChange}
                         name='total_time'
                         onChange={handleCalculateTotalTime}
                         placeholder={ total_time }
@@ -212,12 +217,13 @@ const RecipesUpdate = (props) => {
                     <Label>Serves: </Label>
                     <InputText
                         value={ recipe.serves }
+                        onChange={handleChange}
                         name='serves'
                     />
 
                     <Rating style={{ border: 'none' }}
                         value={ recipe.rating }
-                        onChange={ handleChange }
+                        onChange={handleChange}
                     />
                 </Row>
 
@@ -225,6 +231,7 @@ const RecipesUpdate = (props) => {
                     <Label>Notes: </Label>
                     <TextArea
                         value={ recipe.notes }
+                        onChange={handleChange}
                         name='notes'
                     />
                 </Row>
@@ -233,12 +240,14 @@ const RecipesUpdate = (props) => {
                     <Label>Author: </Label>
                     <InputText
                         value={ recipe.author }
+                        onChange={handleChange}
                         name='author'
                     />
 
                     <Label>URL: </Label>
                     <InputText
                         value={ recipe.url }
+                        onChange={handleChange}
                         name='url'
                     />
                 </Row>
