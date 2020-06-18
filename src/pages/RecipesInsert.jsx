@@ -115,6 +115,7 @@ const RecipesInsert = () => {
                 rating: '',
             })
         })
+        props.history.push(`/recipes/create`)
     }
 
     // const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
