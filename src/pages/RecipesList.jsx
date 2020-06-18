@@ -38,7 +38,7 @@ class DeleteRecipe extends Component {
         if (
             window.confirm(`Do you want to delete the recipe ${this.props.id} permanently?`)
         ) {
-            api.deleteRecipeById(this.props.id)
+            api.deleteRecipeById(this.state.recipes.match.params._id)
             window.location.reload()
         }
     }
