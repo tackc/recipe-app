@@ -49,7 +49,7 @@ async function updateRecipe(req, res) {
             })
         }
 
-        recipe.id = body.id
+        recipe._id = body.id
         recipe.name = body.name
         recipe.description = body.description
         recipe.ingredientQuantity = body.ingredientQuantity
@@ -83,17 +83,29 @@ async function updateRecipe(req, res) {
     })
 }
 
-async function deleteRecipe(req, res) {
-    await Recipe.findOneAndDelete({ _id: req.params.id }, (err, recipe) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
+// async function deleteRecipeById(req, res) {
+//     await Recipe.findOneAndDelete({ _id: req.params.id }, (err, recipe) => {
+//         if (err) {
+//             return res.status(400).json({ success: false, error: err })
+//         }
+//         if (!recipe) {
+//             return res.status(400).json({ success: false, error: 'Recipe not found' })
+//         }
+//         return res.status(200).json({ success: true, data: recipe })
+//     })
+//     .catch(err => console.log(err))
+// }
+
+async function deleteRecipeById(req, res) {
+    await Recipe.findById({_id: req.params.id}, function(err, recipe) {
         if (!recipe) {
-            return res.status(400).json({ success: false, error: 'Recipe not found' })
+            res.status(404).send('Recipe not found');
+        } else {
+            Recipe.findByIdAndRemove(req.params.id)
+            .then(function() {res.status(200).json('Recipe Deleted') })
+            .catch(function(err) { res.status(400).send('Recipe delete failed.')});
         }
-        return res.status(200).json({ success: true, data: recipe })
     })
-    .catch(err => console.log(err))
 }
 
 async function getRecipeById(req, res) {
@@ -125,7 +137,7 @@ async function getRecipes(req, res) {
 module.exports = {
     insertRecipe,
     updateRecipe,
-    deleteRecipe,
+    deleteRecipeById,
     getRecipeById,
     getRecipes,
 };
