@@ -106,7 +106,7 @@ class App extends Component {
               <Route path='/login' render={() => <Login liftToken={this.liftTokenToState} />} />
               <Route path='/signup' render={() => <Signup liftToken={this.liftTokenToState} /> } />
               <Route path='/ingredients' render={ () => <p>This is the ingredients route!</p>} />
-              <Route path='/recipes/list' exact component={RecipesList} />
+              <Route path='/recipes/list' exact component={BasicRecipeList} />
               <Route path='recipes/:id' exact component={RecipeCard} />
               <Route path='/recipes/create' exact component={RecipesInsert} />
               <Route path='/recipes/:id/edit' exact component={RecipesUpdate} />
