@@ -6,7 +6,7 @@ import { theme } from './theme';
 
 // import Categories from './pages/Categories';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { RecipesList, RecipesInsert, RecipesUpdate, RecipeCard } from './pages';
+import { BasicRecipeList, RecipesInsert, RecipesUpdate, RecipeCard } from './pages';
 import { NavBar } from './components/NavBar'
 import { Signup, Login, Welcome } from './components/Authentication'
 
