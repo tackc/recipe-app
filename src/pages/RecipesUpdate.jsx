@@ -1,274 +1,265 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import { get, patch } from 'axios';
 import api from '../api';
+import Rating from '@bit/nexxtway.react-rainbow.rating';
 
 import styled from 'styled-components';
+import { InputFieldForm, RecipeCategory } from '../components/InsertRecipe';
 
-const Wrapper = styled.div`margin: 0 2em`
+const Wrapper = styled.div.attrs({
+    className: 'container'
+})`
+    padding-top: 1em;
+`
 
-const Title = styled.h1`margin: 0 auto;`
+const Form = styled.form.attrs({
+    className: 'form m-auto border p-4 needs-validation',
+})`max-width: 700px;`
 
-const Label = styled.label`margin: .5em`
+const Row = styled.div.attrs({
+    className: 'form-group m-4'
+})``
 
-const InputText = styled.input`margin: .5em`
+const Title = styled.h1.attrs({
+    className: 'text-center'
+})`margin: 0 auto 1em;`
 
-const Button = styled.button``
+const Label = styled.label.attrs({
+    className: 'font-weight-bold text-left mb-0'
+})`
+    display: block;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    font-size: .8em;
+`
 
-const CancelButton = styled.a`margin: 1em 1em 1em .4em`
+const InputText = styled.input.attrs({
+    className: 'col',
+    type: 'text',
+})``
 
-class RecipesUpdate extends Component {
-    constructor(props) {
-        super(props)
+const TextArea = styled.textarea.attrs({
+    className: 'col'
+})``
 
-        this.state = {
-            id: this.props.match.params.id,
-            name: '',
-            description: '',
-            ingredient_quantity: '',
-            ingredients: [],
-            instructions: '',
-            preparation_time: '',
-            cooking_time: '',
-            total_time: '',
-            serves: '',
-            notes: '',
-            author: '',
-            url: '',
-            rating: '',
-            images: [],
+const ValidFeedback = styled.div.attrs({
+    className: 'valid-feedback'
+})``
+
+const InvalidFeedback = styled.div.attrs({
+    className: 'invalid-feedback'
+})``
+
+const Button = styled.button.attrs({
+    className: 'btn btn-warning col my-2'
+})``
+
+const CancelButton = styled.button.attrs({
+    className: 'btn col my-2'
+})``
+
+const RecipesUpdate = (props) => {
+    const initialState = {
+        _id: '',
+        name: '',
+        category: '',
+        description: '',
+        ingredient_quantity: '',
+        ingredients: [],
+        unit_of_measurement: '',
+        instructions: '',
+        preparation_time: '',
+        cooking_time: '',
+        total_time: 0,
+        serves: '',
+        notes: '',
+        author: '',
+        url: '',
+        rating: undefined,
+    }
+    const [recipe, setRecipe] = useState(initialState)
+
+    useEffect(function() {
+        async function getRecipe() {
+            try {
+                const response = await get(`/recipes/${props.match.params.id}/edit`);
+                setRecipe(response.data)
+                console.log(response)
+            } catch(error) {
+                console.log(error)
+            }
         }
+        getRecipe();
+    }, [props])
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        async function updateRecipe() {
+            try {
+                api.updateRecipeById(recipe._id, recipe);
+                props.history.push(`/recipes/${recipe._id}`);
+            } catch(error) {
+                console.log(error);
+            }
+        }
+        updateRecipe();
+        window.alert(`Recipe successfully updated!`)
     }
 
-    handleChangeName = async event => {
-        const name = event.target.value
-        this.setState({ name })
+    const handleChange = (event) => {
+        setRecipe({...recipe, [event.target.name]: event.target.value})
     }
 
-    handleChangeDescription = async event => {
-        const description = event.target.value
-        this.setState({ description })
+    const handleCancel = () => {
+        props.history.push(`/recipes/${recipe._id}`);
     }
 
-    handleChangeIngredientQuantity = async event => {
-        const ingredient_quantity = event.target.value
-        this.setState({ ingredient_quantity })
-    }
+    // const handleCalculateTotalTime = async (event) => {
+    //     const total_time = parseInt(state.preparation_time) + parseInt(state.cooking_time)
+    //     setState({ total_time })
+    // }
 
-    handleChangeIngredients = async event => {
-        const Ingredients = event.target.value
-        this.setState({ Ingredients })
-    }
+    // const handleUpdateRecipe = async () => {
+    //     // const { id, name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
+    //     const payload = { ...state }
+    
+    //     await api.updateRecipeById(payload).then(res => {
+    //         window.alert(`Recipe successfully updated!`)
+    //         this.setState({
+    //             id: '',
+    //             name: '',
+    //             category: '',
+    //             description: '',
+    //             ingredient_quantity: '',
+    //             unit: '',
+    //             ingredients: [],
+    //             unit_of_measurement: '',
+    //             instructions: '',
+    //             preparation_time: '',
+    //             cooking_time: '',
+    //             total_time: 0,
+    //             serves: '',
+    //             notes: '',
+    //             author: '',
+    //             url: '',
+    //             rating: '',
+    //         })
+    //     })
+    // }    
 
-    handleChangeInstructions = async event => {
-        const instructions = event.target.value
-        this.setState({ instructions })
-    }
+    // const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
+    // const {total_time} = state
+    return (
+        <Wrapper>
+            <Title>Update Recipe {recipe.name}</Title>
+    
+            <Form onSubmit={handleSubmit}>
+                <Row>
+                    <Label>Name: </Label>
+                    <InputText
+                        value={recipe.name}
+                        onChange={handleChange}
+                        name='name'
+                    />
+                    <ValidFeedback>Looks good!</ValidFeedback>
+                    <InvalidFeedback>Recipe name is a required field!</InvalidFeedback>
+                </Row>
 
-    handleChangePreparationTime = async event => {
-        const preparation_time = event.target.value
-        this.setState({ preparation_time })
-    }
+                <RecipeCategory handleChange={props.handleChange} />
 
-    handleChangeCookingTime = async event => {
-        const cooking_time = event.target.value
-        this.setState({ cooking_time })
-    }
+                <Row>
+                    <Label>Description: </Label>
+                    <TextArea
+                        value={ recipe.description }
+                        onChange={handleChange}
+                        name='description'
+                    />
+                </Row>
 
-    handleChangeTotalTime = async event => {
-        const total_time = event.target.value
-        this.setState({ total_time })
-    }
+                <InputFieldForm unit_of_measurement={recipe.unit_of_measurement} handleChange={recipe.handleChange} />
 
-    handleChangeServes = async event => {
-        const serves = event.target.value
-        this.setState({ serves })
-    }
+                <Row>
+                    <Label>Instructions: </Label>
+                    <TextArea
+                        value={ recipe.instructions }
+                        onChange={handleChange}
+                        name='instructions'
+                    />
+                </Row>
 
-    handleChangeNotes = async event => {
-        const notes = event.target.value
-        this.setState({ notes })
-    }
+                <Row>
+                    <Label>Preparation Time: </Label>
+                    <InputText
+                        value={ recipe.preparation_time }
+                        onChange={handleChange}
+                        name='preparation_time'
+                    />
 
-    handleChangeAuthor = async event => {
-        const author = event.target.value
-        this.setState({ author })
-    }
+                    <Label>Cooking Time: </Label>
+                    <InputText
+                        value={ recipe.cooking_time }
+                        onChange={handleChange}
+                        name='cooking_time'
+                    />
 
-    handleChangeURL = async event => {
-        const url = event.target.value
-        this.setState({ url })
-    }
+                    {/* <Label>Total Time: </Label>
+                    <CancelButton onClick={handleCalculateTotalTime}>Calculate Total</CancelButton>
+                    <InputText
+                        value={ total_time + ' minutes' }
+                        onChange={handleChange}
+                        name='total_time'
+                        onChange={handleCalculateTotalTime}
+                        placeholder={ total_time }
+                        disabled
+                    /> */}
+                </Row>
 
-    handleChangeRating = async event => {
-        const rating = event.target.value
-        this.setState({ rating })
-    }
+                <Row>
+                    <Label>Serves: </Label>
+                    <InputText
+                        value={ recipe.serves }
+                        onChange={handleChange}
+                        name='serves'
+                    />
 
-    handleChangeImages = async event => {
-        const images = event.target.value
-        this.setState({ images })
-    }
+                    <Rating style={{ border: 'none' }}
+                        value={ recipe.rating }
+                        onChange={handleChange}
+                    />
+                </Row>
 
-    handleUpdateRecipe = async () => {
-        const { id, name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
-        const payload = { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images }
+                <Row>
+                    <Label>Notes: </Label>
+                    <TextArea
+                        value={ recipe.notes }
+                        onChange={handleChange}
+                        name='notes'
+                    />
+                </Row>
 
-        await api.updateRecipeById(id, payload).then(res => {
-            window.alert(`Recipe successfully updated!`)
-            this.setState({
-                name: '',
-                description: '',
-                ingredient_quantity: '',
-                ingredients: [],
-                instructions: '',
-                preparation_time: '',
-                cooking_time: '',
-                total_time: '',
-                serves: '',
-                notes: '',
-                author: '',
-                url: '',
-                rating: '',
-                images: [],
-            })
-        })
-    }
+                <Row>
+                    <Label>Author: </Label>
+                    <InputText
+                        value={ recipe.author }
+                        onChange={handleChange}
+                        name='author'
+                    />
 
-    componentDidUpdate = async () => {
-        const { id } = this.state
-        const recipe = await api.getRecipeById(id)
+                    <Label>URL: </Label>
+                    <InputText
+                        value={ recipe.url }
+                        onChange={handleChange}
+                        name='url'
+                    />
+                </Row>
 
-        this.setState({
-            name: recipe.data.data.name,
-            description: recipe.data.data.description,
-            ingredient_quantity: recipe.data.data.ingredient_quantity,
-            ingredients: [],
-            instructions: recipe.data.data.instructions,
-            preparation_time: recipe.data.data.preparation_time,
-            cooking_time: recipe.data.data.cooking_time,
-            total_time: recipe.data.data.total_time,
-            serves: recipe.data.data.serves,
-            notes: recipe.data.data.notes,
-            author: recipe.data.data.author,
-            url: recipe.data.data.url,
-            rating: recipe.data.data.rating,
-            images: recipe.data.data.images,
-        })
-    }
-
-    render() {
-        const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
-        return (
-            <Wrapper>
-                <Title>Update Recipe</Title>
-
-                <Label>Name: </Label>
-                <InputText 
-                    type="text"
-                    value={ name }
-                    onChange={this.handleChangeName}
-                />
-
-                <Label>Description: </Label>
-                <InputText 
-                    type="text"
-                    value={ description }
-                    onChange={this.handleChangeDescription}
-                />
-
-                <Label>Ingredient Quantity: </Label>
-                <InputText 
-                    type="text"
-                    value={ ingredient_quantity }
-                    onChange={this.handleChangeIngredientQuantity}
-                />
-
-                <Label>Ingredients: </Label>
-                <InputText 
-                    type="text"
-                    value={ ingredients }
-                    onChange={this.handleChangeIngredients}
-                />
-
-                <Label>Instructions: </Label>
-                <InputText 
-                    type="text"
-                    value={ instructions }
-                    onChange={this.handleChangeInstructions}
-                />
-
-                <Label>Preparation Time: </Label>
-                <InputText 
-                    type="text"
-                    value={ preparation_time }
-                    onChange={this.handleChangePreparationTime}
-                />
-
-                <Label>Cooking Time: </Label>
-                <InputText 
-                    type="text"
-                    value={ cooking_time }
-                    onChange={this.handleChangeCookingTime}
-                />
-
-                <Label>Total Time: </Label>
-                <InputText 
-                    type="text"
-                    value={ total_time }
-                    onChange={this.handleChangeTotalTime}
-                />
-
-                <Label>Serves: </Label>
-                <InputText 
-                    type="text"
-                    value={ serves }
-                    onChange={this.handleChangeServes}
-                />
-
-                <Label>Notes: </Label>
-                <InputText 
-                    type="text"
-                    value={ notes }
-                    onChange={this.handleChangeNotes}
-                />
-
-                <Label>Author: </Label>
-                <InputText 
-                    type="text"
-                    value={ author }
-                    onChange={this.handleChangeAuthor}
-                />
-
-                <Label>URL: </Label>
-                <InputText 
-                    type="text"
-                    value={ url }
-                    onChange={this.handleChangeURL}
-                />
-
-                <Label>Rating: </Label>
-                <InputText 
-                    type="number"
-                    step="1"
-                    lang="en-US"
-                    min="0"
-                    max="5"
-                    pattern="[0-5]+([,\.][0-5]+)?"
-                    value={ rating }
-                    onChange={this.handleChangeRating}
-                />
-
-                <Label>Images: </Label>
-                <InputText 
-                    type="text"
-                    value={ images }
-                    onChange={this.handleChangeImages}
-                />
-
-                <Button onClick={this.handleUpdateRecipe}>Update Recipe</Button>
-                <CancelButton href={'/recipes/list'}>Cancel</CancelButton>
-            </Wrapper>
-        )
-    }
+                <Row>
+                    <Button type="submit">Update Recipe</Button>
+                    <CancelButton onClick={handleCancel}>Cancel</CancelButton>
+                </Row>
+            </Form>
+        </Wrapper>
+    )
 }
 
 export default RecipesUpdate;

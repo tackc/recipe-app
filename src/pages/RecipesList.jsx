@@ -23,7 +23,7 @@ const Delete = styled.div`
 class UpdateRecipe extends Component {
     updateRecipe = event => {
         event.preventDefault()
-        window.location.href = `/recipes/update/${this.props.id}`
+        window.location.href = `/recipes/${this.props.id}/edit`
     }
 
     render() {
@@ -38,7 +38,7 @@ class DeleteRecipe extends Component {
         if (
             window.confirm(`Do you want to delete the recipe ${this.props.id} permanently?`)
         ) {
-            api.deleteRecipeById(this.props.id)
+            api.deleteRecipeById(this.state.recipes.match.params._id)
             window.location.reload()
         }
     }

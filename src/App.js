@@ -6,7 +6,7 @@ import { theme } from './theme';
 
 // import Categories from './pages/Categories';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { RecipesList, RecipesInsert, RecipesUpdate, RecipeCard } from './pages';
+import { BasicRecipeList, RecipesInsert, RecipesUpdate, RecipeCard } from './pages';
 import { NavBar } from './components/NavBar'
 import { Signup, Login, Welcome } from './components/Authentication'
 
@@ -90,9 +90,10 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    this.checkForLocalToken()
-  }
+  // This is causing all POST requests to go to /auth/me/from/token...including ones from the Add Recipe form 🤦🏻‍♂️
+  // componentDidMount() {
+  //   this.checkForLocalToken()
+  // }
 
   render() {
     return (
@@ -105,10 +106,10 @@ class App extends Component {
               <Route path='/login' render={() => <Login liftToken={this.liftTokenToState} />} />
               <Route path='/signup' render={() => <Signup liftToken={this.liftTokenToState} /> } />
               <Route path='/ingredients' render={ () => <p>This is the ingredients route!</p>} />
-              <Route path='/recipes/list' exact component={RecipesList} />
+              <Route path='/recipes/list' exact component={BasicRecipeList} />
               <Route path='recipes/:id' exact component={RecipeCard} />
               <Route path='/recipes/create' exact component={RecipesInsert} />
-              <Route path='/recipes/update/:id' exact component={RecipesUpdate} />
+              <Route path='/recipes/:id/edit' exact component={RecipesUpdate} />
               <Route exact path='/' render={ (props) => <Welcome user={this.state.user} logout={this.logout} liftToken={this.liftTokenToState} /> } />
             </Switch>
           </Router>
