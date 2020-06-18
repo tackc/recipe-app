@@ -230,7 +230,7 @@ const RecipesInsert = () => {
                     <InputText
                         type="text"
                         value={ state.url }
-                        name='author'
+                        name='url'
                         onChange={handleChange}
                     />
                 </Row>
