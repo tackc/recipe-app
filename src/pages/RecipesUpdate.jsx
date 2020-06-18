@@ -60,6 +60,7 @@ const CancelButton = styled.button.attrs({
 
 const RecipesUpdate = (props) => {
     const initialState = {
+        _id: '',
         name: '',
         category: '',
         description: '',
