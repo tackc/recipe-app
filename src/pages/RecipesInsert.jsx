@@ -90,7 +90,7 @@ const RecipesInsert = () => {
         setState({ total_time })
     }
     
-    async function handleAddRecipe() {
+    async function handleAddRecipe(props) {
         // const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = state
         const payload = { ...state }
 
