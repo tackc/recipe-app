@@ -79,16 +79,16 @@ const RecipesUpdate = (props) => {
     }
     const [recipe, setRecipe] = useState(initialState)
 
-    useEffect(() => {
+    useEffect(function() {
         async function getRecipe() {
             try {
-                const response = await get(`/recipes/${props.match.params._id}`);
+                const response = await get(`/recipes/${props.match.params.id}/edit`);
                 setRecipe(response.data)
+                console.log(response)
             } catch(error) {
                 console.log(error)
             }
         }
-
         getRecipe();
     }, [props])
 
