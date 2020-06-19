@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from 'react';
-// import  axios  from 'axios';
 import api from '../api'
 import { Link } from 'react-router-dom';
+import { RecipeCard } from '../components/Recipe'
+
+import styled from 'styled-components';
+
+const Wrapper = styled.div.attrs({
+    className: 'container m-auto'
+})`
+    padding-top: 1em;
+    max-width: 700px;
+`
+
+const Recipes = styled.div.attrs({
+    className: 'd-flex flex-wrap justify-content-center'
+})``
 
 function BasicRecipeList() {
     const [recipes, setRecipes] = useState([])
@@ -19,28 +32,22 @@ function BasicRecipeList() {
     }, []);
 
     return (
-        <div>
+        <Wrapper>
             <h2>
                 Recipes
                 <Link to="/recipes/create" className="btn btn-primary float-right">Create Recipe</Link> 
             </h2>
             <hr/>
-            {recipes.map((recipes) => {
-                return(
-                    <Link to={`/recipes/${recipes._id}`}>
-                        <div key={recipes._id}>
-                            <h4><Link to={`/recipes/${recipes._id}`}>{recipes.title}</Link></h4>
-                            <small>_id: {recipes._id}</small>
-                            
-                        </div>
-                        <div key={recipes.name}>
-                            <small>{recipes.name}</small>
-                        </div>
-                        <hr/>
-                    </Link>
-                )     
-            })}
-        </div>
+            <Recipes>
+                {recipes.map((recipe) => {
+                    return(
+                        <Link key={recipe._id} to={`/recipes/${recipe._id}`}>
+                            <RecipeCard name={recipe.name} description={recipe.description} id={recipe._id}></RecipeCard>
+                        </Link>
+                    )}
+                )}
+            </Recipes>
+        </Wrapper>
     )
 }
 
