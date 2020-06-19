@@ -37,23 +37,16 @@ function BasicRecipeList() {
                 Recipes
                 <Link to="/recipes/create" className="btn btn-primary float-right">Create Recipe</Link> 
             </h2>
-            <RecipeCard></RecipeCard>
             <hr/>
-            {recipes.map((recipes) => {
-                return(
-                    <Link to={`/recipes/${recipes._id}`}>
-                        <div key={recipes._id}>
-                            <h4><Link to={`/recipes/${recipes._id}`}>{recipes.title}</Link></h4>
-                            <small>_id: {recipes._id}</small>
-                            
-                        </div>
-                        <div key={recipes.name}>
-                            <small>{recipes.name}</small>
-                        </div>
-                        <hr/>
-                    </Link>
-                )     
-            })}
+            <Recipes>
+                {recipes.map((recipe) => {
+                    return(
+                        <Link key={recipe._id} to={`/recipes/${recipe._id}`}>
+                            <RecipeCard name={recipe.name} description={recipe.description} id={recipe._id}></RecipeCard>
+                        </Link>
+                    )     
+                })}
+            </Recipes>
         </Wrapper>
     )
 }
