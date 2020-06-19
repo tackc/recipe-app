@@ -44,8 +44,8 @@ function BasicRecipeList() {
                         <Link key={recipe._id} to={`/recipes/${recipe._id}`}>
                             <RecipeCard name={recipe.name} description={recipe.description} id={recipe._id}></RecipeCard>
                         </Link>
-                    )     
-                })}
+                    )}
+                )}
             </Recipes>
         </Wrapper>
     )
