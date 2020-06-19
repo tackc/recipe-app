@@ -21,13 +21,13 @@ const RecipeName = styled.h3`
     color: white
 `
 
-const RecipeDescription = styled.body`
-    color: #222;
+const RecipeDescription = styled.p`
+    color: white;
 `
 
 const RecipeCard = (props) => {
     return(
-        <Wrapper>
+        <Wrapper key={props.id}>
             <RecipeName>{props.name}</RecipeName>
             <RecipeDescription>{props.description}</RecipeDescription>
         </Wrapper>
