@@ -12,6 +12,10 @@ const Wrapper = styled.div.attrs({
     max-width: 700px;
 `
 
+const Recipes = styled.div.attrs({
+    className: 'd-flex flex-wrap justify-content-center'
+})``
+
 function BasicRecipeList() {
     const [recipes, setRecipes] = useState([])
 
