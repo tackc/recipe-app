@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react';
-// import  axios  from 'axios';
 import api from '../api'
 import { Link } from 'react-router-dom';
+import { RecipeCard } from '../components/Recipe'
+
+import styled from 'styled-components';
+
+const Wrapper = styled.div.attrs({
+    className: 'container m-auto'
+})`
+    padding-top: 1em;
+    max-width: 700px;
+`
 
 function BasicRecipeList() {
     const [recipes, setRecipes] = useState([])
@@ -19,11 +28,12 @@ function BasicRecipeList() {
     }, []);
 
     return (
-        <div>
+        <Wrapper>
             <h2>
                 Recipes
                 <Link to="/recipes/create" className="btn btn-primary float-right">Create Recipe</Link> 
             </h2>
+            <RecipeCard></RecipeCard>
             <hr/>
             {recipes.map((recipes) => {
                 return(
@@ -40,7 +50,7 @@ function BasicRecipeList() {
                     </Link>
                 )     
             })}
-        </div>
+        </Wrapper>
     )
 }
 
