@@ -103,8 +103,8 @@ class App extends Component {
           <Router>
             <NavBar user={this.state.user} />
             <Switch>
-              <Route path='/login' render={() => <Login liftToken={this.liftTokenToState} />} />
-              <Route path='/signup' render={() => <Signup liftToken={this.liftTokenToState} /> } />
+              <Route exact path='/login'>{this.state.user ? <Redirect to="/" /> : <Login liftToken={this.liftTokenToState} />} </Route>
+              <Route exact path='/signup'>{this.state.user ? <Redirect to="/" /> : <Signup liftToken={this.liftTokenToState} />} </Route>
               <Route path='/ingredients' render={ () => <p>This is the ingredients route!</p>} />
               <Route path='/recipes/list' exact component={BasicRecipeList} />
               <Route path='recipes/:id' exact component={RecipeCard} />
