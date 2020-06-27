@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ErrorPanel from './ErrorPanel';
 import styled from 'styled-components';
-import { Redirect } from 'react-router-dom';
-
 
 const LoginWrapper = styled.div.attrs({
     className: 'login-wrapper container-fluid'
