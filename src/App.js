@@ -6,7 +6,7 @@ import { theme } from './theme';
 
 // import Categories from './pages/Categories';
 import { Redirect, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { BasicRecipeList, RecipesInsert, RecipesUpdate, RecipeCard } from './pages';
+import { BasicRecipeList, RecipesInsert, RecipesUpdate, RecipeView } from './pages';
 import { NavBar } from './components/NavBar'
 import { Signup, Login, Welcome } from './components/Authentication'
 
@@ -107,7 +107,7 @@ class App extends Component {
               <Route exact path='/signup'>{this.state.user ? <Redirect to="/" /> : <Signup liftToken={this.liftTokenToState} />} </Route>
               <Route path='/ingredients' render={ () => <p>This is the ingredients route!</p>} />
               <Route path='/recipes/list' exact component={BasicRecipeList} />
-              <Route path='recipes/:id' exact component={RecipeCard} />
+              <Route path='recipes/:id' exact component={RecipeView} />
               <Route path='/recipes/create' exact component={RecipesInsert} />
               <Route path='/recipes/:id/edit' exact component={RecipesUpdate} />
               <Route exact path='/' render={ (props) => <Welcome user={this.state.user} logout={this.logout} liftToken={this.liftTokenToState} /> } />
