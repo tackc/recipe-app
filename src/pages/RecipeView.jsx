@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import api from '../api';
-import axios from 'axios';
+import apis from '../api';
 
 const Wrapper = styled.div.attrs({
     className: 'container'
@@ -16,27 +15,25 @@ const Title = styled.h1.attrs({
     color: #222;
 `
 
-const RecipeView = (...props) => {
-    const [recipe, setRecipe] = useState([])
+function RecipeView(props) {
+    const [recipe, setRecipe] = useState({});
 
     useEffect(() => {
-        async function getRecipeById() {
+        async function getRecipe() {
             try {
-                // const response = await api.getRecipeById();
-                const response = await axios.get(`/api/recipes/${props.match.params._id}`);
-                setRecipe(response.data)
+                const response = await apis.getRecipeById(props.match.params.id);
+                setRecipe(response.data.data)
                 console.log(response.data.data)
             } catch(error) {
                 console.log('error', error);
             }
         }
-        getRecipeById();
+        getRecipe();
     }, [props]);
 
     return(
         <Wrapper>
             <Title>{recipe.name}</Title>
-            <Title>{recipe.title}</Title>
         </Wrapper>
     )
 }
