@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
-import api from '../api';
+import apis from '../api';
 
 import styled from 'styled-components';
 
@@ -38,7 +38,7 @@ class DeleteRecipe extends Component {
         if (
             window.confirm(`Do you want to delete the recipe ${this.props.id} permanently?`)
         ) {
-            api.deleteRecipeById(this.state.recipes.match.params._id)
+            apis.deleteRecipeById(this.state.recipes.match.params._id)
             window.location.reload()
         }
     }
@@ -61,7 +61,7 @@ class RecipesList extends Component {
     componentDidMount = async () => {
         this.setState({ isLoading: true })
 
-        await api.getRecipes().then(recipes => {
+        await apis.getRecipes().then(recipes => {
             this.setState({
                 recipes: recipes.data.data,
                 isLoading: false,
