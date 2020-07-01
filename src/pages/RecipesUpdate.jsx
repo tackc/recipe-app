@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { get } from 'axios';
-import api from '../api';
+import apis from '../api';
 import Rating from '@bit/nexxtway.react-rainbow.rating';
 
 import styled from 'styled-components';
@@ -96,7 +96,7 @@ const RecipesUpdate = (props) => {
         event.preventDefault();
         async function updateRecipe() {
             try {
-                api.updateRecipeById(recipe._id, recipe);
+                apis.updateRecipeById(recipe._id, recipe);
                 props.history.push(`/recipes/${recipe._id}`);
             } catch(error) {
                 console.log(error);
