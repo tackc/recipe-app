@@ -1,5 +1,5 @@
 import React from 'react';
-import api from '../api';
+import apis from '../api';
 import Rating from '@bit/nexxtway.react-rainbow.rating';
 // import IngredientInsert from './IngredientInsert';
 
@@ -94,7 +94,7 @@ const RecipesInsert = () => {
         // const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = state
         const payload = { ...state }
 
-        await api.insertRecipe(payload).then(res => {
+        await apis.insertRecipe(payload).then(res => {
             window.alert(`Recipe successfully added!`)
             this.setState({
                 name: '',
