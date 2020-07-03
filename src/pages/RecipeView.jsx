@@ -59,6 +59,7 @@ function RecipeView(props) {
 
     return(
         <Wrapper>
+            <EditRecipe href={`/recipes/${props.match.params.id}/edit`}>Edit</EditRecipe>
             <Title>{recipe.name}</Title>
             <Category>{recipe.category}</Category>
             <Description>{recipe.description}</Description>
