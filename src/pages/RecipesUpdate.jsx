@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { get } from 'axios';
-import api from '../api';
+import apis from '../api';
 import Rating from '@bit/nexxtway.react-rainbow.rating';
 
 import styled from 'styled-components';
@@ -79,11 +79,11 @@ const RecipesUpdate = (props) => {
     }
     const [recipe, setRecipe] = useState(initialState)
 
-    useEffect(function() {
+    useEffect(() => {
         async function getRecipe() {
             try {
-                const response = await get(`/recipes/${props.match.params.id}/edit`);
-                setRecipe(response.data)
+                const response = await apis.getRecipeById(props.match.params.id);
+                setRecipe(response.data.data)
                 console.log(response)
             } catch(error) {
                 console.log(error)
@@ -96,7 +96,7 @@ const RecipesUpdate = (props) => {
         event.preventDefault();
         async function updateRecipe() {
             try {
-                api.updateRecipeById(recipe._id, recipe);
+                apis.updateRecipeById(props.match.params.id, recipe);
                 props.history.push(`/recipes/${recipe._id}`);
             } catch(error) {
                 console.log(error);
