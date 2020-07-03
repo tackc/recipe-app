@@ -96,7 +96,7 @@ const RecipesUpdate = (props) => {
         event.preventDefault();
         async function updateRecipe() {
             try {
-                apis.updateRecipeById(recipe._id, recipe);
+                apis.updateRecipeById(props.match.params.id, recipe);
                 props.history.push(`/recipes/${recipe._id}`);
             } catch(error) {
                 console.log(error);
