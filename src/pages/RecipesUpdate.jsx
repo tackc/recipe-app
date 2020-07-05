@@ -239,6 +239,7 @@ const RecipesUpdate = (props) => {
 
                 <Row>
                     <Button type="submit">Update Recipe</Button>
+                    <Button onClick ={handleDelete} className="btn btn-danger col my-2">Delete Recipe</Button>
                     <CancelButton onClick={handleCancel}>Cancel</CancelButton>
                 </Row>
             </Form>
