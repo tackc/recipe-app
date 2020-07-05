@@ -51,7 +51,7 @@ const InvalidFeedback = styled.div.attrs({
 })``
 
 const Button = styled.button.attrs({
-    className: 'btn btn-warning col my-2'
+    className: 'btn btn-success col my-2'
 })``
 
 const CancelButton = styled.button.attrs({
@@ -108,6 +108,19 @@ const RecipesUpdate = (props) => {
 
     const handleChange = (event) => {
         setRecipe({...recipe, [event.target.name]: event.target.value})
+    }
+
+    const handleDelete = (event) => {
+        event.preventDefault();
+        async function deleteRecipe() {
+            try {
+                apis.deleteRecipeById(props.match.params.id);
+                props.history.push(`/recipes/list`)
+            } catch(error) {
+                console.log(error);
+            }
+        }
+        deleteRecipe();
     }
 
     const handleCancel = () => {
