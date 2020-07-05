@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { get } from 'axios';
+// import { get } from 'axios';
 import apis from '../api';
 import Rating from '@bit/nexxtway.react-rainbow.rating';
 
