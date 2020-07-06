@@ -226,7 +226,7 @@ const RecipesInsert = () => {
                 </Row>
 
                 <Row>
-                    <Button onClick={handleAddRecipe}>Add Recipe</Button>
+                    <Button type="button" onClick={handleAddRecipe}>Add Recipe</Button>
                     <CancelButton href={'/recipes/list'}>Cancel</CancelButton>
                 </Row>
             </Form>
