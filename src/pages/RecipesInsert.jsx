@@ -76,6 +76,7 @@ const RecipesInsert = () => {
         author: '',
         url: '',
         rating: undefined,
+        formSubmitted: false,
     });
 
     const handleChange = async (event) => {
@@ -95,28 +96,17 @@ const RecipesInsert = () => {
         // const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = state
         const payload = { ...state }
 
-        await apis.insertRecipe(payload).then(res => {
+        await apis.insertRecipe(payload).then(() => {
             window.alert(`Recipe successfully added!`)
-            this.setState({
-                name: '',
-                category: '',
-                description: '',
-                ingredient_quantity: '',
-                unit: '',
-                ingredients: [],
-                unit_of_measurement: '',
-                instructions: '',
-                preparation_time: '',
-                cooking_time: '',
-                total_time: 0,
-                serves: '',
-                notes: '',
-                author: '',
-                url: '',
-                rating: '',
+            setState({
+                formSubmitted: true,
             })
         })
-        props.history.push(`/recipes/create`)
+        // props.history.push(`/recipes/list`)
+    }
+
+    if (state.formSubmitted === true) {
+        return <Redirect to='/recipes/list' />
     }
 
     const {total_time} = state
