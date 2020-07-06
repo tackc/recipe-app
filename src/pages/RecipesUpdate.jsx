@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { get } from 'axios';
+// import { get } from 'axios';
 import apis from '../api';
 import Rating from '@bit/nexxtway.react-rainbow.rating';
 
@@ -51,7 +51,7 @@ const InvalidFeedback = styled.div.attrs({
 })``
 
 const Button = styled.button.attrs({
-    className: 'btn btn-warning col my-2'
+    className: 'btn btn-success col my-2'
 })``
 
 const CancelButton = styled.button.attrs({
@@ -110,6 +110,19 @@ const RecipesUpdate = (props) => {
         setRecipe({...recipe, [event.target.name]: event.target.value})
     }
 
+    const handleDelete = (event) => {
+        event.preventDefault();
+        async function deleteRecipe() {
+            try {
+                apis.deleteRecipeById(props.match.params.id);
+                props.history.push(`/recipes/list`)
+            } catch(error) {
+                console.log(error);
+            }
+        }
+        deleteRecipe();
+    }
+
     const handleCancel = () => {
         props.history.push(`/recipes/${recipe._id}`);
     }
@@ -119,39 +132,10 @@ const RecipesUpdate = (props) => {
     //     setState({ total_time })
     // }
 
-    // const handleUpdateRecipe = async () => {
-    //     // const { id, name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
-    //     const payload = { ...state }
-    
-    //     await api.updateRecipeById(payload).then(res => {
-    //         window.alert(`Recipe successfully updated!`)
-    //         this.setState({
-    //             id: '',
-    //             name: '',
-    //             category: '',
-    //             description: '',
-    //             ingredient_quantity: '',
-    //             unit: '',
-    //             ingredients: [],
-    //             unit_of_measurement: '',
-    //             instructions: '',
-    //             preparation_time: '',
-    //             cooking_time: '',
-    //             total_time: 0,
-    //             serves: '',
-    //             notes: '',
-    //             author: '',
-    //             url: '',
-    //             rating: '',
-    //         })
-    //     })
-    // }    
-
-    // const { name, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
     // const {total_time} = state
     return (
         <Wrapper>
-            <Title>Update Recipe {recipe.name}</Title>
+            <Title>{recipe.name}</Title>
     
             <Form onSubmit={handleSubmit}>
                 <Row>
@@ -255,6 +239,7 @@ const RecipesUpdate = (props) => {
 
                 <Row>
                     <Button type="submit">Update Recipe</Button>
+                    <Button onClick ={handleDelete} className="btn btn-danger col my-2">Delete Recipe</Button>
                     <CancelButton onClick={handleCancel}>Cancel</CancelButton>
                 </Row>
             </Form>

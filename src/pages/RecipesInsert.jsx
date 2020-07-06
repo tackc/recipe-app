@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect, withRouter } from 'react-router-dom';
 import apis from '../api';
 import Rating from '@bit/nexxtway.react-rainbow.rating';
 // import IngredientInsert from './IngredientInsert';
@@ -75,6 +76,7 @@ const RecipesInsert = () => {
         author: '',
         url: '',
         rating: undefined,
+        formSubmitted: false,
     });
 
     const handleChange = async (event) => {
@@ -94,31 +96,19 @@ const RecipesInsert = () => {
         // const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = state
         const payload = { ...state }
 
-        await apis.insertRecipe(payload).then(res => {
+        await apis.insertRecipe(payload).then(() => {
             window.alert(`Recipe successfully added!`)
-            this.setState({
-                name: '',
-                category: '',
-                description: '',
-                ingredient_quantity: '',
-                unit: '',
-                ingredients: [],
-                unit_of_measurement: '',
-                instructions: '',
-                preparation_time: '',
-                cooking_time: '',
-                total_time: 0,
-                serves: '',
-                notes: '',
-                author: '',
-                url: '',
-                rating: '',
+            setState({
+                formSubmitted: true,
             })
         })
-        props.history.push(`/recipes/create`)
+        // props.history.push(`/recipes/list`)
     }
 
-    // const { name, category, description, ingredient_quantity, ingredients, instructions, preparation_time, cooking_time, total_time, serves, notes, author, url, rating, images } = this.state
+    if (state.formSubmitted === true) {
+        return <Redirect to='/recipes/list' />
+    }
+
     const {total_time} = state
     return (
         <Wrapper>
@@ -236,7 +226,7 @@ const RecipesInsert = () => {
                 </Row>
 
                 <Row>
-                    <Button onClick={handleAddRecipe}>Add Recipe</Button>
+                    <Button type="button" onClick={handleAddRecipe}>Add Recipe</Button>
                     <CancelButton href={'/recipes/list'}>Cancel</CancelButton>
                 </Row>
             </Form>
@@ -244,4 +234,4 @@ const RecipesInsert = () => {
     )
 }
 
-export default RecipesInsert;
+export default withRouter(RecipesInsert);
