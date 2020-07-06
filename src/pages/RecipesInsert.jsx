@@ -234,4 +234,4 @@ const RecipesInsert = () => {
     )
 }
 
-export default RecipesInsert;
+export default withRouter(RecipesInsert);
