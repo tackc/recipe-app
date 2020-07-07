@@ -59,7 +59,7 @@ So, when you are hacking out code and nothing seems to be updating in the browse
 Apparently using bootstrap and React can cause some issues. I was running into trouble getting the 'hamburger menu' to work and referenced [this article](https://stackoverflow.com/questions/52248179/how-to-use-data-toggle-collapse-in-reactjs-with-bootstrap) on Stack Overflow to make it work.
 
 ## TODOs
-* Add form validatior and sanitization using ```express-validator```. [Tutorial example here.](https://flaviocopes.com/express-sanitize-input/)
+* Add form validator and sanitization using ```express-validator```. [Tutorial example here.](https://flaviocopes.com/express-sanitize-input/)
 
 * Add TODO-like format for adding ingredients to recipe. [Example](https://codepen.io/arshdkhn1/pen/apoWJe?editors=0110)
 
