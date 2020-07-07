@@ -78,6 +78,8 @@ Apparently using bootstrap and React can cause some issues. I was running into t
 
 * [MERN Example with React Hooks](https://www.techandstartup.com/tutorials/mern-app-with-react-hooks) - CRUD example SPA
 
+* [MERN search bar](https://medium.com/@reneecruz/search-bar-in-react-js-in-six-simple-steps-4849118b2134)
+
 ## Available Scripts
 
 In the project directory, you can run:
