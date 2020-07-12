@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api'
 import { Link } from 'react-router-dom';
-import { RecipeCard } from '../components/Recipe'
+import { RecipeCard } from '../components/Recipe';
+import { Search } from '../components/Search';
 
 import styled from 'styled-components';
 
