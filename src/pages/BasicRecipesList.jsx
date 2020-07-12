@@ -17,6 +17,10 @@ const Recipes = styled.div.attrs({
     className: 'd-flex flex-wrap justify-content-center'
 })``
 
+const Row = styled.div.attrs({
+    className: 'row justify-content-between'
+})``
+
 function BasicRecipeList() {
     const [recipes, setRecipes] = useState([])
 
