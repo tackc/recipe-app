@@ -38,10 +38,11 @@ function BasicRecipeList() {
 
     return (
         <Wrapper>
-            <h2>
-                Recipes
-                <Link to="/recipes/create" className="btn btn-primary float-right">Create Recipe</Link> 
-            </h2>
+            <Row>
+                <h2 className="">Recipes</h2>
+                <Search className="" />
+                <Link to="/recipes/create" className="btn btn-primary float-right">Create Recipe</Link>
+            </Row>
             <hr/>
             <Recipes>
                 {recipes.map((recipe) => {
