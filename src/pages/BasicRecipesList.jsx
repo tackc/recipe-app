@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api'
 import { Link } from 'react-router-dom';
-import { RecipeCard } from '../components/Recipe'
+import { RecipeCard } from '../components/Recipe';
+import { Search } from '../components/Search';
 
 import styled from 'styled-components';
 
@@ -14,6 +15,10 @@ const Wrapper = styled.div.attrs({
 
 const Recipes = styled.div.attrs({
     className: 'd-flex flex-wrap justify-content-center'
+})``
+
+const Row = styled.div.attrs({
+    className: 'row justify-content-between'
 })``
 
 function BasicRecipeList() {
@@ -33,10 +38,11 @@ function BasicRecipeList() {
 
     return (
         <Wrapper>
-            <h2>
-                Recipes
-                <Link to="/recipes/create" className="btn btn-primary float-right">Create Recipe</Link> 
-            </h2>
+            <Row>
+                <h2 className="">Recipes</h2>
+                <Search className="" />
+                <Link to="/recipes/create" className="btn btn-primary float-right">Create Recipe</Link>
+            </Row>
             <hr/>
             <Recipes>
                 {recipes.map((recipe) => {
