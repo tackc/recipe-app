@@ -80,6 +80,8 @@ Apparently using bootstrap and React can cause some issues. I was running into t
 
 * [MERN search bar](https://medium.com/@reneecruz/search-bar-in-react-js-in-six-simple-steps-4849118b2134)
 
+* [Star Ratings](https://bit.dev/nexxtway/react-rainbow/rating)
+
 ## Available Scripts
 
 In the project directory, you can run:
