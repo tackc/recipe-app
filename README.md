@@ -82,6 +82,8 @@ Apparently using bootstrap and React can cause some issues. I was running into t
 
 * [Star Ratings](https://bit.dev/nexxtway/react-rainbow/rating)
 
+* [React Hooks Form](https://react-hook-form.com/get-started/) - Performant, flexible and extensible forms with easy-to-use validation.
+
 ## Available Scripts
 
 In the project directory, you can run:
