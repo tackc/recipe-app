@@ -3,7 +3,7 @@ This is a MERN-stack app. That being said, two terminal sessions are necessary:
 * One for running React's dev server (port 8000)
 
 Start the Express backend first by typing
-```nodemon server.js ``` or ```nodemon server```
+```nodemon server.js``` or ```nodemon server```
 
 React's development server can now be started by typing
 ```yarn start```
